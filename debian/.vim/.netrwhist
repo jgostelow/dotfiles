@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/users/pc/GIT/ii-billing-paymentgateway-restapi'
+let g:netrw_dirhist_2='/home/users/bknox/svn/apps-rumba/201303-rumba-api/lib/Rumba'

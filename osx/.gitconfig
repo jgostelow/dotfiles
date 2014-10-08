@@ -1,0 +1,34 @@
+[user]
+  name = Jonathan Gostelow
+  email = jgostelow@groupon.com
+[diff]
+	tool = vimdiff
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = =
+	trustExitCode = true
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+  upstream = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[core]
+	excludesfile = /Users/jgostelow/.gitignore_global
+	warnambiguousrefs = false
