@@ -1,10 +1,10 @@
 [user]
-  name = Jonathan Gostelow
-  email = jgostelow@groupon.com
+	name = 
+	email = 
 [diff]
 	tool = vimdiff
 [merge]
-	tool = diffmerge
+	tool = meld
 [mergetool "diffmerge"]
 	cmd = =
 	trustExitCode = true
@@ -32,3 +32,12 @@
 [core]
 	excludesfile = /Users/jgostelow/.gitignore_global
 	warnambiguousrefs = false
+	editor = /usr/bin/vim
+[push]
+	default = simple
+[difftool "sourcetree"]
+	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true

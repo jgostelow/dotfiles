@@ -1,12 +1,13 @@
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" execute pathogen#infect()
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/vundle'
+execute pathogen#infect()
 set clipboard=unnamed
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
 Bundle 'mustache/vim-mustache-handlebars'
-set nocompatible
+
 syntax on
 filetype plugin indent on
 set bg=dark
@@ -21,8 +22,6 @@ map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 " maximise the current window
 map <C-L> <C-W>_
-map <C-c> :tabnext<CR>
-map <C-x> :tabprevious<CR>
 set wmh=0
 set tabstop=2
 set smartindent  " nosi:  Smart indent useless when C-indent is on
@@ -40,10 +39,12 @@ set showmatch  " show matches on parens, bracketc, etc.
 set incsearch
 set hlsearch
 colorscheme candycode
-" asu1dark
-" baycomb
-" candy
-" candycode
+if &diff
+  colorscheme delek
+endif
+
+" Allow control sequences through to VIM, rather than stopping at the OS
+silent !stty -ixon > /dev/null 2>/dev/null
 
 augroup filetypedetect
     au! BufRead,BufNewFile *.t			setfiletype perl " Auto detect the .t files as perl scripts.
@@ -51,26 +52,23 @@ augroup filetypedetect
 "	au BufRead,BufNewFile *.json set filetype=json
 augroup END
 
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
-
 " code templates
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/file.%:e
 
+" json pretty - \jt
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" RuboCop - ctrl+r
+let g:vimrubocop_config = '/Users/jgostelow/GIT/workbench-api/.rubocop.yml'
+let g:vimrubocop_keymap = 0
+map <C-q> :RuboCop<CR>
+
+" NERDTree - ctrl+e
+Bundle 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
-let Tlist_Sort_Type="name"
-" toggle the tag list with <Insert> key
-nmap <C-d> :TlistToggle<CR><C-W>w
-" jump to ctag in a new horizontal window (automatically maximised)
-"map <C-\> :sp<CR>:exec("tag ".expand("<cword>"))<CR><C-W>_
-" jump to ctag in a new tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " remove trailing whitespace from coffee scripts on save
 " autocmd BufWritePre * :%s/\s\+$//e
-
-if &diff
-  colorscheme delek
-endif
 
 " COLORS
 hi x016_Grey0 ctermfg=16 guifg=#000000 "rgb=0,0,0
