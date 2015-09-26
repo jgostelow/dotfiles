@@ -1,0 +1,20 @@
+alias rm='rm -i'
+alias cp='cp -i'
+alias ll='ls -l'
+alias la='ls -la'
+alias less='less -r'
+
+alias be='bundle exec'
+
+alias gb="git branch -vv"
+alias ga="git add -u"
+alias gc="git checkout"
+alias gp="git pull"
+alias gpr="git pull --rebase"
+alias gl="git log --decorate=full"
+alias gs="git status"
+alias gd="git diff"
+alias gdt="git difftool -y"
+alias gdtc="git difftool -y --cached"
+alias gm="git merge --rebase"
+alias gclean="git remote prune origin;git gc"
