@@ -22,6 +22,8 @@ map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 " maximise the current window
 map <C-L> <C-W>_
+map <C-c> :tabnext<CR>
+map <C-x> :tabprevious<CR>
 set wmh=0
 set tabstop=2
 set smartindent  " nosi:  Smart indent useless when C-indent is on
@@ -66,6 +68,9 @@ map <C-q> :RuboCop<CR>
 " NERDTree - ctrl+e
 Bundle 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
+
+" Command-T - fast file navigator
+map <C-f> :CommandT<CR>
 
 " remove trailing whitespace from coffee scripts on save
 " autocmd BufWritePre * :%s/\s\+$//e

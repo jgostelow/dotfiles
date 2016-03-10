@@ -2,14 +2,12 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-" execute pathogen#infect()
+Plugin 'gmarik/vundle'
+execute pathogen#infect()
 set clipboard=unnamed
 
-Plugin 'gmarik/vundle'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mustache/vim-mustache-handlebars'
-call vundle#end()
+Bundle 'mustache/vim-mustache-handlebars'
+
 syntax on
 filetype plugin indent on
 set bg=dark
@@ -43,10 +41,12 @@ set showmatch  " show matches on parens, bracketc, etc.
 set incsearch
 set hlsearch
 colorscheme candycode
-" asu1dark
-" baycomb
-" candy
-" candycode
+if &diff
+  colorscheme delek
+endif
+
+" Allow control sequences through to VIM, rather than stopping at the OS
+silent !stty -ixon > /dev/null 2>/dev/null
 
 augroup filetypedetect
     au! BufRead,BufNewFile *.t			setfiletype perl " Auto detect the .t files as perl scripts.
@@ -54,26 +54,26 @@ augroup filetypedetect
 "	au BufRead,BufNewFile *.json set filetype=json
 augroup END
 
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
-
 " code templates
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/file.%:e
 
+" json pretty - \jt
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" RuboCop - ctrl+r
+let g:vimrubocop_config = '/Users/jgostelow/GIT/workbench-api/.rubocop.yml'
+let g:vimrubocop_keymap = 0
+map <C-q> :RuboCop<CR>
+
+" NERDTree - ctrl+e
+Bundle 'scrooloose/nerdtree'
 map <C-e> :NERDTreeToggle<CR>
-let Tlist_Sort_Type="name"
-" toggle the tag list with <Insert> key
-nmap <C-d> :TlistToggle<CR><C-W>w
-" jump to ctag in a new horizontal window (automatically maximised)
-"map <C-\> :sp<CR>:exec("tag ".expand("<cword>"))<CR><C-W>_
-" jump to ctag in a new tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Command-T - fast file navigator
+map <C-f> :CommandT<CR>
 
 " remove trailing whitespace from coffee scripts on save
 " autocmd BufWritePre * :%s/\s\+$//e
-
-if &diff
-  colorscheme delek
-endif
 
 " COLORS
 hi x016_Grey0 ctermfg=16 guifg=#000000 "rgb=0,0,0

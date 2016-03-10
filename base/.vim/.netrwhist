@@ -1,8 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/jgostelow/GIT/ql-to-go/config/deploy'
-let g:netrw_dirhist_2='/Users/jgostelow/GIT/ql-to-go/config/settings'
-let g:netrw_dirhist_3='/Users/jgostelow/GIT/coffee-app/spec/javascripts/mobile'
-let g:netrw_dirhist_4='/Users/jgostelow/GIT/coffee-app/app/assets/stylesheets'
-let g:netrw_dirhist_5='/Users/jgostelow/GIT/coffee-app/app/assets'
-let g:netrw_dirhist_6='/Users/jgostelow/GIT/coffee-app/app/assets/javascripts/backbone/templates/products/title_rows'
+let g:netrw_dirhist_cnt =0

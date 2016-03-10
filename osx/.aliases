@@ -3,24 +3,24 @@ alias cp='cp -i'
 alias ll='ls -l'
 alias la='ls -la'
 alias less='less -r'
-alias tag_time="(TZ=UTC date '+%Y.%m.%d_%H.%M')"
-alias tar='/usr/local/bin/gtar'
-alias fix_camera='sudo killall VDCAssistant'
+alias repeat='while [ $? -ne 0 ]; do !!; done'
 
-alias killpostgres='kill -INT `head -1 /usr/local/var/postgres/postmaster.pid`'
-alias bfg='java -jar ~/bin/bfg-1.11.8.jar'
-
-alias be='bundle exec'
-
+# Git
 alias gb="git branch -vv"
 alias ga="git add -u"
 alias gc="git checkout"
-alias gp="git pull"
-alias gpr="git pull --rebase"
-alias gl="git log --decorate=full"
-alias gs="git status"
+alias gl="git lg"
+alias gs="git s"
 alias gd="git diff"
 alias gdt="git difftool -y"
 alias gdtc="git difftool -y --cached"
 alias gm="git merge --rebase"
 alias gclean="git remote prune origin;git gc"
+alias gu="git up"
+
+# OSX
+alias fix_camera='sudo killall VDCAssistant'
+alias tar='/usr/local/bin/gtar'
+
+# Rails
+alias be='bundle exec'

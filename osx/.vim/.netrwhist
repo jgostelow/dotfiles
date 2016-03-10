@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/jgostelow/GIT/workbench-api-deploy/config/deploy'
-let g:netrw_dirhist_2='/Users/jgostelow/GIT/coffee-app/app/controllers/api/expresso/details'
-let g:netrw_dirhist_3='/Users/jgostelow/GIT/coffee-app/app/controllers/api/expresso'
+let g:netrw_dirhist_cnt =0
