@@ -22,5 +22,8 @@ alias gu="git up"
 alias fix_camera='sudo killall VDCAssistant'
 alias tar='/usr/local/bin/gtar'
 
+# Ubuntu
+alias ack='ack-grep'
+
 # Rails
 alias be='bundle exec'
