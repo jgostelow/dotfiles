@@ -45,3 +45,9 @@
 	smudge = git-lfs smudge %f
 [rerere]
 	enabled = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = " "
+	trustExitCode = true
