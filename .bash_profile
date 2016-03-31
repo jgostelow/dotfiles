@@ -17,3 +17,5 @@ PS1="\[\e[01;32m\]\u@\h\[\e[m\]:\[\e[01;34m\]\t\[\e[m\]:\[\e[01;31m\]\w\[\e[m\]\
 
 #set -o vi
 source $HOME/.aliases
+
+export PATH="~/.rbenv/shims:$PATH"
