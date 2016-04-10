@@ -17,13 +17,11 @@ alias gdtc="git difftool -y --cached"
 alias gm="git merge --rebase"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
+eval "$(hub alias -s)"
 
 # OSX
 alias fix_camera='sudo killall VDCAssistant'
 alias tar='/usr/local/bin/gtar'
-
-# Ubuntu
-# alias ack='ack-grep'
 
 # Rails
 alias be='bundle exec'
