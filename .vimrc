@@ -2,6 +2,7 @@ execute pathogen#infect()
 
 set nocompatible
 set backspace=2       " enable backspace to work as expected
+set number            " display line numbers
 set clipboard=unnamed " read and write from system clipboard
 set incsearch         " search as your type
 set hlsearch          " highlight search results

@@ -15,7 +15,27 @@ parse_git_branch() {
 }
 PS1="\[\e[01;32m\]\u@\h\[\e[m\]:\[\e[01;34m\]\t\[\e[m\]:\[\e[01;31m\]\w\[\e[m\]\n\[\e[01;33m\]\$(parse_git_branch)\[\e[m\] $ "
 
+# Auto Completion scripts
+# bash
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+# git (hub)
+if [ -f $HOME/bin/hub.bash_completion.sh ]; then
+  . $HOME/bin/hub.bash_completion.sh
+fi
+# groupon ssh
+if [ -f $HOME/ops-config/bin/bash_complete_hostnames.sh ]; then
+  . $HOME/ops-config/bin/bash_complete_hostnames.sh
+fi
+
+export GITHUB_HOST=github.groupondev.com
+
 #set -o vi
 source $HOME/.aliases
+source $HOME/.aliases.groupon
 
-export PATH="~/.rbenv/shims:$PATH"
+export PATH="~/.rbenv/shims:~/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/GIT/go
+export PATH=$PATH:$GOPATH/bin
