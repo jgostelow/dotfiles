@@ -21,7 +21,7 @@
   changed = green
   untracked = cyan
 [core]
-	excludesfile = $HOME/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	warnambiguousrefs = false
 	editor = /usr/bin/vim
 	autocrlf = input
