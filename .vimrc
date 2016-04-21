@@ -43,6 +43,8 @@ if &diff
 endif
 " do not make transparent backgrounds opaque by highlighting them
 hi Normal ctermbg=none
+" make line numbers white
+hi LineNr ctermfg=white
 
 " Do not freeze on CTRL-S
 silent !stty -ixon > /dev/null 2>/dev/null
