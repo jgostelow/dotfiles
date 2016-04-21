@@ -59,3 +59,5 @@ map <C-q> :RuboCop<CR>
 map <C-e> :NERDTreeToggle<CR>
 " Command-T - ctrl-f - fast file navigator
 map <C-f> :CommandT<CR>
+" git blame - ctrl-b
+map <C-b> :Gblame<CR>
