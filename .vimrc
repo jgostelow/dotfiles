@@ -33,6 +33,7 @@ set textwidth=120 " tw:  wrap at 120 characters
 set autoindent    " ai:  indent to match previous line
 set formatoptions=crql  " fo:  word wrap, format comments
 set showmatch     " show matches on parens, bracketc, etc.
+set diffopt+=vertical
 
 
 " COLORS
@@ -63,3 +64,7 @@ map <C-e> :NERDTreeToggle<CR>
 map <C-f> :CommandT<CR>
 " git blame - ctrl-b
 map <C-b> :Gblame<CR>
+" git status - ctrl-s
+map <C-s> :Gstatus<CR>
+" git diff - ctrl-d
+map <C-d> :Gdiff<CR>
