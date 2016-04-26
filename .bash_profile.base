@@ -1,7 +1,6 @@
 export CLICOLOR=1
 
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PATH="~/bin:$PATH"
 
 # RUBY
 export RUBY_GC_HEAP_INIT_SLOTS=500000
@@ -12,6 +11,7 @@ export PATH="~/.rbenv/shims:$PATH"
 export PATH=$PATH:$HOME/.rbenv/bin
 export PATH=$PATH:$HOME/.rbenv/plugins/ruby-build/bin
 eval "$(rbenv init -)"
+export PATH="$HOME/bin:$PATH"
 
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
