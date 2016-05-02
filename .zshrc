@@ -5,7 +5,9 @@ export ZSH=/Users/jgostelow/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="aussiegeek"
+# ZSH_THEME="bira"
+# ZSH_THEME="crunch"
+ZSH_THEME="jono"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,7 +52,7 @@ ZSH_THEME="aussiegeek"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(brew dirhistory jsontools git bundler rake capistrano)
+plugins=(dirhistory jsontools git rbenv)
 
 
 # User configuration
