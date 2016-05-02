@@ -5,6 +5,10 @@ basedir=$(pwd)
 OS=$1 # osx,linux
 ENV=$2 # home,groupon
 
+### ZSH ###
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "source $basedir/.zshrc" > ~/.zshrc
+
 ### BASH ###
 echo "source $basedir/.aliases.base" > ~/.aliases
 [ -n "$OS" ] && [[ -r $basedir/.aliases.$OS ]] && echo "source $basedir/.aliases.$OS" >> ~/.aliases

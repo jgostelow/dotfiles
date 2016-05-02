@@ -18,6 +18,3 @@ alias gm="git merge --rebase"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
 eval "$(hub alias -s)"
-
-# Rails
-alias be='bundle exec'
