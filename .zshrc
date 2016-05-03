@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jgostelow/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,12 +54,7 @@ ZSH_THEME="jono"
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
 plugins=(dirhistory jsontools git rbenv)
 
-
 # User configuration
-
-export PATH="/Users/jgostelow/bin:/Users/jgostelow/.rbenv/shims:~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/jgostelow/.rbenv/bin:/Users/jgostelow/.rbenv/plugins/ruby-build/bin:/usr/local/go/bin:/Users/jgostelow/GIT/go/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment

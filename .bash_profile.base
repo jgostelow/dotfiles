@@ -26,3 +26,5 @@ function tabc() {
   COLOR=$1; if [ -z "$COLOR" ]; then COLOR="{0, 0, 0}"; fi
   osascript -e "tell application \"iTerm\" to set background color of current session of current terminal to $COLOR"
 }
+
+source ~/.aliases
