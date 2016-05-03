@@ -19,14 +19,16 @@ case $SHELL in
 ### ZSH ###
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 echo "source $basedir/.zshrc" > ~/.zshrc
+echo "source $basedir/.env" >> ~/.zshrc
 ln -sf $basedir/.oh-my-zsh/themes/jono.zsh-theme ~/.oh-my-zsh/themes/
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $basedir/antigen.zsh
 chsh -s `which zsh`
 ;;
   bash)
 ### BASH ###
 echo "source $basedir/.bash_profile.base" > ~/.bash_profile
 [ -n "$ENV" ] && [[ -r $basedir/.bash_profile.$ENV ]] && echo "source $basedir/.bash_profile.$ENV" >> ~/.bash_profile
+echo "source $basedir/.env" >> ~/.bash_profile
 source ~/.bash_profile
 chsh -s `which bash`
 ;;
