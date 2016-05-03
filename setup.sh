@@ -11,6 +11,7 @@ OS=OS_MAP[`uname`]
 SHELL=$1  # zsh, bash
 ENV=$2    # personal,groupon
 
+### GENERAL ###
 echo "source $basedir/.aliases.base" > ~/.aliases
 [ -n "$OS" ] && [[ -r $basedir/.aliases.$OS ]] && echo "source $basedir/.aliases.$OS" >> ~/.aliases
 
@@ -20,7 +21,6 @@ case $SHELL in
 curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/antigen.zsh
 echo "source $basedir/.zshrc" > ~/.zshrc
 echo "source $basedir/.env" >> ~/.zshrc
-ln -sf $basedir/.oh-my-zsh/themes/jono.zsh-theme ~/.oh-my-zsh/themes/
 chsh -s `which zsh`
 ;;
   bash)
@@ -45,8 +45,12 @@ EOF
 fi
 ln -sf $basedir/.gitignore_global ~/
 
-ln -sf $basedir/.screenrc ~/
+### VIM ###
 ln -sf $basedir/.vim ~/
 ln -sf $basedir/.vimrc ~/
 git submodule init
 git submodule update
+
+### MISC ###
+ln -sf $basedir/.screenrc ~/
+
