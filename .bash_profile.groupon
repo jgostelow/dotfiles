@@ -1,6 +1,7 @@
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/GIT/go
 export PATH=$PATH:$GOPATH/bin
+export GITHUB_HOST=github.groupondev.com
 
 [[ -r `brew --prefix`/etc/bash_completion ]] && . `brew --prefix`/etc/bash_completion
 [[ -r $HOME/ops-config/bin/bash_complete_hostnames.sh ]] && . $HOME/ops-config/bin/bash_complete_hostnames.sh
