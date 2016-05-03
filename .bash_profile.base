@@ -9,7 +9,3 @@ PS1="\[\e[01;32m\]\u@\h\[\e[m\]:\[\e[01;34m\]\t\[\e[m\]:\[\e[01;31m\]\w\[\e[m\]\
 
 [[ -r $HOME/bin/hub.bash_completion.sh ]] && . $HOME/bin/hub.bash_completion.sh
 
-function tabc() {
-  COLOR=$1; if [ -z "$COLOR" ]; then COLOR="{0, 0, 0}"; fi
-  osascript -e "tell application \"iTerm\" to set background color of current session of current terminal to $COLOR"
-}

@@ -1,5 +1,17 @@
+# plugins
+# https://github.com/zsh-users/antigen
+source ~/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle git
+antigen bundle dirhistory
+antigen bundle jsontools
+antigen bundle rbenv
+antigen theme raziel1121/env zsh-themes/jono
+antigen apply
+
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+# export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -7,7 +19,7 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="bira"
 # ZSH_THEME="crunch"
-ZSH_THEME="jono"
+ ZSH_THEME="jono"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -47,12 +59,6 @@ ZSH_THEME="jono"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# plugins
-# https://github.com/zsh-users/antigen
-source antigen.zsh
-antigen use oh-my-zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -62,7 +68,7 @@ antigen apply
 plugins=(dirhistory jsontools git rbenv)
 
 # User configuration
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

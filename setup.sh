@@ -17,11 +17,10 @@ echo "source $basedir/.aliases.base" > ~/.aliases
 case $SHELL in
   zsh)
 ### ZSH ###
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/antigen.zsh
 echo "source $basedir/.zshrc" > ~/.zshrc
 echo "source $basedir/.env" >> ~/.zshrc
 ln -sf $basedir/.oh-my-zsh/themes/jono.zsh-theme ~/.oh-my-zsh/themes/
-curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $basedir/antigen.zsh
 chsh -s `which zsh`
 ;;
   bash)
