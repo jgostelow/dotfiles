@@ -52,7 +52,7 @@ ZSH_THEME="jono"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(dirhistory jsontools git rbenv)
+plugins=(dirhistory jsontools git rbenv zsh-syntax-highlighting)
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
@@ -81,4 +81,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.aliases
+source ./.env

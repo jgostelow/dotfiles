@@ -20,6 +20,7 @@ case $SHELL in
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 echo "source $basedir/.zshrc" > ~/.zshrc
 ln -sf $basedir/.oh-my-zsh/themes/jono.zsh-theme ~/.oh-my-zsh/themes/
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 chsh -s `which zsh`
 ;;
   bash)
