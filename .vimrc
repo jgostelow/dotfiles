@@ -54,10 +54,8 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.hamlc	setfiletype	haml " Detect .hamlc files as haml
 augroup END
 
-" json pretty - \jt
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
-" RuboCop - ctrl+q - run rubocop on current file
-map <C-q> :RuboCop<CR>
+" RuboCop - ctrl+q - run rubocop autocorrect on current file
+map <C-q> :RuboCop -a<CR>
 " NERDTree - ctrl+e - Toggle NERDTree window
 map <C-e> :NERDTreeToggle<CR>
 " Command-T - ctrl-f - fast file navigator
