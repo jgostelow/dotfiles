@@ -40,5 +40,7 @@ CRUNCH_DIR_="$CRUNCH_DIR_COLOR%~\$(git_prompt_info) "
 CRUNCH_PROMPT="$CRUNCH_BRACKET_COLOR➭ "
 
 # Put it all together!
-PROMPT="╭─$CRUNCH_TIME_$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}
+PROMPT="╭─$CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}
 ╰─%B$%b "
+
+RPROMPT="$CRUNCH_RVM_$CRUNCH_TIME_"

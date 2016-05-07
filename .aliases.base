@@ -4,6 +4,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias less='less -r'
 alias repeat='while [ $? -ne 0 ]; do !!; done'
+alias z='source ~/.zshrc'
 
 # Git
 alias gb="git branch -vv"
