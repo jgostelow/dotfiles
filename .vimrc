@@ -21,7 +21,11 @@ map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 " maximise the current window
 map <C-L> <C-W>_
+" close all windows with ctrl+\
+map <C-\> :qa<CR>
 set wmh=0         " minimise split windows completely instead of leaving current line
+set splitbelow
+set splitright
 
 
 " FORMATTING

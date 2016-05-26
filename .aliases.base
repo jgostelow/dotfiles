@@ -5,6 +5,7 @@ alias la='ls -la'
 alias less='less -r'
 alias repeat='while [ $? -ne 0 ]; do !!; done'
 alias z='source ~/.zshrc'
+alias be='bundle exec'
 
 # Git
 alias gb="git branch -vv"
@@ -18,4 +19,5 @@ alias gdtc="git difftool -y --cached"
 alias gm="git merge --rebase"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
+alias gus="gsta && gu && gstp"
 eval "$(hub alias -s)"
