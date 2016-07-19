@@ -21,3 +21,9 @@ alias gclean="git remote prune origin;git gc"
 alias gu="git up"
 alias gus="gsta && gu && gstp"
 eval "$(hub alias -s)"
+
+# Docker
+alias drma='docker rm $(docker ps -aq)'
+function dbash() {
+    docker exec -t -i $1 bash
+}

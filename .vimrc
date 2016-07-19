@@ -70,3 +70,5 @@ map <C-b> :Gblame<CR>
 map <C-s> :Gstatus<CR>
 " git diff - ctrl-d
 map <C-d> :Gdiff<CR>
+" json pretty
+map <C-j> :%!python -m json.tool<CR>
