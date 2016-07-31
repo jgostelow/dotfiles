@@ -6,6 +6,7 @@ set number            " display line numbers
 set clipboard=unnamed " read and write from system clipboard
 set incsearch         " search as your type
 set hlsearch          " highlight search results
+set directory=$HOME/.vim/swapfiles//
 filetype plugin indent on
 syntax on
 
@@ -72,3 +73,4 @@ map <C-s> :Gstatus<CR>
 map <C-d> :Gdiff<CR>
 " json pretty
 map <C-j> :%!python -m json.tool<CR>
+map <C-n> :set invnumber<CR>

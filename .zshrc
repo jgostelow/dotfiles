@@ -17,4 +17,8 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(dirhistory jsontools git zsh-autosuggestions)
+plugins=(dirhistory jsontools git zsh-autosuggestions zsh-syntax-highlighting)
+
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
