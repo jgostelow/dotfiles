@@ -69,8 +69,8 @@ map <C-f> :CommandT<CR>
 map <C-b> :Gblame<CR>
 " git status - ctrl-s
 map <C-s> :Gstatus<CR>
-" git diff - ctrl-d
-map <C-d> :Gdiff<CR>
+" git diff - ctrl-a
+map <C-a> :Gdiff<CR>
 " json pretty
 map <C-j> :%!python -m json.tool<CR>
 map <C-n> :set invnumber<CR>
