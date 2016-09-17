@@ -27,3 +27,4 @@ alias drma='docker rm $(docker ps -aq)'
 function dbash() {
     docker exec -t -i $1 bash
 }
+alias dclean='echo "Removing containers" && docker rm $(docker ps -aq) && echo "Removing volumes" && docker volume rm $(docker volume ls -q)'
