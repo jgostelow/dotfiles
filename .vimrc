@@ -9,25 +9,27 @@ set hlsearch          " highlight search results
 set directory=$HOME/.vim/swapfiles//
 filetype plugin indent on
 syntax on
+autocmd BufWritePre * %s/\s\+$//e " Remove white space on save
 
 " Do not overwrite buffer when pasting
 vnoremap p "_dp
 vnoremap P "_dP
 
+" Clipboard
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
 
 " SPLIT WINDOWS
-" move down a window when in split screen mode
-map <C-J> <C-W>j<C-W>_
-" move down a window when in split screen mode
-map <C-K> <C-W>k<C-W>_
-" maximise the current window
-map <C-L> <C-W>_
 " close all windows with ctrl+\
 map <C-\> :qa<CR>
+" Move window up,download,left,right - ctrl+w ctrl+[w,a,s,d]
+map <C-w><C-w> <C-w><S-K>
+map <C-w><C-s> <C-w><S-J>
+map <C-w><C-a> <C-w><S-H>
+map <C-w><C-d> <C-w><S-L>
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
-
 
 " FORMATTING
 set tabstop=2     " a tab is 2 spaces
@@ -39,7 +41,6 @@ set autoindent    " ai:  indent to match previous line
 set formatoptions=crql  " fo:  word wrap, format comments
 set showmatch     " show matches on parens, bracketc, etc.
 set diffopt+=vertical
-
 
 " COLORS
 set bg=dark
@@ -59,18 +60,32 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.hamlc	setfiletype	haml " Detect .hamlc files as haml
 augroup END
 
-" RuboCop - ctrl+q - run rubocop autocorrect on current file
-map <C-q> :RuboCop -a<CR>
+" RuboCop - ctrl+s - run rubocop autocorrect on current file
+map <C-s> :RuboCop -a<CR>
 " NERDTree - ctrl+e - Toggle NERDTree window
 map <C-e> :NERDTreeToggle<CR>
+let NERDTreeMapOpenVSplit = '<C-v>' " ctrl-v - open vsplit
+let NERDTreeMapOpenSplit = '<C-s>' " ctrl-s - open split
 " Command-T - ctrl-f - fast file navigator
 map <C-f> :CommandT<CR>
-" git blame - ctrl-b
-map <C-b> :Gblame<CR>
-" git status - ctrl-s
-map <C-s> :Gstatus<CR>
-" git diff - ctrl-a
-map <C-a> :Gdiff<CR>
-" json pretty
-map <C-j> :%!python -m json.tool<CR>
+" git blame - ctrl-a,b
+map <C-a>b :Gblame<CR>
+" git status - ctrl-a,s
+map <C-a>s :Gstatus<CR>
+" git diff - ctrl-a,d
+map <C-a>d :Gdiff<CR>
+" git diff --staged - ctrl-a,f
+map <C-a>f :Gdiff HEAD<CR>
+" json pretty - ctrl-l
+map <C-l> :%!python -m json.tool<CR>
 map <C-n> :set invnumber<CR>
+
+" Cheatsheet
+" - Windows
+"   - Switch windows : ctrl+w-r
+" - Fugitive
+"   - GStatus : ctrl+a-s
+"     - open file : enter
+"     - open split : o
+"     - open vsplit : S
+"

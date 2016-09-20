@@ -6,6 +6,7 @@ alias less='less -r'
 alias repeat='while [ $? -ne 0 ]; do !!; done'
 alias z='source ~/.zshrc'
 alias be='bundle exec'
+alias vi=vim
 
 # Git
 alias gb="git branch -vv"

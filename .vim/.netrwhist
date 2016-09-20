@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/jgostelow/GIT/goods-inventory/app/models/item_master/deal_instance'
 let g:netrw_dirhist_2='/Users/jgostelow/GIT/cbt_deals_processor_emea/config/deploy/snc1'
 let g:netrw_dirhist_3='/Users/jgostelow/GIT/groupon-stores-merchant-frontend/config/deploy'
 let g:netrw_dirhist_4='/Users/jgostelow/GIT/goods-inventory/config'
 let g:netrw_dirhist_5='/Users/jgostelow/GIT/cbt_deals_processor_emea/conf/production'
 let g:netrw_dirhist_6='/Users/jgostelow/GIT/goods-vendor-portal/app/components/vp-product'
+let g:netrw_dirhist_7='/Users/jgostelow/GIT/sonoma-remote/lib/sonoma'

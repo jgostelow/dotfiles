@@ -1,7 +1,6 @@
 [difftool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [diff]
-#	tool = fugitive
 	tool = vimdiff
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
