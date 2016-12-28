@@ -3,7 +3,7 @@ execute pathogen#infect()
 set nocompatible
 set backspace=2       " enable backspace to work as expected
 set number            " display line numbers
-set clipboard=unnamed " read and write from system clipboard
+" set clipboard=unnamed " read and write from system clipboard
 set incsearch         " search as your type
 set hlsearch          " highlight search results
 set directory=$HOME/.vim/swapfiles//
@@ -27,6 +27,12 @@ map <C-w><C-w> <C-w><S-K>
 map <C-w><C-s> <C-w><S-J>
 map <C-w><C-a> <C-w><S-H>
 map <C-w><C-d> <C-w><S-L>
+" move down a window when in split screen mode
+map <C-J> <C-W>j<C-W>_
+" move down a window when in split screen mode
+map <C-K> <C-W>k<C-W>_
+" maximise the current window
+map <C-L> <C-W>_
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
@@ -60,14 +66,16 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.hamlc	setfiletype	haml " Detect .hamlc files as haml
 augroup END
 
-" RuboCop - ctrl+s - run rubocop autocorrect on current file
-map <C-s> :RuboCop -a<CR>
+" RuboCop - ctrl+b - run rubocop autocorrect on current file
+map <C-b> :RuboCop<CR>
 " NERDTree - ctrl+e - Toggle NERDTree window
 map <C-e> :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<C-v>' " ctrl-v - open vsplit
-let NERDTreeMapOpenSplit = '<C-s>' " ctrl-s - open split
+let NERDTreeMapOpenSplit = '<C-x>' " ctrl-x - open split
 " Command-T - ctrl-f - fast file navigator
-map <C-f> :CommandT<CR>
+" map <C-f> :CommandT<CR>
+" Ctrl-P - ctrl-f - fast file navigator
+map <C-f> :CtrlP<CR>
 " git blame - ctrl-a,b
 map <C-a>b :Gblame<CR>
 " git status - ctrl-a,s
@@ -79,6 +87,9 @@ map <C-a>f :Gdiff HEAD<CR>
 " json pretty - ctrl-l
 map <C-l> :%!python -m json.tool<CR>
 map <C-n> :set invnumber<CR>
+
+" ctrl-p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Cheatsheet
 " - Windows

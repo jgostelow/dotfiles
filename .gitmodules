@@ -13,3 +13,10 @@
 [submodule ".vim/plugin/vim-rubocop"]
 	path = .vim/plugin/vim-rubocop
 	url = git@github.com:ngmy/vim-rubocop.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+  url = https://github.com/mileszs/ack.vim.git
+
