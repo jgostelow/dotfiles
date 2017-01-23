@@ -20,8 +20,8 @@ alias gdtc="git difftool -y --cached"
 alias gm="git merge --rebase"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
-#eval "$(hub alias -s)"
-alias git=hub
+eval "$(hub alias -s)"
+#alias git=hub
 
 # Docker
 alias drma='docker rm $(docker ps -aq)'
