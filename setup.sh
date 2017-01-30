@@ -12,6 +12,11 @@ SHELL=$1  # zsh, bash
 ENV=$2    # personal,groupon,wyzant
 
 function brew_install {
+  # TODO - fix OS mapping
+  #if [ "$OS" !=  "osx" ]; then
+  #  echo "Skipping homebrew installation of $1. Not runing osx"
+  #  return
+  #fi
   if ! command -v $1 > /dev/null; then
     brew install $1
   fi
@@ -23,6 +28,7 @@ if ! type "brew" > /dev/null; then # Homebrew
 fi
 brew update
 brew_install 'wget'
+brew_install 'ack'
 
 echo "source $basedir/.aliases.base" > ~/.aliases
 [ -n "$OS" ] && [[ -r $basedir/.aliases.$OS ]] && echo "source $basedir/.aliases.$OS" >> ~/.aliases
@@ -52,10 +58,9 @@ cat > ~/.gitconfig << EOF
 [include]
   path = $basedir/.gitconfig.base
 EOF
-if [ -n "$ENV" ]; then
-  touch $HOME/.gitconfig.$ENV
+if [ -n "$ENV" ] && [[ -r $basedir/.gitconfig.$ENV ]]; then
   cat >> ~/.gitconfig << EOF
-  path = $HOME/.gitconfig.$ENV
+  path = $basedir/.gitconfig.$ENV
 EOF
 fi
 ln -sf $basedir/.gitignore_global ~/
