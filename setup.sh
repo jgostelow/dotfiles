@@ -74,4 +74,4 @@ git submodule update
 
 ### MISC ###
 ln -sf $basedir/.screenrc ~/
-
+ln -s $basedir/bin ~/
