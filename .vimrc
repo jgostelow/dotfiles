@@ -6,7 +6,7 @@ set number            " display line numbers
 " set clipboard=unnamed " read and write from system clipboard
 set incsearch         " search as your type
 set hlsearch          " highlight search results
-set directory=$HOME/.vim/swapfiles//
+set directory=$HOME/.vim/swapfiles/
 filetype plugin indent on
 syntax on
 autocmd BufWritePre * %s/\s\+$//e " Remove white space on save

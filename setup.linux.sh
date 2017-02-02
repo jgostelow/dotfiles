@@ -2,41 +2,27 @@
 
 basedir=$(pwd)
 
-OS_MAP=(
-  "Linux:linux"
-  "Darwin:osx"
-)
-
-OS=OS_MAP[`uname`]
 SHELL=$1  # zsh, bash
 ENV=$2    # personal,groupon,wyzant
 
-function brew_install {
-  # TODO - fix OS mapping
-  #if [ "$OS" !=  "osx" ]; then
-  #  echo "Skipping homebrew installation of $1. Not runing osx"
-  #  return
-  #fi
+function install {
   if ! command -v $1 > /dev/null; then
-    brew install $1
+    sudo apt-get install $1
   fi
 }
 
 ### GENERAL ###
-if ! type "brew" > /dev/null; then # Homebrew
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-brew update
-brew_install 'wget'
-brew_install 'ack'
+sudo apt-get update
+install 'wget'
+install 'ack-grep'
 
 echo "source $basedir/.aliases.base" > ~/.aliases
-[ -n "$OS" ] && [[ -r $basedir/.aliases.$OS ]] && echo "source $basedir/.aliases.$OS" >> ~/.aliases
+[[ -r $basedir/.aliases.linux ]] && echo "source $basedir/.aliases.linux" >> ~/.aliases
 
 case $SHELL in
   zsh)
   ### ZSH ###
-  brew_install 'antigen'
+  install 'zsh-antigen'
   echo "source $basedir/.zshrc" > ~/.zshrc
   echo "source $basedir/.env" >> ~/.zshrc
   if ! echo $ZSH_VERSION < /dev/null; then
@@ -64,7 +50,7 @@ if [ -n "$ENV" ] && [[ -r $basedir/.gitconfig.$ENV ]]; then
 EOF
 fi
 ln -sf $basedir/.gitignore_global ~/
-brew_install 'hub'
+install 'hub'
 
 ### VIM ###
 ln -sf $basedir/.vim ~/
@@ -74,4 +60,4 @@ git submodule update
 
 ### MISC ###
 ln -sf $basedir/.screenrc ~/
-ln -s $basedir/bin ~/
+ln -sf $basedir/bin ~/
