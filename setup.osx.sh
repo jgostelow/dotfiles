@@ -22,6 +22,31 @@ install 'ack'
 echo "source $basedir/.aliases.base" > ~/.aliases
 [[ -r $basedir/.aliases.osx ]] && echo "source $basedir/.aliases.osx" >> ~/.aliases
 
+### GIT ###
+cat > ~/.gitconfig << EOF
+[include]
+  path = $basedir/.gitconfig.base
+EOF
+if [ -n "$ENV" ] && [[ -r $basedir/.gitconfig.$ENV ]]; then
+  cat >> ~/.gitconfig << EOF
+  path = $basedir/.gitconfig.$ENV
+EOF
+fi
+ln -sf $basedir/.gitignore_global ~/
+install 'hub'
+install 'git-flow'
+echo "source $basedir/.aliases.gitflow" > ~/.aliases
+
+### VIM ###
+ln -sf $basedir/.vim ~/
+ln -sf $basedir/.vimrc ~/
+git submodule init
+git submodule update
+
+### MISC ###
+ln -sf $basedir/.screenrc ~/
+ln -sf $basedir/bin ~/
+
 case $SHELL in
   zsh)
   ### ZSH ###
@@ -42,25 +67,3 @@ case $SHELL in
 ;;
 esac
 
-### GIT ###
-cat > ~/.gitconfig << EOF
-[include]
-  path = $basedir/.gitconfig.base
-EOF
-if [ -n "$ENV" ] && [[ -r $basedir/.gitconfig.$ENV ]]; then
-  cat >> ~/.gitconfig << EOF
-  path = $basedir/.gitconfig.$ENV
-EOF
-fi
-ln -sf $basedir/.gitignore_global ~/
-install 'hub'
-
-### VIM ###
-ln -sf $basedir/.vim ~/
-ln -sf $basedir/.vimrc ~/
-git submodule init
-git submodule update
-
-### MISC ###
-ln -sf $basedir/.screenrc ~/
-ln -sf $basedir/bin ~/

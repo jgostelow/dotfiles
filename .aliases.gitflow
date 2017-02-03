@@ -1,0 +1,3 @@
+alias gfs="git flow feature start"
+alias gfpush="git flow feature publish"
+alias gfpull="git flow feature pull origin"
