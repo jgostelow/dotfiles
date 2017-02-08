@@ -7,6 +7,7 @@ ENV=$2    # personal,groupon,wyzant
 
 function install {
   if ! command -v $1 > /dev/null; then
+    echo "###### Installing $1 ######"
     brew install $1
   fi
 }
