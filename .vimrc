@@ -32,7 +32,7 @@ map <C-J> <C-W>j<C-W>_
 " move down a window when in split screen mode
 map <C-K> <C-W>k<C-W>_
 " maximise the current window
-map <C-L> <C-W>_
+map <C-w>m <C-w>_<C-w>\|
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
