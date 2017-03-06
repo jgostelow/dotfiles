@@ -24,7 +24,14 @@ eval "$(hub alias -s)"
 #alias git=hub
 
 # Docker
+alias di='docker images'
+alias drmi='docker rmi'
+alias dps='docker ps -a'
+alias dstopa='docker stop $(docker ps -aq)'
 alias drma='docker rm $(docker ps -aq)'
+alias drm='docker rm'
+alias dcup='docker-compose up'
+alias dcdown='docker-compose down'
 function dbash() {
     docker exec -t -i $1 bash
 }
