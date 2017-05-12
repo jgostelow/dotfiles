@@ -5,7 +5,8 @@ Contains scripts and dotfiles for setting up a my dev environment on a new machi
 #### OSX
           ./osx/setup.sh
           
-If using Ruby, then also;
+If using Ruby, then also
+          
           ./osx/setup_ruby.sh
 
 #### Linux
