@@ -33,7 +33,7 @@ alias drm='docker rm'
 alias dvls='docker volume ls'
 alias dvrma='docker volume rm $(docker volume ls -q)'
 alias dcup='docker-compose up'
-alias dcdown='docker-compose down'
+alias dcdown='docker-compose down -v'
 function dbash() {
     docker exec -t -i $1 bash
 }

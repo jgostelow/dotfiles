@@ -7,7 +7,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle git
 antigen bundle dirhistory
 antigen bundle jsontools
-antigen bundle rbenv
+#antigen bundle rbenv
 antigen theme raziel1121/env zsh-themes/jono
 antigen apply
 
