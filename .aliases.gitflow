@@ -1,6 +1,0 @@
-alias gfs="git flow feature start"
-alias gfpush="git flow feature publish"
-alias gfpull="git flow feature rebase"
-alias gfb="git flow feature list -v"
-alias gfd="git flow feature diff"
-

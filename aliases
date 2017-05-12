@@ -3,9 +3,7 @@ alias cp='cp -i'
 alias ll='ls -l'
 alias la='ls -la'
 alias less='less -r'
-alias repeat='while [ $? -ne 0 ]; do !!; done'
 alias z='source ~/.zshrc'
-alias be='bundle exec'
 alias vi=vim
 
 # Git
@@ -17,11 +15,8 @@ alias gs="git s"
 alias gd="git diff"
 alias gdt="git difftool -y"
 alias gdtc="git difftool -y --cached"
-alias gp="git pull"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
-eval "$(hub alias -s)"
-#alias git=hub
 
 # Docker
 alias di='docker images'
@@ -37,3 +32,7 @@ alias dcdown='docker-compose down -v'
 function dbash() {
     docker exec -t -i $1 bash
 }
+
+# Ruby
+alias be='bundle exec'
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
