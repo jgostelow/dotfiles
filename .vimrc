@@ -73,6 +73,9 @@ map <C-e> :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<C-v>' " ctrl-v - open vsplit
 let NERDTreeMapOpenSplit = '<C-x>' " ctrl-x - open split
 
+" airline - https://github.com/vim-airline/vim-airline/blob/master/README.md
+set laststatus=2
+
 " Ctrl-P - ctrl-f - fast file navigator
 map <C-f> :CtrlP<CR>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
