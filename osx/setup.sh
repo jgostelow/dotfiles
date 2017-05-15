@@ -13,9 +13,7 @@ function install {
 
 ### GENERAL ###
 echo "Installing Homebrew and some basic things......"
-if [ ! type "brew" > /dev/null ]; then # Homebrew (osx)
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+[ ! -f "`which brew`" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 install 'wget'
 install 'ack'
@@ -56,6 +54,6 @@ chsh -s `which zsh`
 curl -L git.io/antigen > ~/antigen.zsh
 echo "source $basedir/zshrc" > ~/.zshrc
 echo "source $basedir/env" >> ~/.zshrc
-/usr/bin/zsh -i -c "source ~/antigen.zsh"
+/bin/zsh -i -c "source ~/antigen.zsh"
 
 echo "OSX Setup complete!"
