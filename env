@@ -1,4 +1,7 @@
 PATH=~/bin:$PATH
 
+export GOPATH=$HOME/GIT/golang
+PATH=$GOPATH/bin:$PATH
+
 #source ~/.iterm2_shell_integration.`basename $SHELL`
 source ~/.aliases
