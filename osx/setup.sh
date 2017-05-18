@@ -44,8 +44,7 @@ git submodule init
 git submodule update
 
 ### MISC ###
-echo "Setting up screen and bin directory......"
-ln -sf $basedir/.screenrc ~/
+echo "Linking bin directory......"
 ln -sf $basedir/bin ~/
 
 ### ZSH ###
