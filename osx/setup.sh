@@ -17,6 +17,7 @@ echo "Installing Homebrew and some basic things......"
 brew update
 install 'wget'
 install 'ack'
+install 'tmux'
 
 echo "source $basedir/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases

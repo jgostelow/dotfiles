@@ -16,6 +16,7 @@ echo "Installing some basic things......"
 sudo apt-get update
 install 'wget'
 install 'ack-grep'
+install 'tmux'
 
 echo "Setting up aliases......"
 echo "source $basedir/aliases" > ~/.aliases
