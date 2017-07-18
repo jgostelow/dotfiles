@@ -4,6 +4,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias less='less -r'
 alias z='source ~/.zshrc'
+alias a='source ~/.aliases'
 alias vi=vim
 
 # Git
@@ -14,9 +15,13 @@ alias gl="git lg"
 alias gs="git s"
 alias gd="git diff"
 alias gdt="git difftool -y"
+alias gdtf="git difftool -y --tool=fugitive"
 alias gdtc="git difftool -y --cached"
+alias gdtcf="git difftool -y --cached --tool=fugitive"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
+alias gpm="git pull origin master"
+alias gpush="git push"
 
 # Docker
 alias di='docker images'
@@ -29,8 +34,10 @@ alias dvls='docker volume ls'
 alias dvrma='docker volume rm $(docker volume ls -q)'
 alias dcup='docker-compose up'
 alias dcdown='docker-compose down -v'
+alias dclogs='docker-compose logs'
+alias dcexec='docker-compose exec'
 function dbash() {
-    docker exec -t -i $1 bash
+    docker-compose exec $1 sh
 }
 
 # Ruby
