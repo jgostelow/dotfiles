@@ -12,8 +12,8 @@ let g:go_highlight_operators = 1
 
 " Show test coverage - gc
 map gc :GoCoverageToggle<CR>
-" Switch between code and test - ga
-map ga :GoAlternate<CR>
+" Open corresponding test/source in a vsplit
+map ga :vsplit<CR>:GoAlternate<CR>
 " GoDef - Go to definition - gd (built in)
 " Go back to usage - ctrl-t
 " gr - find referrers to highlighted identifier

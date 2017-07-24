@@ -18,6 +18,7 @@ brew update
 install 'wget'
 install 'ack'
 install 'tmux'
+install 'ctags'
 
 echo "source $basedir/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases

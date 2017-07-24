@@ -1,8 +1,14 @@
 execute pathogen#infect()
 
+" Break some bad habits
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+set pastetoggle=<F2>  " toggle past mode with F2
 set nocompatible
 set backspace=2       " enable backspace to work as expected
-set number            " display line numbers
 " read and write from system clipboard
 " set clipboard=unnamed
 set incsearch         " search as you type
@@ -25,18 +31,18 @@ vmap <C-c> :w !pbcopy<CR><CR>
 " SPLIT WINDOWS
 " close all windows with ctrl+\
 map <C-\> :qa<CR>
-" Move window up,download,left,right - ctrl+w ctrl+[w,a,s,d]
-map <C-w><C-w> <C-w><S-K>
-map <C-w><C-s> <C-w><S-J>
-map <C-w><C-a> <C-w><S-H>
-map <C-w><C-d> <C-w><S-L>
+" Move window up,download,left,right - ctrl+w ctrl+[h,j,k,l]
+map <C-w><C-k> <C-w><S-K>
+map <C-w><C-j> <C-w><S-J>
+map <C-w><C-h> <C-w><S-H>
+map <C-w><C-l> <C-w><S-L>
 " move down a window when in split screen mode
 map <C-J> <C-W>j<C-W>_
 " move down a window when in split screen mode
 map <C-K> <C-W>k<C-W>_
 " maximise the current window
 map <C-w>m <C-w>_<C-w>\|
-" switch windows : ctrl+w-r (built-in)
+
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
@@ -60,25 +66,31 @@ if &diff
 endif
 " do not make transparent backgrounds opaque by highlighting them
 hi Normal ctermbg=none
-" make line numbers white
-hi LineNr ctermfg=white
 
 " Filetype mappers
 augroup filetypedetect
   au! BufRead,BufNewFile *.hamlc	setfiletype	haml " Detect .hamlc files as haml
 augroup END
 
+" ctags
+set tags=./tags;
+
 " NERDTree - ctrl+e - Toggle NERDTree window
 map <C-e> :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<C-v>' " ctrl-v - open vsplit
 let NERDTreeMapOpenSplit = '<C-x>' " ctrl-x - open split
 
+" Tagbar - ctrl+e - Toggle Tagbar window
+map <S-e> :TagbarToggle fj<CR>
 " airline - https://github.com/vim-airline/vim-airline/blob/master/README.md
 set laststatus=2
 
-" Ctrl-P - ctrl-f - fast file navigator
-map <C-f> :CtrlP<CR>
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+map <C-n> :set invnumber<CR>
+set relativenumber    " display relative line numbers
+" make line numbers white
+hi LineNr ctermfg=white
 
 """"""" Git
 " git blame - ctrl-a,b
@@ -94,6 +106,3 @@ map <C-a>d :Gdiff<CR>
 map <C-a>f :Gdiff HEAD<CR>
 " json pretty - ctrl-l
 map <C-l> :%!python -m json.tool<CR>
-map <C-n> :set invnumber<CR>
-" toggle past mode with F2
-set pastetoggle=<F2>

@@ -6,6 +6,7 @@ alias less='less -r'
 alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
 alias vi=vim
+alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
 # Git
 alias gb="git branch -vv"
