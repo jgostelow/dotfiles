@@ -4,3 +4,5 @@ map <C-b> :RuboCop<CR>
 
 " Switch between code and test - ga
 map ga :AV<CR>
+" ctags - navigate to tag
+map gd <C-]>

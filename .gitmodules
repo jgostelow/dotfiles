@@ -52,3 +52,9 @@
 [submodule ".vim/bundle/vim-snippets"]
 	path = .vim/bundle/vim-snippets
 	url = git@github.com:honza/vim-snippets.git
+[submodule ".vim/bundle/the_silver_searcher"]
+	path = .vim/bundle/the_silver_searcher
+	url = git@github.com:ggreer/the_silver_searcher.git
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = git@github.com:easymotion/vim-easymotion.git

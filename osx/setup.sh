@@ -19,6 +19,7 @@ install 'wget'
 install 'ack'
 install 'tmux'
 install 'ctags'
+install 'the_silver_searcher'
 
 echo "source $basedir/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases
