@@ -82,6 +82,8 @@ set tags=./tags;
 map <Leader>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<Leader>v' " Leader,v - open vsplit
 let NERDTreeMapOpenSplit = '<Leader>h' " Leader,h - open split
+" Open NERDTree if no files opened
+autocmd vimenter * if !argc() | NERDTree | endif
 
 " Tagbar - Leader,t - Toggle Tagbar window
 map <Leader>t :TagbarToggle<CR>
@@ -115,6 +117,8 @@ map <C-a>b :Gblame<CR>
 "     - open split : o
 "     - open vsplit : S
 map <C-a>s :Gstatus<CR>
+" git add - ctrl-a,a
+map <C-a>a :Gwrite<CR>
 " git diff - ctrl-a,d
 map <C-a>d :Gdiff<CR>
 " git diff --staged - ctrl-a,f
