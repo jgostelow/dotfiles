@@ -1,10 +1,10 @@
 execute pathogen#infect()
 
 " Break some bad habits
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
 
 " standard stuff
 set nocompatible
@@ -85,6 +85,11 @@ let NERDTreeMapOpenSplit = '<Leader>h' " Leader,h - open split
 " Open NERDTree if no files opened
 autocmd vimenter * if !argc() | NERDTree | endif
 
+" NERDComment
+" https://github.com/scrooloose/nerdcommenter#default-mappings
+" [count]space,c,space - toggle comments
+let g:NERDSpaceDelims = 1
+
 " Tagbar - Leader,t - Toggle Tagbar window
 map <Leader>t :TagbarToggle<CR>
 " airline - https://github.com/vim-airline/vim-airline/blob/master/README.md
@@ -94,9 +99,10 @@ set laststatus=2
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15,results:50'
 
-" Leader,n - display line numbers
-map <Leader>n :set invnumber<CR>
+" Leader,n - toggle => relative numbers, static numbers, no numbers
+map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
 set relativenumber    " display relative line numbers
+set number " display the current line number
 " make line numbers white
 hi LineNr ctermfg=white
 
@@ -109,17 +115,17 @@ set grepprg=ag\ --nogroup\ --nocolor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " let g:ctrlp_use_caching = 0
 let g:ctrlp_use_caching = 0 "disable ctrl-p cache since ag is so fast
-" ------------ Git ---------------------
-" git blame - ctrl-a,b
-map <C-a>b :Gblame<CR>
-" git status - ctrl-a,s
+" ------------ Git (Fugitive) ---------------------
+" git blame - f,b
+map fb :Gblame<CR>
+" git status - f,s
 "     - open file : enter
 "     - open split : o
 "     - open vsplit : S
-map <C-a>s :Gstatus<CR>
-" git add - ctrl-a,a
-map <C-a>a :Gwrite<CR>
-" git diff - ctrl-a,d
-map <C-a>d :Gdiff<CR>
-" git diff --staged - ctrl-a,f
-map <C-a>f :Gdiff HEAD<CR>
+map fs :Gstatus<CR>
+" git add - f,a
+map fa :Gwrite<CR>
+" git diff - f,d
+map fd :Gdiff<CR>
+" git diff --staged - f,f
+map ff :Gdiff HEAD<CR>

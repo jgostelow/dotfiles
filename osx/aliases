@@ -3,3 +3,5 @@
 
 eval "$(hub alias -s)"
 alias git=hub
+
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
