@@ -6,3 +6,7 @@
 map ga :AV<CR>
 " ctags - navigate to tag
 map gd <C-]>
+
+augroup filetypedetect
+	au BufRead,BufNewFile *.etl setfiletype ruby
+augroup END

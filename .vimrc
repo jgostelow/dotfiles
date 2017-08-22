@@ -80,8 +80,8 @@ set tags=./tags;
 
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
-let NERDTreeMapOpenVSplit = '<Leader>v' " Leader,v - open vsplit
-let NERDTreeMapOpenSplit = '<Leader>h' " Leader,h - open split
+let NERDTreeMapOpenVSplit = '<C-v>' " Ctrl+v - open vsplit
+let NERDTreeMapOpenSplit = '<C-x>' " Ctrl+x - open split
 " Open NERDTree if no files opened
 autocmd vimenter * if !argc() | NERDTree | endif
 

@@ -38,12 +38,20 @@ fi
 ln -sf $basedir/.gitignore_global ~/
 install 'hub'
 
+### Install git submodules - typically plugins for vim and tmux
+git submodule init
+git submodule update
+
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/.vim ~/
 ln -sf $basedir/.vimrc ~/
-git submodule init
-git submodule update
+
+### TMUX ###
+echo "Setting up tmux......"
+ln -sf $basedir/.tmux ~/
+ln -sf $basedir/.tmux.conf ~/
+tmux source ~/.tmux.conf
 
 ### MISC ###
 echo "Linking bin directory......"
