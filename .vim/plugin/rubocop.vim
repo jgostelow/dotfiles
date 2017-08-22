@@ -1,1 +1,0 @@
-vim-rubocop/plugin/rubocop.vim
