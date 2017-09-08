@@ -19,6 +19,10 @@ set formatoptions=crql  " fo:  word wrap, format comments
 set showmatch         " show matches on parens, bracketc, etc.
 set diffopt+=vertical " Show diffs vertically
 
+" Highlight the 120 column limit
+highlight ColorColumn ctermbg=cyan
+set colorcolumn=121
+
 set directory=$HOME/.vim/swapfiles/
 filetype plugin indent on
 syntax on
