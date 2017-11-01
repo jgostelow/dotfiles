@@ -18,6 +18,8 @@ set autoindent        " ai:  indent to match previous line
 set formatoptions=crql  " fo:  word wrap, format comments
 set showmatch         " show matches on parens, bracketc, etc.
 set diffopt+=vertical " Show diffs vertically
+" set list              " Show whitespace characters
+set esckeys
 
 " Highlight the 120 column limit
 highlight ColorColumn ctermbg=cyan

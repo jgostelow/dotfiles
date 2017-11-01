@@ -30,7 +30,7 @@
 	editor = /usr/bin/vim
 	autocrlf = input
 [push]
-	default = simple
+	default = current
 [pull]
 	rebase = true
 [rebase]

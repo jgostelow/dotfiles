@@ -7,14 +7,22 @@ alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
 alias vi=vim
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
+function cdls() {
+  \cd $1;
+  ls;
+}
+alias cd=cdls
+alias cdl='cd $(pwd -P)'
 
 # Git
-alias gb="git branch -vv"
+alias gb="git branch"
+alias gbv="git branch -vv"
 alias ga="git add -u"
 alias gc="git checkout"
 alias gl="git lg"
 alias gs="git s"
 alias gd="git diff"
+alias gdn="git diff --name-only"
 alias gdt="git difftool -y"
 alias gdtf="git difftool -y --tool=fugitive"
 alias gdtc="git difftool -y --cached"
@@ -26,7 +34,9 @@ alias gpush="git push"
 
 # Docker
 alias di='docker images'
+alias dh='docker history --no-trunc'
 alias drmi='docker rmi -f'
+alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias dps='docker ps -a'
 alias dstopa='docker stop $(docker ps -aq)'
 alias dr='docker run'
@@ -45,3 +55,6 @@ function dbash() {
 # Ruby
 alias be='bundle exec'
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Golang
+alias gtest='goconvey -excludedDirs bin,cmd,vendor,.glide'
