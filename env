@@ -4,8 +4,4 @@ export EDITOR='vim'
 # https://github.com/tmuxinator/tmuxinator#faq
 export DISABLE_AUTO_TITLE=true
 
-export GOPATH=$HOME/GIT/golang
-PATH=$GOPATH/bin:$PATH
-
-#source ~/.iterm2_shell_integration.`basename $SHELL`
 source ~/.aliases

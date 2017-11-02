@@ -18,9 +18,11 @@ alias cdl='cd $(pwd -P)'
 alias gb="git branch"
 alias gbv="git branch -vv"
 alias ga="git add -u"
+alias gaa="git add -A"
 alias gc="git checkout"
-alias gl="git lg"
-alias gs="git s"
+alias gcb="git checkout -b"
+alias gl="git log-compact --decorate"
+alias gs="git status -s"
 alias gd="git diff"
 alias gdn="git diff --name-only"
 alias gdt="git difftool -y"
@@ -31,6 +33,7 @@ alias gclean="git remote prune origin;git gc"
 alias gu="git up"
 alias gpm="git pull origin master"
 alias gpush="git push"
+alias grh="git reset HEAD"
 
 # Docker
 alias di='docker images'
