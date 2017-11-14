@@ -34,6 +34,10 @@ alias gu="git up"
 alias gpm="git pull origin master"
 alias gpush="git push"
 alias grh="git reset HEAD"
+alias gsta="git stash"
+alias gstp="git stash pop"
+alias gstl="git stash list"
+alias gsts="git stash show -p"
 
 # Docker
 alias di='docker images'
