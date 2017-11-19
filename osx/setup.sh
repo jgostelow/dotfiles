@@ -45,7 +45,6 @@ git submodule update
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/.vim ~/
-ln -sf $basedir/.vimrc ~/
 
 ### TMUX ###
 echo "Setting up tmux......"
