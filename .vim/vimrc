@@ -93,7 +93,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 " NERDComment
 " https://github.com/scrooloose/nerdcommenter#default-mappings
-" [count]space,c,space - toggle comments
+" space,c,space - toggle comments
 let g:NERDSpaceDelims = 1
 
 " Tagbar - Leader,t - Toggle Tagbar window
