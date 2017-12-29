@@ -79,6 +79,8 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.hamlc	setfiletype	haml " hamlc => haml
 augroup END
 
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 " ctags
 set tags=./tags;
 

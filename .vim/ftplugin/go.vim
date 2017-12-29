@@ -10,6 +10,8 @@ let g:go_highlight_operators = 1
 " Auto show function signature of highlighted symbol
 " let g:go_auto_type_info = 1
 
+" Compile current file
+map gb :GoBuild<CR>
 " Show test coverage - gc
 map gc :GoCoverageToggle<CR>
 " Open corresponding test/source in a vsplit
@@ -23,7 +25,7 @@ map gf :GoDecls<CR>
 " Show methods for highlighted package/instance - gh"
 map gh :GoDescribe<CR>
 " Show signature for highlighted function
-map gi :GoInfo<CR>
+map gi :GoDoc<CR>
 " Go to next function - ]] (built-in)
 " Go to previous function - ]] (built_in)
 " :GoRename - Rename a function (refactor)
