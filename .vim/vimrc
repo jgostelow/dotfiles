@@ -91,7 +91,7 @@ map <Leader>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<C-v>' " Ctrl+v - open vsplit
 let NERDTreeMapOpenSplit = '<C-x>' " Ctrl+x - open split
 " Open NERDTree if no files opened
-autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
 
 " NERDComment
 " https://github.com/scrooloose/nerdcommenter#default-mappings
@@ -123,6 +123,10 @@ set grepprg=ag\ --nogroup\ --nocolor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " let g:ctrlp_use_caching = 0
 let g:ctrlp_use_caching = 0 "disable ctrl-p cache since ag is so fast
+
+" Airline
+let g:airline_section_b = ''
+
 " ------------ Git (Fugitive) ---------------------
 " git blame - f,b
 map fb :Gblame<CR>

@@ -10,3 +10,5 @@ map gd <C-]>
 augroup filetypedetect
 	au BufRead,BufNewFile *.etl setfiletype ruby
 augroup END
+
+set norelativenumber

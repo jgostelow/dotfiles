@@ -18,6 +18,7 @@ map gc :GoCoverageToggle<CR>
 map ga :vsplit<CR>:GoAlternate<CR>
 " GoDef - Go to definition - gd (built in)
 " Go back to usage - ctrl-t
+map gvd :vsplit<CR>:GoDef<CR>
 " gr - find referrers to highlighted identifier
 map gr :GoReferrers<CR>
 " Show function definitions in current file - gf
