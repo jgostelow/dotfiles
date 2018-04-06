@@ -14,6 +14,10 @@ function cdls() {
 alias cd=cdls
 alias cdl='cd $(pwd -P)'
 
+# Tmux
+alias ta="tmux attach -t"
+alias tl="tmux list-sessions"
+
 # Git
 alias gb="git branch"
 alias gbv="git branch -vv"
@@ -65,3 +69,4 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Golang
 alias gtest='goconvey -excludedDirs bin,cmd,vendor,.glide'
+alias gdoc='echo "Open your browser at http://localhost:6060/pkg/" && godoc -http=":6060" -goroot ~/GIT/golang'
