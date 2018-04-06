@@ -1,0 +1,21 @@
+pane	0	1	:zsh	1	:*	1	:/Users/jgostelow/GIT/whitebeard	1	zsh	:
+pane	iggy	1	:zsh	1	:*	1	:/Users/jgostelow/GIT/iggy	1	zsh	:
+pane	iggy	1	:zsh	1	:*	2	:/Users/jgostelow/GIT/iggy	0	zsh	:
+pane	sherlock	1	:vim	1	:*	1	:/Users/jgostelow/GIT/golang/src/repos.wyzdev.com/wyzant-web/sherlock	1	zsh	:
+pane	sherlock	1	:vim	1	:*	2	:/Users/jgostelow/GIT/golang/src/repos.wyzdev.com/wyzant-web/sherlock	0	zsh	:
+pane	sherlock	2	:zsh	0	:-	1	:/Users/jgostelow/GIT/golang/src/repos.wyzdev.com/wyzant-web/sherlock	1	zsh	:
+pane	waldo	1	:zsh	0	:-	1	:/Users/jgostelow/GIT/golang/src/repos.wyzdev.com/wyzant-web/waldo	0	zsh	:
+pane	waldo	1	:zsh	0	:-	2	:/Users/jgostelow/GIT/golang/src/repos.wyzdev.com/wyzant-web/waldo	1	make	:/Applications/Xcode.app/Contents/Developer/usr/bin/make serve
+pane	waldo	2	:vim	1	:*	1	:/Users/jgostelow/GIT/golang/src/repos.wyzdev.com/wyzant-web/waldo	1	zsh	:
+pane	whitebeard	1	:zsh	1	:*	1	:/Users/jgostelow/GIT/whitebeard	1	zsh	:
+pane	whitebeard	1	:zsh	1	:*	2	:/Users/jgostelow/GIT/whitebeard	0	zsh	:
+pane	whitebeard	2	:zsh	0	:-	1	:/Users/jgostelow/GIT/whitebeard	1	zsh	:
+window	0	1	1	:*	d35e,272x59,0,0,1
+window	iggy	1	1	:*	98df,204x47,0,0[204x23,0,0,2,204x23,0,24,3]
+window	sherlock	1	1	:*	3e05,204x47,0,0{102x47,0,0,4,101x47,103,0,5}
+window	sherlock	2	0	:-	c8a3,204x47,0,0,6
+window	waldo	1	0	:-	18ec,204x47,0,0[204x23,0,0,7,204x23,0,24,8]
+window	waldo	2	1	:*	c8a6,204x47,0,0,9
+window	whitebeard	1	1	:*	9604,204x47,0,0[204x35,0,0,12,204x11,0,36,13]
+window	whitebeard	2	0	:-	6480,204x47,0,0,11
+state	waldo	

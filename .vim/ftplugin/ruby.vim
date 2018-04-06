@@ -11,4 +11,5 @@ augroup filetypedetect
 	au BufRead,BufNewFile *.etl setfiletype ruby
 augroup END
 
+" speeds up scroll speed on ruby files
 set norelativenumber

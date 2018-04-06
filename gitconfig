@@ -32,7 +32,7 @@
 [push]
 	default = current
 [pull]
-	rebase = true
+	rebase = false
 [rebase]
   autoStash = true
 [alias]
@@ -42,5 +42,6 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 [rerere]
-  # https://git-scm.com/blog/2010/03/08/rerere.html
+  # https://git-scm.com/book/en/v2/Git-Tools-Rerere
+  # Git will remember how conflicts have been resoled in the past
 	enabled = true
