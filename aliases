@@ -51,7 +51,7 @@ alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias dps='docker ps -a'
 alias dstopa='docker stop $(docker ps -aq)'
 alias dr='docker run'
-alias drma='docker rm $(docker ps -aq)'
+alias drma='docker rm $(docker ps -aq -f status=exited)'
 alias drm='docker rm'
 alias dvls='docker volume ls'
 alias dvrma='docker volume rm $(docker volume ls -q)'
@@ -61,6 +61,15 @@ alias dclogs='docker-compose logs'
 alias dcexec='docker-compose exec'
 function dbash() {
     docker-compose exec $1 sh
+}
+
+# Kubernetes
+alias k='kubectl'
+alias kuc='kubectl config use-context'
+alias kgc='kubectl config get-contexts'
+alias kp='kubectl get po -o wide'
+function ke() {
+  kubectl -it exec $1 $2
 }
 
 # Ruby

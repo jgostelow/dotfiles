@@ -11,5 +11,7 @@ augroup filetypedetect
 	au BufRead,BufNewFile *.etl setfiletype ruby
 augroup END
 
+map gvd :vsplit<CR>gd<CR>
+
 " speeds up scroll speed on ruby files
 set norelativenumber

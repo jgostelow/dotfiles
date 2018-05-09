@@ -127,6 +127,10 @@ let g:ctrlp_use_caching = 0 "disable ctrl-p cache since ag is so fast
 " Airline
 let g:airline_section_b = ''
 
+" BufExplore - navigate buffers
+" https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
+map <Leader>w :ToggleBufExplorer<CR>
+
 " ------------ Git (Fugitive) ---------------------
 " git blame - f,b
 map fb :Gblame<CR>

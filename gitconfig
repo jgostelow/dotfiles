@@ -35,8 +35,6 @@
 	rebase = false
 [rebase]
   autoStash = true
-[alias]
-  up = !git pull --prune $@
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean %f
@@ -45,3 +43,7 @@
   # https://git-scm.com/book/en/v2/Git-Tools-Rerere
   # Git will remember how conflicts have been resoled in the past
 	enabled = true
+[alias]
+  up = !git pull --prune $@
+  amend = commit --amend
+
