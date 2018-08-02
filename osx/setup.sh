@@ -20,6 +20,7 @@ install 'ack'
 install 'tmux'
 install 'ctags'
 install 'the_silver_searcher'
+install 'moreutils' # http://joeyh.name/code/moreutils/
 
 echo "source $basedir/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases

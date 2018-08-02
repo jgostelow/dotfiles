@@ -11,6 +11,7 @@ function cdls() {
   \cd $1;
   ls;
 }
+alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
 alias cd=cdls
 alias cdl='cd $(pwd -P)'
 
@@ -25,7 +26,8 @@ alias ga="git add -u"
 alias gaa="git add -A"
 alias gc="git checkout"
 alias gcb="git checkout -b"
-alias gl="git log-compact --decorate"
+# alias gl="git log-compact --decorate"
+alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gs="git status -s"
 alias gd="git diff"
 alias gdn="git diff --name-only"
@@ -42,8 +44,12 @@ alias gsta="git stash save -u"
 alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gsts="git stash show -p"
+# built-in to omzsh - git stash clear
+# unalias gstc
 
 # Docker
+alias dclean='docker system prune --volumes'
+alias ddf='docker system df'
 alias di='docker images'
 alias dh='docker history --no-trunc'
 alias drmi='docker rmi -f'
@@ -51,7 +57,7 @@ alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias dps='docker ps -a'
 alias dstopa='docker stop $(docker ps -aq)'
 alias dr='docker run'
-alias drma='docker rm $(docker ps -aq -f status=exited)'
+alias drma='docker rm $(docker ps -aq -f status=exited -f status=created)'
 alias drm='docker rm'
 alias dvls='docker volume ls'
 alias dvrma='docker volume rm $(docker volume ls -q)'
@@ -59,6 +65,9 @@ alias dcup='docker-compose up'
 alias dcdown='docker-compose down -v'
 alias dclogs='docker-compose logs'
 alias dcexec='docker-compose exec'
+function drmii() {
+  docker rmi -f $(docker images --filter "reference=$1" -q | uniq)
+}
 function dbash() {
     docker-compose exec $1 sh
 }
@@ -68,9 +77,19 @@ alias k='kubectl'
 alias kuc='kubectl config use-context'
 alias kgc='kubectl config get-contexts'
 alias kp='kubectl get po -o wide'
+alias kd='kubectl describe pod'
+alias kui='kubectl proxy -p 10000'
+
 function ke() {
-  kubectl -it exec $1 $2
+  kubectl exec $1 $2
 }
+function ksh() {
+  kubectl --context=wyz-dev-cluster exec -ti $1 sh
+}
+function kshp() {
+  kubectl --context=wyz-prod-cluster exec -ti $1 sh
+}
+alias sternp='stern --context=wyz-prod-cluster --since=2m'
 
 # Ruby
 alias be='bundle exec'

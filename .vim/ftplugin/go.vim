@@ -1,7 +1,7 @@
 " https://github.com/fatih/vim-go-tutorial
 " Run GoImports on save - can be slow on large codebases
 let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
