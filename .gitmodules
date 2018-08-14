@@ -67,3 +67,9 @@
 [submodule ".vim/bundle/bufexplorer"]
 	path = .vim/bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
+[submodule ".vim/bundle/diffconflicts"]
+	path = .vim/bundle/diffconflicts
+	url = git@github.com:whiteinge/diffconflicts.git
