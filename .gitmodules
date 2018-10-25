@@ -73,3 +73,12 @@
 [submodule ".vim/bundle/diffconflicts"]
 	path = .vim/bundle/diffconflicts
 	url = git@github.com:whiteinge/diffconflicts.git
+[submodule ".vim/bundle/vim-repeat"]
+	path = .vim/bundle/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
+[submodule ".vim/bundle/vim-caser"]
+	path = .vim/bundle/vim-caser
+	url = git@github.com:arthurxavierx/vim-caser.git
+[submodule "zsh-themes/powerlevel9k"]
+	path = zsh-themes/powerlevel9k
+	url = git@github.com:bhilburn/powerlevel9k.git

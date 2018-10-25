@@ -13,7 +13,7 @@ set tabstop=2         " a tab is 2 spaces
 set smartindent       " nosi:  Smart indent useless when C-indent is on
 set expandtab         " use spaces instead of tabs
 set shiftwidth=2      " sw:  a healthy tab stop
-set textwidth=120     " tw:  wrap at 120 characters
+set textwidth=110     " tw:  wrap at 110 characters
 set autoindent        " ai:  indent to match previous line
 set formatoptions=crql  " fo:  word wrap, format comments
 set showmatch         " show matches on parens, bracketc, etc.
@@ -84,7 +84,17 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " ctags
 set tags=./tags;
 
+" plugins update the buffer quicker (default is 4000)
+set updatetime=100
+
 " --------------- PLUGINS -------------------------------
+
+" vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
+" You can jump between hunks with [c and ]c.
+" You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
+" Highlight git changes like vimdiff
+map <Leader>hh :GitGutterLineHighlightsToggle<CR>
+
 
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
@@ -95,13 +105,23 @@ let NERDTreeMapOpenSplit = '<C-x>' " Ctrl+x - open split
 
 " NERDComment
 " https://github.com/scrooloose/nerdcommenter#default-mappings
-" space,c,space - toggle comments
+" '-' - toggle comments
+map - <Leader>c<Space>
 let g:NERDSpaceDelims = 1
 
 " Tagbar - Leader,t - Toggle Tagbar window
-map <Leader>t :TagbarToggle<CR>
+" jump to tagbar when you open it. Close it when you select something
+" https://github.com/majutsushi/tagbar/blob/master/doc/tagbar.txt#L193
+map <Leader>t :TagbarOpenAutoClose<CR>
 " airline - https://github.com/vim-airline/vim-airline/blob/master/README.md
 set laststatus=2
+
+" vim-surround
+" https://github.com/tpope/vim-surround
+" rr" - surround current word with "word"
+" rr( - surround current word with ( word )
+" rr) - surround current word with (word) - no space
+map rr ysiw
 
 " Ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -130,6 +150,18 @@ let g:airline_section_b = ''
 " BufExplore - navigate buffers
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
 map <Leader>w :ToggleBufExplorer<CR>
+
+" Vim-caser - change casing
+" https://github.com/arthurxavierx/vim-caser
+" gsm - MixedCase
+" gsp - PascalCase
+" gsc - camelCase
+" gss/gs_ - snake_case
+" gsu/gsU - UPPER_CASE
+" gst - Title Case
+" gs<space> space case
+" gsk - dash-case or kebab-case
+" gs. - dot.case
 
 " ------------ Git (Fugitive) ---------------------
 " git blame - f,b

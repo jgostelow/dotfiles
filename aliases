@@ -76,7 +76,7 @@ function dbash() {
 alias k='kubectl'
 alias kuc='kubectl config use-context'
 alias kgc='kubectl config get-contexts'
-alias kp='kubectl get po -o wide'
+alias kp='kubectl get po'
 alias kd='kubectl describe pod'
 alias kui='kubectl proxy -p 10000'
 
@@ -84,10 +84,7 @@ function ke() {
   kubectl exec $1 $2
 }
 function ksh() {
-  kubectl --context=wyz-dev-cluster exec -ti $1 sh
-}
-function kshp() {
-  kubectl --context=wyz-prod-cluster exec -ti $1 sh
+  kubectl exec -ti $1 sh
 }
 alias sternp='stern --context=wyz-prod-cluster --since=2m'
 

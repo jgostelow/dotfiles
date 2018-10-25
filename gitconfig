@@ -1,11 +1,16 @@
-[difftool "fugitive"]
-	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
-[diff]
-	tool = vimdiff
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
-[merge]
+[mergetool]
+	keepBackup = false
+[diff]
 	tool = vimdiff
+[difftool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [color]
   branch = auto
   diff = auto
@@ -43,6 +48,8 @@
   # https://git-scm.com/book/en/v2/Git-Tools-Rerere
   # Git will remember how conflicts have been resoled in the past
 	enabled = true
+[pager]
+  branch = false
 [alias]
   up = !git pull --prune $@
   amend = commit --amend
