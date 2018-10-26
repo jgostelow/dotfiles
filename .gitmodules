@@ -80,5 +80,5 @@
 	path = base/.vim/bundle/vim-caser
 	url = git@github.com:arthurxavierx/vim-caser.git
 [submodule "zsh-themes/powerlevel9k"]
-	path = zsh-themes/powerlevel9k
+	path = base/zsh-themes/powerlevel9k
 	url = git@github.com:bhilburn/powerlevel9k.git
