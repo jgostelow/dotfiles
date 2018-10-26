@@ -90,6 +90,7 @@ set updatetime=100
 " --------------- PLUGINS -------------------------------
 
 " vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
+" :GitGutterToggle - enable/disable
 " You can jump between hunks with [c and ]c.
 " You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
 " Highlight git changes like vimdiff

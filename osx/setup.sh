@@ -1,6 +1,6 @@
 #!/bin/bash
 
-basedir=$(pwd)
+basedir=$HOME/GIT/dotfiles
 
 ENV=$1    # personal,wyzant
 
@@ -21,8 +21,9 @@ install 'tmux'
 install 'ctags'
 install 'the_silver_searcher'
 install 'moreutils' # http://joeyh.name/code/moreutils/
+install 'homeshick' # https://github.com/andsens/homeshick
 
-echo "source $basedir/aliases" > ~/.aliases
+echo "source $basedir/base/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases
 
 ### GIT ###
