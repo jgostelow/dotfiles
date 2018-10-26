@@ -1,7 +1,0 @@
-PATH=~/bin:$PATH
-export EDITOR='vim'
-
-# https://github.com/tmuxinator/tmuxinator#faq
-export DISABLE_AUTO_TITLE=true
-
-source ~/.aliases

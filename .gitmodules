@@ -46,8 +46,8 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
+[submodule "base/.tmux/plugins/tpm"]
+	path = base/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule ".vim/bundle/vimshell.vim"]
 	path = .vim/bundle/vimshell.vim
