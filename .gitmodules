@@ -82,3 +82,6 @@
 [submodule "zsh-themes/powerlevel9k"]
 	path = base/zsh-themes/powerlevel9k
 	url = git@github.com:bhilburn/powerlevel9k.git
+[submodule "base/.tmux/plugins/tmux-continuum"]
+	path = base/.tmux/plugins/tmux-continuum
+	url = git@github.com:tmux-plugins/tmux-continuum.git

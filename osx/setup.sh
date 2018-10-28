@@ -12,14 +12,12 @@ function install {
 ### GENERAL ###
 echo "Installing Homebrew and some basic things......"
 [ ! -f "`which brew`" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
+brew update > /dev/null
 install 'wget'
-install 'the_silver_searcher'
 install 'tmux'
 install 'ctags'
 install 'the_silver_searcher'
 install 'moreutils' # http://joeyh.name/code/moreutils/
-install 'homeshick' # https://github.com/andsens/homeshick
 
 echo "source $basedir/base/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases
@@ -29,6 +27,7 @@ echo "Setting up git config......"
 cat > ~/.gitconfig << EOF
 [include]
   path = $basedir/base/gitconfig
+  path = $basedir/base/gitconfig.personal
 EOF
 ln -sf $basedir/.gitignore_global ~/
 install 'hub'
@@ -55,7 +54,7 @@ ln -sf $basedir/bin ~/
 echo "Installing and switching to ZSH......"
 install 'zsh'
 chsh -s `which zsh`
-curl -L git.io/antigen > ~/antigen.zsh
+(curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
 echo "source $basedir/base/zshrc" > ~/.zshrc
 /bin/zsh -i -c "source ~/antigen.zsh"
 
@@ -64,11 +63,13 @@ install 'rbenv'
 install 'ruby-build'
 
 echo "#### Installing Ruby 2.5 ####"
-rbenv install 2.5
-rbenv global 2.5
+rbenv install 2.5.3
+rbenv global 2.5.3
 
 echo "#### Installing Rails 5.2 ####"
-gem install rails -v 5.2
+gem install rails -v 5.2.1
 rbenv rehash
+
+ln -sf $basedir/base/.gemrc ~/
 
 echo "OSX Setup complete!"
