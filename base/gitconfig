@@ -32,7 +32,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	warnambiguousrefs = false
-	editor = /usr/bin/vim
+	editor = vim
 	autocrlf = input
 [push]
 	default = current

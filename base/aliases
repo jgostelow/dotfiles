@@ -15,6 +15,15 @@ alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
 alias cd=cdls
 alias cdl='cd $(pwd -P)'
 
+# Recursive search and replace
+
+# $1 = file pattern e.g. *.go
+# $2 = old string
+# $3 new string
+# e.g. sandr .go Sirupsen sirupsen
+function sandr() {
+  find . -name $1 -print0 | xargs -0 sed -i "" "s/$2/$3/g"
+}
 # Tmux
 alias ta="tmux attach -t"
 alias tl="tmux list-sessions"

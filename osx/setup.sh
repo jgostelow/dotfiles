@@ -53,6 +53,7 @@ ln -sf $basedir/bin ~/
 ### ZSH ###
 echo "Installing and switching to ZSH......"
 install 'zsh'
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s `which zsh`
 (curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
 echo "source $basedir/base/zshrc" > ~/.zshrc
