@@ -32,6 +32,10 @@ autocmd BufWritePre * %s/\s\+$//e " Remove white space on save
 " Do not freeze on CTRL-S (do not move this comment after the command. It breaks!)
 silent !stty -ixon > /dev/null 2>/dev/null
 
+" use new regex engine for syntax highlighting
+" https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set re=1
+
 set incsearch         " search as you type
 set hlsearch          " highlight search results
 
@@ -142,7 +146,7 @@ map <Leader>j :%!python -m json.tool<CR>
 set grepprg=ag\ --nogroup\ --nocolor
 " K - search for the word under the cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0 "disable ctrl-p cache since ag is so fast
 
 " Airline

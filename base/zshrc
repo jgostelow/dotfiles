@@ -25,6 +25,7 @@ plugins=(dirhistory git zsh-autosuggestions zsh-syntax-highlighting)
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+unsetopt correct_all
 
 # Do not share history across sessions
 unsetopt share_history

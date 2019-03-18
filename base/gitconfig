@@ -53,4 +53,4 @@
 [alias]
   up = !git pull --prune $@
   amend = commit --amend
-
+  lastedit = log --pretty=format: --name-only -n 1

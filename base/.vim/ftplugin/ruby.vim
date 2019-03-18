@@ -13,5 +13,3 @@ augroup END
 
 map gvd :vsplit<CR>gd<CR>
 
-" speeds up scroll speed on ruby files
-set norelativenumber

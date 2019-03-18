@@ -25,6 +25,7 @@ function sandr() {
   find . -name $1 -print0 | xargs -0 sed -i "" "s/$2/$3/g"
 }
 # Tmux
+alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tl="tmux list-sessions"
 
@@ -53,10 +54,16 @@ alias gsta="git stash save -u"
 alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gsts="git stash show -p"
+
+# open the files that were modified in a specified commit
+function gedit() {
+  vim -O $(git show --pretty=format: --name-only $1 | sed '$!N; s/\n/ /;')
+}
 # built-in to omzsh - git stash clear
 # unalias gstc
 
 # Docker
+alias dgui="echo 'Starting Docker GUI on http://localhost:9000' && docker run -d --name docker_gui -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer"
 alias dclean='docker system prune --volumes'
 alias ddf='docker system df'
 alias di='docker images'
@@ -75,7 +82,7 @@ alias dcdown='docker-compose down -v'
 alias dclogs='docker-compose logs'
 alias dcexec='docker-compose exec'
 function drmii() {
-  docker rmi -f $(docker images --filter "reference=$1" -q | uniq)
+  docker rmi -f $(docker images $1 -q | uniq)
 }
 function dbash() {
     docker-compose exec $1 sh
@@ -94,6 +101,9 @@ function ke() {
 }
 function ksh() {
   kubectl exec -ti $1 sh
+}
+function kcp() {
+  kubectl cp $2 $1:$3
 }
 alias sternp='stern --context=wyz-prod-cluster --since=2m'
 
