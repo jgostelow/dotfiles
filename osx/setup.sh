@@ -71,6 +71,16 @@ rbenv rehash
 echo "#### Installing Rails 5.2 ####"
 gem install rails -v 5.2.1
 
+### MySQL ###
+brew install mysql@5.7
+brew link --force mysql@5.7
+brew services start mysql@5.7
+bundle config --local build.mysql2 "--with-ldflags=-L/usr/local/opt/openssl/lib --with-cppflags=-I/usr/local/opt/openssl/include"
+gem install mysql2
+
+## Golang ###
+install 'go'
+
 ln -sf $basedir/base/.gemrc ~/
 
 echo "OSX Setup complete!"
