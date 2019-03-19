@@ -29,7 +29,7 @@ cat > ~/.gitconfig << EOF
   path = $basedir/base/gitconfig
   path = $basedir/base/gitconfig.personal
 EOF
-ln -sf $basedir/.gitignore_global ~/
+ln -sf $basedir/base/.gitignore_global ~/
 install 'hub'
 
 ### Install git submodules - typically plugins for vim and tmux
@@ -66,10 +66,10 @@ install 'ruby-build'
 echo "#### Installing Ruby 2.5 ####"
 rbenv install 2.5.3
 rbenv global 2.5.3
+rbenv rehash
 
 echo "#### Installing Rails 5.2 ####"
 gem install rails -v 5.2.1
-rbenv rehash
 
 ln -sf $basedir/base/.gemrc ~/
 

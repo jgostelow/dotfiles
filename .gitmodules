@@ -1,6 +1,9 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = base/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/Command-T"]
+	path = base/.vim/bundle/Command-T
+	url = git@github.com:wincent/command-t.git
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
@@ -79,9 +82,21 @@
 [submodule ".vim/bundle/vim-caser"]
 	path = base/.vim/bundle/vim-caser
 	url = git@github.com:arthurxavierx/vim-caser.git
+[submodule ".vim/bundle/vim-snipmate"]
+	path = base/.vim/bundle/vim-snipmate
+	url = git@github.com:garbas/vim-snipmate.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = base/.vim/bundle/vim-snippets
+	url = git@github.com:garbas/vim-snipmate.git
+[submodule ".vim/bundle/Vundle.vim"]
+	path = base/.vim/bundle/Vundle.vim
+	url = git@github.com:VundleVim/Vundle.vim.git
 [submodule "zsh-themes/powerlevel9k"]
 	path = base/zsh-themes/powerlevel9k
 	url = git@github.com:bhilburn/powerlevel9k.git
 [submodule "base/.tmux/plugins/tmux-continuum"]
 	path = base/.tmux/plugins/tmux-continuum
 	url = git@github.com:tmux-plugins/tmux-continuum.git
+[submodule "base/.tmux/plugins/tmux-resurrect"]
+	path = base/.tmux/plugins/tmux-resurrect
+	url = git@github.com:tmux-plugins/tmux-resurrect.git
