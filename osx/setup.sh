@@ -13,6 +13,7 @@ function install {
 echo "Installing Homebrew and some basic things......"
 [ ! -f "`which brew`" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update > /dev/null
+brew cask install docker
 install 'wget'
 install 'tmux'
 install 'ctags'
