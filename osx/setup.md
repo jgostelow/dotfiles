@@ -11,14 +11,11 @@ Add Google Calendar to OSX Calendar app
 
 Manually install
 - chrome
-- slack
 - iterm2
-- BetterTouchTool
 - Boom
 - Google Backup and Sync (For Home Google Drive)
 - Google Drive File Stream (For Work Google Drive)
 - VSCode
-- Postman
 - SQLProc for MSSQL
 -- copy license and connections from old laptop
 - Parallels (https://www.parallels.com/products/desktop/download/)
