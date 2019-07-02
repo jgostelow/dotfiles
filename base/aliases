@@ -37,7 +37,8 @@ alias gaa="git add -A"
 alias gc="git checkout"
 alias gcb="git checkout -b"
 # alias gl="git log-compact --decorate"
-alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+# alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gl="tig"
 alias gs="git status -s"
 alias gd="git diff"
 alias gdn="git diff --name-only"
@@ -63,6 +64,8 @@ function gedit() {
 # unalias gstc
 
 # Docker
+# https://github.com/jesseduffield/lazydocker/blob/master/README.md
+alias lzd='lazydocker'
 alias dgui="echo 'Starting Docker GUI on http://localhost:9000' && docker run -d --name docker_gui -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer"
 alias dclean='docker system prune --volumes'
 alias ddf='docker system df'

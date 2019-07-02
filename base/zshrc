@@ -9,7 +9,8 @@ antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle git
-antigen bundle dirhistory
+antigen bundle kubectl
+# antigen bundle dirhistory
 #antigen bundle jsontools
 #antigen bundle rbenv
 antigen apply
@@ -20,11 +21,13 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(dirhistory git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(dirhistory git kubectl)
 
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Do not autocorrect commands
 unsetopt correct_all
 
 # Do not share history across sessions
@@ -32,6 +35,9 @@ unsetopt share_history
 
 PATH=~/bin:$PATH
 export EDITOR='vim'
+
+# VIM mode
+bindkey -v
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases

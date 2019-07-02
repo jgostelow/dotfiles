@@ -19,12 +19,17 @@ brew cask install postman
 brew cask install slack
 brew cask install bettertouchtool
 binstall 'wget'
+binstall 'tig'
 binstall 'jq' #https://stedolan.github.io/jq/
 binstall 'stern'
 binstall 'tmux'
+binstall 'vifm'
 binstall 'ctags'
 binstall 'the_silver_searcher'
 binstall 'moreutils' # http://joeyh.name/code/moreutils/
+
+brew tap jesseduffield/lazydocker
+binstall 'lazydocker'
 
 echo "source $basedir/base/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases
