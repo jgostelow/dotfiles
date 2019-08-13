@@ -19,6 +19,7 @@ brew cask install postman
 brew cask install slack
 brew cask install bettertouchtool
 binstall 'wget'
+binstall 'watch'
 binstall 'tig'
 binstall 'jq' #https://stedolan.github.io/jq/
 binstall 'stern'

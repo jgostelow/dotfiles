@@ -12,6 +12,10 @@ let g:go_doc_keywordprg_enabled = 0 " Disable GoDoc with |K|
 " Auto show function signature of highlighted symbol
 " let g:go_auto_type_info = 1
 
+" https://github.com/golang/go/wiki/gopls#vim--neovim
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
 " Compile current file
 map gb :GoBuild<CR>
 " Show test coverage - gc

@@ -43,6 +43,7 @@ alias gs="git status -s"
 alias gd="git diff"
 alias gdn="git diff --name-only"
 alias gdt="git difftool -y"
+alias gdtm="git difftool -y origin/master"
 alias gdtf="git difftool -y --tool=fugitive"
 alias gdtc="git difftool -y --cached"
 alias gdtcf="git difftool -y --cached --tool=fugitive"
@@ -87,28 +88,21 @@ alias dcexec='docker-compose exec'
 function drmii() {
   docker rmi -f $(docker images $1 -q | uniq)
 }
-function dbash() {
+function dsh() {
     docker-compose exec $1 sh
 }
 
 # Kubernetes
 alias k='kubectl'
 alias kuc='kubectl config use-context'
-alias kgc='kubectl config get-contexts'
+alias kc='kubectl config get-contexts'
 alias kp='kubectl get po'
 alias kd='kubectl describe pod'
-alias kui='kubectl proxy -p 10000'
-
-function ke() {
-  kubectl exec $1 $2
-}
+alias kcp='kubectl cp'
+alias ke='kubectl exec'
 function ksh() {
   kubectl exec -ti $1 sh
 }
-function kcp() {
-  kubectl cp $2 $1:$3
-}
-alias sternp='stern --context=wyz-prod-cluster --since=2m'
 
 # Ruby
 alias be='bundle exec'
