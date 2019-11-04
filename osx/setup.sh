@@ -29,6 +29,14 @@ binstall 'ctags'
 binstall 'the_silver_searcher'
 binstall 'moreutils' # http://joeyh.name/code/moreutils/
 
+# https://www.vimfromscratch.com/articles/awesome-command-line-tools/
+binstall 'tldr'
+binstall 'diff-so-fancy'
+binstall 'bat'
+binstall 'exa'
+binstall 'fd'
+binstall 'fzf'
+
 brew tap jesseduffield/lazydocker
 binstall 'lazydocker'
 
@@ -42,6 +50,7 @@ cat > ~/.gitconfig << EOF
   path = $basedir/base/gitconfig
   path = $basedir/base/gitconfig.personal
 EOF
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 ln -sf $basedir/base/.gitignore_global ~/
 binstall 'hub'
 

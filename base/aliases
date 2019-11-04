@@ -1,11 +1,16 @@
 alias rm='rm -i'
+alias cat='bat'
 alias cp='cp -i'
-alias ll='ls -l'
+alias find='fd'
+alias f='vim $(fzf --preview="bat {} --color=always")'
+alias ls='exa'
+alias ll='exa -lahF'
 alias la='ls -la'
 alias less='less -r'
 alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
 alias vi=vim
+alias v=vim
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 function cdls() {
   \cd $1;
@@ -31,6 +36,7 @@ alias tl="tmux list-sessions"
 
 # Git
 alias gb="git branch"
+alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbv="git branch -vv"
 alias ga="git add -u"
 alias gaa="git add -A"
@@ -56,6 +62,10 @@ alias gsta="git stash save -u"
 alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gsts="git stash show -p"
+# More obscure git commands
+alias gcommiters='git shortlog --summary --since='1 month ago' | sort -r'
+alias gignored='git ls-files --others -i --exclude-standard | grep -vE ^vendor'
+
 
 # open the files that were modified in a specified commit
 function gedit() {
@@ -88,7 +98,10 @@ alias dcexec='docker-compose exec'
 function drmii() {
   docker rmi -f $(docker images $1 -q | uniq)
 }
-function dsh() {
+function dsh() { # run a shell from an image
+    docker run -ti --entrypoint="" $1 sh
+}
+function dcsh() {
     docker-compose exec $1 sh
 }
 
