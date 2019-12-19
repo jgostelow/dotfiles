@@ -7,6 +7,8 @@
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [mergetool]
 	keepBackup = false
+[diff "sopsdiffer"]
+	textconv = sops -d
 [diff]
 	tool = vimdiff
 [difftool "fugitive"]
@@ -15,21 +17,30 @@
   branch = auto
   diff = auto
   status = auto
+	ui = true
 [color "branch"]
   current = yellow reverse
   local = yellow
   remote = green
   upstream = green
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = ~/.gitignore_global
 	warnambiguousrefs = false
 	editor = vim

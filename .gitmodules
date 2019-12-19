@@ -97,3 +97,9 @@
 [submodule "base/.tmux/plugins/tmux-resurrect"]
 	path = base/.tmux/plugins/tmux-resurrect
 	url = git@github.com:tmux-plugins/tmux-resurrect.git
+[submodule "base/.vim/bundle/QFEnter"]
+	path = base/.vim/bundle/QFEnter
+	url = http://github.com/yssl/QFEnter.git
+[submodule "base/.vim/bundle/vim-toggle-quickfix"]
+	path = base/.vim/bundle/vim-toggle-quickfix
+	url = http://github.com/drmingdrmer/vim-toggle-quickfix.git

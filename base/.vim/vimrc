@@ -74,6 +74,15 @@ map <C-J> <C-W>j<C-W>_
 " move up a window when in split screen mode
 map <C-K> <C-W>k<C-W>_
 
+" Tabs
+map <C-t><up> :tabr<cr>
+map <C-t><down> :tabl<cr>
+map <C-t><left> :tabp<cr>
+map <C-t><right> :tabn<cr>
+
+" Quickfix toggle
+nmap <C-s><C-s> <Plug>window:quickfix:loop
+
 " COLORS
 set bg=dark
 colorscheme apprentice
