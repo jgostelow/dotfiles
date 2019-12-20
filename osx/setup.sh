@@ -21,7 +21,8 @@ brew cask install bettertouchtool
 binstall 'wget'
 binstall 'watch'
 binstall 'tig'
-binstall 'jq' #https://stedolan.github.io/jq/
+binstall 'jq' # https://stedolan.github.io/jq/
+binstall 'yq' # https://github.com/mikefarah/yq
 binstall 'stern'
 binstall 'tmux'
 binstall 'vifm'
