@@ -17,7 +17,7 @@ antigen bundle kubectl
 #antigen bundle rbenv
 antigen apply
 
-ZSH_THEME="af-magic"
+ZSH_THEME="jono" # base on amuse, added a horizontal line
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
