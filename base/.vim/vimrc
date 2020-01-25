@@ -80,6 +80,9 @@ map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
+" system clipboard
+noremap <Leader>y "*y # yank to system clipboard
+
 " Quickfix toggle
 nmap <C-s><C-s> <Plug>window:quickfix:loop
 
