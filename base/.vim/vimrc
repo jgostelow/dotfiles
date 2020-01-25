@@ -88,9 +88,9 @@ nmap <C-s><C-s> <Plug>window:quickfix:loop
 
 " COLORS
 set bg=dark
-colorscheme apprentice
+colorscheme dogrun
 if &diff
-  colorscheme apprentice
+  colorscheme dogrun
 endif
 " do not make transparent backgrounds opaque by highlighting them
 hi Normal ctermbg=none

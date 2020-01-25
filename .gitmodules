@@ -103,3 +103,6 @@
 [submodule "base/.vim/bundle/vim-toggle-quickfix"]
 	path = base/.vim/bundle/vim-toggle-quickfix
 	url = http://github.com/drmingdrmer/vim-toggle-quickfix.git
+[submodule "base/.vim/bundle/vim-dogrun"]
+	path = base/.vim/bundle/vim-dogrun
+	url = https://github.com/wadackel/vim-dogrun.git
