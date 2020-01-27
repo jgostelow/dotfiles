@@ -1,4 +1,41 @@
-execute pathogen#infect()
+" execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'jlanzarotta/bufexplorer'
+Plug 'yssl/QFEnter'
+Plug 'drmingdrmer/vim-toggle-quickfix'
+
+Plug 'majutsushi/tagbar'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'easymotion/vim-easymotion'
+
+Plug 'tpope/vim-fugitive'
+Plug 'whiteinge/diffconflicts'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'ggreer/the_silver_searcher'
+
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-rails'
+Plug 'vim-syntastic/syntastic'
+
+Plug 'mhinz/vim-startify'
+
+Plug 'tpope/vim-surround'
+
+" Themes
+
+Plug 'wadackel/vim-dogrun'
+
+call plug#end()
 
 " Break some bad habits
 "noremap <Up> <NOP>
@@ -117,7 +154,6 @@ set updatetime=100
 " Highlight git changes like vimdiff
 map <Leader>hh :GitGutterLineHighlightsToggle<CR>
 
-
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<C-v>' " Ctrl+v - open vsplit
@@ -140,14 +176,13 @@ set laststatus=2
 
 " vim-surround
 " https://github.com/tpope/vim-surround
-" rr" - surround current word with "word"
-" rr( - surround current word with ( word )
-" rr) - surround current word with (word) - no space
-map rr ysiw
+" r" - surround current word with "word"
+" r( - surround current word with ( word )
+" r) - surround current word with (word) - no space
+map <Leader>r ysiw
 
-" Ctrl-p
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15,results:50'
+" fzf
+map <Leader><tab> :FZF<CR>
 
 " Leader,n - toggle => relative numbers, static numbers, no numbers
 map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
@@ -157,14 +192,12 @@ set number " display the current line number
 hi LineNr ctermfg=white
 
 " json pretty - Leader,j
-map <Leader>j :%!python -m json.tool<CR>
+map <Leader>j :%!jq '.'
 
 " The Silver Searcher - Ag (fast search)
 set grepprg=ag\ --nogroup\ --nocolor
 " K - search for the word under the cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 0 "disable ctrl-p cache since ag is so fast
 
 " Airline
 let g:airline_section_b = ''

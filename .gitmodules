@@ -1,54 +1,12 @@
-[submodule ".vim/bundle/nerdtree"]
-	path = base/.vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/Command-T"]
-	path = base/.vim/bundle/Command-T
-	url = git@github.com:wincent/command-t.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/ctrlp.vim"]
-	path = base/.vim/bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule ".vim/bundle/ack.vim"]
-	path = base/.vim/bundle/ack.vim
-  url = https://github.com/mileszs/ack.vim.git
-[submodule ".vim/bundle/vim-go"]
-	path = base/.vim/bundle/vim-go
-  url = https://github.com/fatih/vim-go.git
-[submodule ".vim/bundle/vim-airline"]
-	path = base/.vim/bundle/vim-airline
-  url = git@github.com:vim-airline/vim-airline.git
-[submodule ".vim/bundle/vim-airline-themes"]
-	path = base/.vim/bundle/vim-airline-themes
-	url = git@github.com:vim-airline/vim-airline-themes.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = git@github.com:vim-syntastic/syntastic.git
 [submodule ".vim/bundle/vim-misc"]
 	path = base/.vim/bundle/vim-misc
 	url = git@github.com:xolox/vim-misc.git
-[submodule ".vim/bundle/tagbar"]
-	path = base/.vim/bundle/tagbar
-	url = git@github.com:majutsushi/tagbar.git
-[submodule ".vim/bundle/vim-rails"]
-	path = base/.vim/bundle/vim-rails
-	url = git@github.com:tpope/vim-rails.git
 [submodule ".vim/bundle/vim-addon-mw-utils"]
 	path = base/.vim/bundle/vim-addon-mw-utils
 	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
 [submodule ".vim/bundle/tlib_vim"]
 	path = base/.vim/bundle/tlib_vim
 	url = git@github.com:tomtom/tlib_vim.git
-[submodule ".vim/bundle/the_silver_searcher"]
-	path = base/.vim/bundle/the_silver_searcher
-	url = git@github.com:ggreer/the_silver_searcher.git
-[submodule ".vim/bundle/vim-easymotion"]
-	path = base/.vim/bundle/vim-easymotion
-	url = git@github.com:easymotion/vim-easymotion.git
-[submodule ".vim/bundle/nerdcommenter"]
-	path = base/.vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "base/.tmux/plugins/tpm"]
 	path = base/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
@@ -58,24 +16,9 @@
 [submodule ".vim/bundle/vimproc.vim"]
 	path = base/.vim/bundle/vimproc.vim
 	url = git@github.com:Shougo/vimproc.vim.git
-[submodule ".vim/bundle/vim-surround"]
-	path = base/.vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule ".vim/bundle/vim-startify"]
-	path = base/.vim/bundle/vim-startify
-	url = https://github.com/mhinz/vim-startify
 [submodule ".vim/bundle/vim-obsession"]
 	path = base/.vim/bundle/vim-obsession
 	url = https://github.com/tpope/vim-obsession.git
-[submodule ".vim/bundle/bufexplorer"]
-	path = base/.vim/bundle/bufexplorer
-	url = https://github.com/jlanzarotta/bufexplorer.git
-[submodule ".vim/bundle/vim-gitgutter"]
-	path = base/.vim/bundle/vim-gitgutter
-	url = git://github.com/airblade/vim-gitgutter.git
-[submodule ".vim/bundle/diffconflicts"]
-	path = base/.vim/bundle/diffconflicts
-	url = git@github.com:whiteinge/diffconflicts.git
 [submodule ".vim/bundle/vim-repeat"]
 	path = base/.vim/bundle/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
@@ -97,12 +40,3 @@
 [submodule "base/.tmux/plugins/tmux-resurrect"]
 	path = base/.tmux/plugins/tmux-resurrect
 	url = git@github.com:tmux-plugins/tmux-resurrect.git
-[submodule "base/.vim/bundle/QFEnter"]
-	path = base/.vim/bundle/QFEnter
-	url = http://github.com/yssl/QFEnter.git
-[submodule "base/.vim/bundle/vim-toggle-quickfix"]
-	path = base/.vim/bundle/vim-toggle-quickfix
-	url = http://github.com/drmingdrmer/vim-toggle-quickfix.git
-[submodule "base/.vim/bundle/vim-dogrun"]
-	path = base/.vim/bundle/vim-dogrun
-	url = https://github.com/wadackel/vim-dogrun.git
