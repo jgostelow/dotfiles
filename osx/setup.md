@@ -21,6 +21,9 @@ Manually install
 - Parallels (https://www.parallels.com/products/desktop/download/)
 -- copy VM from old machine
 
+iTerm2 config
+- Text -> Use built-in Powerline glyphs
+
 Generate github keys
 - `ssh-keygen`
 - upload new id_rsa.pub to https://github.com/settings/ssh/new (and enterprise github)
