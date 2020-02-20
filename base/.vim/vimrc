@@ -66,10 +66,6 @@ endif
 set esckeys
 
 
-" Highlight the 120 column limit
-highlight ColorColumn ctermbg=cyan
-set colorcolumn=121
-
 set directory=$HOME/.vim/swapfiles/
 filetype plugin indent on
 syntax on
@@ -81,8 +77,8 @@ silent !stty -ixon > /dev/null 2>/dev/null
 " https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set re=1
 
-set incsearch         " search as you type
-set hlsearch          " highlight search results
+set incsearch     " search as you type
+set hlsearch      " highlight search results
 
 " Do not overwrite buffer when pasting
 vnoremap p "_dp
@@ -134,6 +130,16 @@ if &diff
 endif
 " do not make transparent backgrounds opaque by highlighting them
 hi Normal ctermbg=none
+
+" Highlight search results
+hi Search cterm=NONE ctermfg=red ctermbg=yellow
+
+" make line numbers white
+hi LineNr ctermfg=white
+
+" Highlight the 120 column limit
+highlight ColorColumn ctermbg=cyan
+set colorcolumn=121
 
 " Filetype mappers
 augroup filetypedetect
@@ -191,8 +197,6 @@ map <Leader>f :FZF<CR>
 map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
 set relativenumber    " display relative line numbers
 set number " display the current line number
-" make line numbers white
-hi LineNr ctermfg=white
 
 " json pretty - Leader,j
 map <Leader>j :%!jq '.'
