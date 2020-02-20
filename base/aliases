@@ -1,13 +1,7 @@
+alias la='ls -la'
 alias rm='rm -i'
-alias cat='bat'
 alias cp='cp -i'
 alias find='fd'
-alias f='vim $(fzf --preview="bat {} --color=always")'
-if type 'exa' > /dev/null; then
-  alias ls='exa'
-  alias ll='exa -lahF'
- fi
-alias la='ls -la'
 alias less='less -r'
 alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
@@ -20,6 +14,7 @@ function cdls() {
 alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
 alias cd=cdls
 alias cdl='cd $(pwd -P)'
+alias dul='du -ah * | sort -r -n | head -10'
 
 # Recursive search and replace
 

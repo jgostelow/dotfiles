@@ -3,5 +3,14 @@
 
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
+alias ls='exa'
+alias l='ls'
+alias ll='exa -lahF --git'
+alias lll='ll --tree --level=2'
+
+alias f='vim $(fzf --preview="bat {} --color=always")'
+
+alias cat='bat'
+
 eval "$(hub alias -s)"
 alias git=hub
