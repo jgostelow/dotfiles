@@ -91,6 +91,8 @@ rbenv install 2.5.3
 rbenv global 2.5.3
 rbenv rehash
 
+ln -sf $basedir/base/.gemrc ~/
+
 echo "#### Installing Rails 5.2 ####"
 gem install rails -v 5.2.1
 
@@ -103,8 +105,8 @@ brew services start mysql@5.7
 gem install mysql2
 
 ## Golang ###
-binstall 'go'
-
-ln -sf $basedir/base/.gemrc ~/
+binstall 'gvm'
+gvm install go1.13
+gvm use go1.13 --default
 
 echo "OSX Setup complete!"

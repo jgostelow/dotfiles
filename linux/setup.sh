@@ -11,11 +11,15 @@ function install {
 
 ### GENERAL ###
 echo "Installing some basic things......"
-sudo apt update
+sudo apt update > /dev/null
 install 'docker'
 install 'wget'
-install 'ack-grep'
+install 'silversearcher-ag'
 install 'tmux'
+install 'tig'
+install 'jq'
+install 'yq'
+install 'tldr'
 
 echo "Setting up aliases......"
 echo "source $basedir/base/aliases" > ~/.aliases
@@ -34,11 +38,12 @@ ln -sf $basedir/base/.gitignore_global ~/
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/base/.vim ~/
-ln -sf $basedir/base/.vimrc ~/
 
-### MISC ###
-echo "Linking bin directory......"
-ln -sf $basedir/base/bin ~/
+### TMUX ###
+echo "Setting up tmux......"
+ln -sf $basedir/base/.tmux ~/
+ln -sf $basedir/base/.tmux.conf ~/
+tmux source ~/.tmux.conf
 
 ### ZSH ###
 #install 'zsh-antigen'

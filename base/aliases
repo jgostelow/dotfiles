@@ -3,15 +3,16 @@ alias cat='bat'
 alias cp='cp -i'
 alias find='fd'
 alias f='vim $(fzf --preview="bat {} --color=always")'
-alias ls='exa'
-alias ll='exa -lahF'
+if type 'exa' > /dev/null; then
+  alias ls='exa'
+  alias ll='exa -lahF'
+ fi
 alias la='ls -la'
 alias less='less -r'
 alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
 alias vi=vim
 alias v=vim
-alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 function cdls() {
   \cd $1;
   ls;
