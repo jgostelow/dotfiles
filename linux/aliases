@@ -1,2 +1,2 @@
-alias ack='ack-grep'
-
+eval "$(hub alias -s)"
+alias git=hub
