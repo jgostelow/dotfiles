@@ -173,7 +173,7 @@ let g:NERDSpaceDelims = 1
 " Tagbar - Leader,t - Toggle Tagbar window
 " jump to tagbar when you open it. Close it when you select something
 " https://github.com/majutsushi/tagbar/blob/master/doc/tagbar.txt#L193
-map <Leader>t :TagbarOpenAutoClose<CR>
+map <Leader>t :TagbarToggle<CR>
 " airline - https://github.com/vim-airline/vim-airline/blob/master/README.md
 set laststatus=2
 
@@ -185,7 +185,7 @@ set laststatus=2
 map <Leader>r ysiw
 
 " fzf
-map <Leader><tab> :FZF<CR>
+map <Leader>f :FZF<CR>
 
 " Leader,n - toggle => relative numbers, static numbers, no numbers
 map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
