@@ -54,6 +54,7 @@ tmux source ~/.tmux.conf
 echo "Installing and switching to ZSH......"
 install 'zsh'
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ln -sf $basedir/base/jono.zsh-theme ~/.oh-my-zsh/themes/
 chsh -s `which zsh`
 curl -L git.io/antigen > ~/antigen.zsh
 echo "source $basedir/base/zshrc" > ~/.zshrc
