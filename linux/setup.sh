@@ -35,6 +35,10 @@ EOF
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 ln -sf $basedir/base/.gitignore_global ~/
 
+### Install git submodules - typically plugins for vim and tmux
+git submodule init
+git submodule update
+
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/base/.vim ~/
@@ -53,7 +57,6 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 chsh -s `which zsh`
 curl -L git.io/antigen > ~/antigen.zsh
 echo "source $basedir/base/zshrc" > ~/.zshrc
-echo "source $basedir/base/env" >> ~/.zshrc
 /usr/bin/zsh -i -c "source ~/antigen.zsh"
 
 echo "Linux Setup complete!"

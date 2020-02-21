@@ -1,6 +1,9 @@
 (which gnutar >/dev/null) && alias tar=$(which gnutar)
 (which gtar >/dev/null) && alias tar=$(which gtar)
 
+alias ls='exa'
+alias ll='exa -lahF'
+
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
 alias ls='exa'
