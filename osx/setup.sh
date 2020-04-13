@@ -67,6 +67,7 @@ ln -sf $basedir/base/.vim ~/
 echo "Setting up tmux......"
 ln -sf $basedir/base/.tmux ~/
 ln -sf $basedir/base/.tmux.conf ~/
+echo "source-file ~/.tmux.conf" > ~/.tmate.conf
 tmux source ~/.tmux.conf
 
 ### MISC ###
