@@ -13,7 +13,9 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug '/usr/local/opt/fzf'
+" Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 
@@ -30,6 +32,9 @@ Plug 'vim-syntastic/syntastic'
 Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-surround'
+
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 
 " Themes
 
@@ -101,14 +106,18 @@ set splitright
 " close all windows with Leader,q
 map <Leader>q :qa<CR>
 " Move window up,download,left,right - ctrl+w ctrl+[h,j,k,l]
-map <C-w><C-k> <C-w><S-K>
-map <C-w><C-j> <C-w><S-J>
-map <C-w><C-h> <C-w><S-H>
-map <C-w><C-l> <C-w><S-L>
+" map <C-w><C-k> <C-w><S-K>
+" map <C-w><C-j> <C-w><S-J>
+" map <C-w><C-h> <C-w><S-H>
+" map <C-w><C-l> <C-w><S-L>
 " move down a window when in split screen mode
 map <C-J> <C-W>j<C-W>_
 " move up a window when in split screen mode
 map <C-K> <C-W>k<C-W>_
+" move left a window when in split screen mode
+map <C-H> <C-W>h<C-W>_
+" move right a window when in split screen mode
+map <C-L> <C-W>l<C-W>_
 
 " Tabs
 map <C-t><up> :tabr<cr>

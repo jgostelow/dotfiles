@@ -1,4 +1,4 @@
-export ZSH="/Users/jgostelow/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 zmodload zsh/zprof
 
