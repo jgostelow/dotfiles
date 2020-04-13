@@ -10,8 +10,7 @@ Plug 'drmingdrmer/vim-toggle-quickfix'
 
 Plug 'majutsushi/tagbar'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
 " Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -27,7 +26,9 @@ Plug 'ggreer/the_silver_searcher'
 
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-rails'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'mhinz/vim-startify'
 
@@ -43,10 +44,10 @@ Plug 'wadackel/vim-dogrun'
 call plug#end()
 
 " Break some bad habits
-"noremap <Up> <NOP>
-"noremap <Down> <NOP>
-"noremap <Left> <NOP>
-"noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 
 " standard stuff
 set nocompatible
@@ -111,13 +112,13 @@ map <Leader>q :qa<CR>
 " map <C-w><C-h> <C-w><S-H>
 " map <C-w><C-l> <C-w><S-L>
 " move down a window when in split screen mode
-map <C-J> <C-W>j<C-W>_
+map <C-j> <C-W>j<C-W>_
 " move up a window when in split screen mode
-map <C-K> <C-W>k<C-W>_
-" move left a window when in split screen mode
-map <C-H> <C-W>h<C-W>_
-" move right a window when in split screen mode
-map <C-L> <C-W>l<C-W>_
+map <C-k> <C-W>k<C-W>_
+" move left a window when in vsplit screen mode
+map <C-h> <C-W>h<C-W>|
+" move right a window when in vsplit screen mode
+map <C-l> <C-W>l<C-W>|
 
 " Tabs
 map <C-t><up> :tabr<cr>
@@ -165,6 +166,11 @@ set updatetime=100
 
 " --------------- PLUGINS -------------------------------
 
+" ---- Plugin commands ----
+" splitjoin
+" - gS - con vert single line to multi-line equivalents
+" - gJ - convert multi-line into single line equivalents
+"
 " vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
 " :GitGutterToggle - enable/disable
 " You can jump between hunks with [c and ]c.
@@ -189,8 +195,6 @@ let g:NERDSpaceDelims = 1
 " jump to tagbar when you open it. Close it when you select something
 " https://github.com/majutsushi/tagbar/blob/master/doc/tagbar.txt#L193
 map <Leader>t :TagbarToggle<CR>
-" airline - https://github.com/vim-airline/vim-airline/blob/master/README.md
-set laststatus=2
 
 " vim-surround
 " https://github.com/tpope/vim-surround
@@ -215,8 +219,12 @@ set grepprg=ag\ --nogroup\ --nocolor
 " K - search for the word under the cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" Airline
-let g:airline_section_b = ''
+" lightline - https://github.com/itchyny/lightline.vim
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
 
 " BufExplore - navigate buffers
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
@@ -233,6 +241,11 @@ map <Leader>w :ToggleBufExplorer<CR>
 " gs<space> space case
 " gsk - dash-case or kebab-case
 " gs. - dot.case
+
+" lens.vim
+let g:lens#disabled = 1
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+let g:lens#width_resize_min = 120
 
 " ------------ Git (Fugitive) ---------------------
 " git blame - f,b

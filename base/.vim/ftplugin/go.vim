@@ -7,6 +7,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
+let g:go_auto_sameids = 1
 " https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt#L1315
 let g:go_doc_keywordprg_enabled = 0 " Disable GoDoc with |K|
 " Auto show function signature of highlighted symbol
