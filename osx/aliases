@@ -17,3 +17,5 @@ alias cat='bat'
 
 eval "$(hub alias -s)"
 alias git=hub
+
+alias gcommiters='git shortlog --summary --since='1 month ago' | sort -r'

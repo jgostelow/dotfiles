@@ -12,13 +12,13 @@ function install {
 ### GENERAL ###
 echo "Installing some basic things......"
 sudo apt update > /dev/null
-install 'docker'
+# install 'docker'
 install 'wget'
 install 'silversearcher-ag'
 install 'tmux'
 install 'tig'
 install 'jq'
-install 'yq'
+# install 'yq'
 install 'tldr'
 
 echo "Setting up aliases......"

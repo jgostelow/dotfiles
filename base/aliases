@@ -59,7 +59,6 @@ alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gsts="git stash show -p"
 # More obscure git commands
-alias gcommiters='git shortlog --summary --since='1 month ago' | sort -r'
 alias gignored='git ls-files --others -i --exclude-standard | grep -vE ^vendor'
 
 
