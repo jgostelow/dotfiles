@@ -180,8 +180,8 @@ map <Leader>hh :GitGutterLineHighlightsToggle<CR>
 
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
-let NERDTreeMapOpenVSplit = '<C-v>' " Ctrl+v - open vsplit
-let NERDTreeMapOpenSplit = '<C-x>' " Ctrl+x - open split
+let NERDTreeMapOpenVSplit = '<Leader>v' " Space,v - open vsplit
+let NERDTreeMapOpenSplit = '<Leader>x' " Space,x - open split
 " Open NERDTree if no files opened
 " autocmd vimenter * if !argc() | NERDTree | endif
 
@@ -191,10 +191,10 @@ let NERDTreeMapOpenSplit = '<C-x>' " Ctrl+x - open split
 map - <Leader>c<Space>
 let g:NERDSpaceDelims = 1
 
-" Tagbar - Leader,t - Toggle Tagbar window
+" Tagbar - Leader,i - Toggle Tagbar window
 " jump to tagbar when you open it. Close it when you select something
 " https://github.com/majutsushi/tagbar/blob/master/doc/tagbar.txt#L193
-map <Leader>t :TagbarToggle<CR>
+map <Leader>i :TagbarToggle<CR>
 
 " vim-surround
 " https://github.com/tpope/vim-surround
@@ -202,6 +202,13 @@ map <Leader>t :TagbarToggle<CR>
 " r( - surround current word with ( word )
 " r) - surround current word with (word) - no space
 map <Leader>r ysiw
+
+" QFEnter
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.open = ['<CR>']
+let g:qfenter_keymap.vopen = ['<Leader>v']
+let g:qfenter_keymap.hopen = ['<Leader>h']
+let g:qfenter_keymap.topen = ['<Leader>t']
 
 " fzf
 map <Leader>f :FZF<CR>

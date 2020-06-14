@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias la='ls -la'
 alias rm='rm -i'
 alias cp='cp -i'
@@ -7,13 +9,13 @@ alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
 alias vi=vim
 alias v=vim
-function cdls() {
-  \cd $1;
+function cdls
+  cd $argv;
   ls;
-}
+end
 alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
-alias cd=cdls
-alias cdl='cd $(pwd -P)'
+alias cdl='cd (pwd -P)'
+alias cs='cdls'
 alias dul='du -ah * | sort -r -n | head -10'
 
 # Recursive search and replace
@@ -22,9 +24,9 @@ alias dul='du -ah * | sort -r -n | head -10'
 # $2 = old string
 # $3 new string
 # e.g. sandr .go Sirupsen sirupsen
-function sandr() {
+function sandr
   find . -name $1 -print0 | xargs -0 sed -i "" "s/$2/$3/g"
-}
+end
 # Tmux
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
@@ -63,9 +65,9 @@ alias gignored='git ls-files --others -i --exclude-standard | grep -vE ^vendor'
 
 
 # open the files that were modified in a specified commit
-function gedit() {
-  vim -O $(git show --pretty=format: --name-only $1 | sed '$!N; s/\n/ /;')
-}
+function gedit
+  vim -O (git show --pretty=format: --name-only $1 | sed '$!N; s/\n/ /;')
+end
 # built-in to omzsh - git stash clear
 # unalias gstc
 
@@ -78,27 +80,27 @@ alias ddf='docker system df'
 alias di='docker images'
 alias dh='docker history --no-trunc'
 alias drmi='docker rmi -f'
-alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
+alias drmid='docker rmi (docker images -f "dangling=true" -q)'
 alias dps='docker ps -a'
-alias dstopa='docker stop $(docker ps -aq)'
+alias dstopa='docker stop (docker ps -aq)'
 alias dr='docker run'
-alias drma='docker rm $(docker ps -aq -f status=exited -f status=created)'
+alias drma='docker rm (docker ps -aq -f status=exited -f status=created)'
 alias drm='docker rm'
 alias dvls='docker volume ls'
-alias dvrma='docker volume rm $(docker volume ls -q)'
+alias dvrma='docker volume rm (docker volume ls -q)'
 alias dcup='docker-compose up'
 alias dcdown='docker-compose down -v'
 alias dclogs='docker-compose logs'
 alias dcexec='docker-compose exec'
-function drmii() {
-  docker rmi -f $(docker images $1 -q | uniq)
-}
-function dsh() { # run a shell from an image
+function drmii
+  docker rmi -f (docker images $1 -q | uniq)
+end
+function dsh # run a shell from an image
     docker run -ti --entrypoint="" $1 sh
-}
-function dcsh() {
+end
+function dcsh
     docker-compose exec $1 sh
-}
+end
 
 # Kubernetes
 alias k='kubectl'
@@ -108,14 +110,10 @@ alias kp='kubectl get po'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'
-function ksh() {
+function ksh
   kubectl exec -ti $1 sh
-}
+end
 
 # Ruby
 alias be='bundle exec'
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Golang
-alias gtest='goconvey -excludedDirs bin,cmd,vendor,.glide'
-alias gdoc='echo "Open your browser at http://localhost:6060/pkg/" && godoc -http=":6060" -goroot ~/GIT/golang'
+if which rbenv > /dev/null; then eval "(rbenv init -)"; end
