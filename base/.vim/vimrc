@@ -14,8 +14,6 @@ Plug 'itchyny/lightline.vim'
 
 " Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 
 Plug 'tpope/vim-fugitive'
@@ -24,6 +22,7 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'ggreer/the_silver_searcher'
 
+Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-rails'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -99,13 +98,15 @@ vmap <C-c> :w !pbcopy<CR><CR>
 let mapleader = "\<Space>"
 nmap ; :
 nnoremap <Leader>p :set invpaste<CR>
+nnoremap Y y$
 
 " SPLIT WINDOWS
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
-" close all windows with Leader,q
-map <Leader>q :qa<CR>
+" close current window with space-q, and all windows with ctrl-q
+map <Leader>q :q<CR>
+map <C-q> :qa<CR>
 " Move window up,download,left,right - ctrl+w ctrl+[h,j,k,l]
 " map <C-w><C-k> <C-w><S-K>
 " map <C-w><C-j> <C-w><S-J>
@@ -149,7 +150,7 @@ hi LineNr ctermfg=white
 
 " Highlight the 120 column limit
 highlight ColorColumn ctermbg=cyan
-set colorcolumn=121
+" set colorcolumn=121
 
 " Filetype mappers
 augroup filetypedetect
@@ -219,7 +220,7 @@ set relativenumber    " display relative line numbers
 set number " display the current line number
 
 " json pretty - Leader,j
-map <Leader>j :%!jq '.'
+map <Leader>j :%!jq '.'<CR>
 
 " The Silver Searcher - Ag (fast search)
 set grepprg=ag\ --nogroup\ --nocolor
@@ -254,6 +255,10 @@ let g:lens#disabled = 1
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
 let g:lens#width_resize_min = 120
 
+" emmet - https://www.emmet.io/
+" https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
+let g:user_emmet_leader_key=','
+
 " ------------ Git (Fugitive) ---------------------
 " git blame - f,b
 map fb :Gblame<CR>
@@ -261,9 +266,7 @@ map fb :Gblame<CR>
 "     - open file : enter
 "     - open split : o
 "     - open vsplit : S
-map fs :Gstatus<CR>
-" git add - f,a
-map fa :Gwrite<CR>
+map fs :Gstatus<CR> :resize 10<CR>
 " git diff - f,d
 map fd :Gdiff<CR>
 " git diff --staged - f,f

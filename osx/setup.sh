@@ -29,6 +29,7 @@ binstall 'vifm'
 binstall 'ctags'
 binstall 'the_silver_searcher'
 binstall 'moreutils' # http://joeyh.name/code/moreutils/
+binstall 'reattach-to-user-namespace' # https://thoughtbot.com/blog/tmux-copy-paste-on-os-x-a-better-future
 
 # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
 binstall 'tldr'

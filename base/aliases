@@ -7,6 +7,7 @@ alias find='fd'
 alias less='less -r'
 alias z='source ~/.zshrc'
 alias a='source ~/.aliases'
+alias c='cat'
 alias vi=vim
 alias v=vim
 function cdls
@@ -33,6 +34,7 @@ alias ta="tmux attach -t"
 alias tl="tmux list-sessions"
 
 # Git
+alias lzg='lazygit'
 alias gb="git branch"
 alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbv="git branch -vv"
@@ -88,6 +90,7 @@ alias drma='docker rm (docker ps -aq -f status=exited -f status=created)'
 alias drm='docker rm'
 alias dvls='docker volume ls'
 alias dvrma='docker volume rm (docker volume ls -q)'
+alias dc='docker-compose'
 alias dcup='docker-compose up'
 alias dcdown='docker-compose down -v'
 alias dclogs='docker-compose logs'
