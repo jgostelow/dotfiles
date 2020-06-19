@@ -1,33 +1,16 @@
-#!/bin/bash
-
 alias la='ls -la'
 alias rm='rm -i'
 alias cp='cp -i'
 alias find='fd'
 alias less='less -r'
-alias z='source ~/.zshrc'
-alias a='source ~/.aliases'
 alias c='cat'
 alias vi=vim
 alias v=vim
-function cdls
-  cd $argv;
-  ls;
-end
 alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
 alias cdl='cd (pwd -P)'
 alias cs='cdls'
 alias dul='du -ah * | sort -r -n | head -10'
 
-# Recursive search and replace
-
-# $1 = file pattern e.g. *.go
-# $2 = old string
-# $3 new string
-# e.g. sandr .go Sirupsen sirupsen
-function sandr
-  find . -name $1 -print0 | xargs -0 sed -i "" "s/$2/$3/g"
-end
 # Tmux
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
@@ -66,10 +49,6 @@ alias gsts="git stash show -p"
 alias gignored='git ls-files --others -i --exclude-standard | grep -vE ^vendor'
 
 
-# open the files that were modified in a specified commit
-function gedit
-  vim -O (git show --pretty=format: --name-only $1 | sed '$!N; s/\n/ /;')
-end
 # built-in to omzsh - git stash clear
 # unalias gstc
 
@@ -95,15 +74,6 @@ alias dcup='docker-compose up'
 alias dcdown='docker-compose down -v'
 alias dclogs='docker-compose logs'
 alias dcexec='docker-compose exec'
-function drmii
-  docker rmi -f (docker images $1 -q | uniq)
-end
-function dsh # run a shell from an image
-    docker run -ti --entrypoint="" $1 sh
-end
-function dcsh
-    docker-compose exec $1 sh
-end
 
 # Kubernetes
 alias k='kubectl'
@@ -113,10 +83,6 @@ alias kp='kubectl get po'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'
-function ksh
-  kubectl exec -ti $1 sh
-end
 
 # Ruby
 alias be='bundle exec'
-if which rbenv > /dev/null; then eval "(rbenv init -)"; end

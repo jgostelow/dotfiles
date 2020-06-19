@@ -19,6 +19,8 @@ brew cask install postman
 brew cask install slack
 brew cask install bettertouchtool
 binstall 'wget'
+binstall 'htop'
+binstall 'glances'
 binstall 'watch'
 binstall 'tig'
 binstall 'jq' # https://stedolan.github.io/jq/
@@ -38,6 +40,7 @@ binstall 'bat'
 binstall 'exa'
 binstall 'fd'
 binstall 'fzf'
+binstall 'starship'
 
 brew tap jesseduffield/lazydocker
 binstall 'lazydocker'
@@ -76,14 +79,26 @@ echo "Linking bin directory......"
 ln -sf $basedir/bin ~/
 
 ### ZSH ###
-echo "Installing and switching to ZSH......"
-binstall 'zsh'
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-ln -sf $basedir/base/jono.zsh-theme ~/.oh-my-zsh/themes/
-chsh -s `which zsh`
-(curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
-echo "source $basedir/base/zshrc" > ~/.zshrc
-/bin/zsh -i -c "source ~/antigen.zsh"
+# echo "Installing and switching to ZSH......"
+# binstall 'zsh'
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# ln -sf $basedir/zsh/jono.zsh-theme ~/.oh-my-zsh/themes/
+# chsh -s `which zsh`
+# (curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
+# echo "source $basedir/zsh/zshrc" > ~/.zshrc
+# echo "source $baserdir/zsh/functions.zsh" >> ~/.zshrc
+# /bin/zsh -i -c "source ~/antigen.zsh"
+
+### FISH ###
+echo "Changing to fish"
+binstall 'fish'
+chsh -s `which fish`
+
+echo "source ~/.aliases" >> ~/.config/fish/config.fish
+echo "source $baserdir/config.fish" >> ~/.config/fish/config.fish
+
+ln -sf $basedir/fish/fishfile ~/.config/fish/
+fisher
 
 ### Ruby ###
 binstall 'rbenv'
