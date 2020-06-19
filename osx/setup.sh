@@ -32,6 +32,7 @@ binstall 'ctags'
 binstall 'the_silver_searcher'
 binstall 'moreutils' # http://joeyh.name/code/moreutils/
 binstall 'reattach-to-user-namespace' # https://thoughtbot.com/blog/tmux-copy-paste-on-os-x-a-better-future
+binstall 'doitlive' # https://doitlive.readthedocs.io/en/stable/
 
 # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
 binstall 'tldr'
@@ -40,6 +41,7 @@ binstall 'bat'
 binstall 'exa'
 binstall 'fd'
 binstall 'fzf'
+
 binstall 'starship'
 
 brew tap jesseduffield/lazydocker
