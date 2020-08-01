@@ -46,8 +46,7 @@ alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gsts="git stash show -p"
 # More obscure git commands
-alias gignored='git ls-files --others -i --exclude-standard | grep -vE ^vendor'
-
+alias gignored='git ls-files --others -i --exclude-standard'
 
 # built-in to omzsh - git stash clear
 # unalias gstc
@@ -79,7 +78,7 @@ alias dcexec='docker-compose exec'
 alias k='kubectl'
 alias kuc='kubectl config use-context'
 alias kc='kubectl config get-contexts'
-alias kp='kubectl get po'
+alias kp='kubectl get po | grep'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'

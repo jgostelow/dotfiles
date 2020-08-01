@@ -140,10 +140,11 @@ if &diff
   colorscheme dogrun
 endif
 " do not make transparent backgrounds opaque by highlighting them
-hi Normal ctermbg=none
+" hi Normal ctermbg=none
 
 " Highlight search results
-hi Search cterm=NONE ctermfg=red ctermbg=yellow
+hi Search cterm=NONE ctermfg=blue ctermbg=yellow
+hi SpellBad cterm=NONE ctermfg=red ctermbg=blue
 
 " make line numbers white
 hi LineNr ctermfg=white

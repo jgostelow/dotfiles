@@ -1,4 +1,7 @@
-starship init fish
+starship init fish | source
+
+eval (hub alias -s)
+alias git=hub
 
 status --is-interactive; and source (rbenv init -|psub)
 
@@ -37,7 +40,7 @@ end
 # Docker
 # https://github.com/jesseduffield/lazydocker/blob/master/README.md
 function drmii
-  docker rmi -f (docker images $argv[0] -q | uniq)
+  docker rmi -f (docker images $argv[1] -q | uniq)
 end
 function dsh # run a shell from an image
     docker run -ti --entrypoint="" $argv sh
@@ -53,4 +56,12 @@ end
 
 function nvm
 	bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+
+function gvm
+  bass source ~/.gvm/scripts/gvm ';' gvm $argv
+end
+
+function yvm
+  source /usr/local/opt/yvm/yvm.fish ';' yvm $argv
 end

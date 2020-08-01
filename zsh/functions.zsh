@@ -40,5 +40,8 @@ function ksh() {
   kubectl exec -ti $1 sh
 }
 
+eval $(hub alias -s)
+alias git=hub
+
 # Ruby
 if which rbenv > /dev/null; then eval "(rbenv init -)"; fi

@@ -12,10 +12,6 @@ alias ll='exa -lahF --git'
 alias lll='ll --tree --level=2'
 
 alias f='vim (fzf --preview="bat {} --color=always")'
-
 alias cat='bat'
 
-eval (hub alias -s)
-alias git=hub
-
-alias gcommiters='git shortlog --summary --since=\'1 month ago\' | sort -r'
+alias gcommiters="git shortlog --summary --since='1 month ago' | sort -r"
