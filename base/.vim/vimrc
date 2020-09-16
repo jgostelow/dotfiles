@@ -39,6 +39,7 @@ Plug 'camspiers/lens.vim'
 " Themes
 
 Plug 'wadackel/vim-dogrun'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -135,10 +136,7 @@ nmap <C-s><C-s> <Plug>window:quickfix:loop
 
 " COLORS
 set bg=dark
-colorscheme dogrun
-if &diff
-  colorscheme dogrun
-endif
+colorscheme gruvbox
 " do not make transparent backgrounds opaque by highlighting them
 " hi Normal ctermbg=none
 
