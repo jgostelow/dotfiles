@@ -14,7 +14,9 @@ Plug 'itchyny/lightline.vim'
 
 " Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/limelight.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'whiteinge/diffconflicts'
@@ -164,6 +166,11 @@ set tags=./tags;
 " plugins update the buffer quicker (default is 4000)
 set updatetime=100
 
+" setlocal foldmethod=indent
+" zM - close all folds
+" zo - open fold
+" zO open all nested folds
+"
 " --------------- PLUGINS -------------------------------
 
 " ---- Plugin commands ----
@@ -211,7 +218,20 @@ let g:qfenter_keymap.hopen = ['<Leader>h']
 let g:qfenter_keymap.topen = ['<Leader>t']
 
 " fzf
-map <Leader>f :FZF<CR>
+" Search filenames
+map ff :FZF<CR>
+" Search for text
+map fa :Ag<CR>
+" Search commit history for current file
+map fb :BCommits<CR>
+" Search vim commands
+map fc :Commands<CR>
+" Search Command History
+map fh :History:<CR>
+" Limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+map <Leader>l :Limelight!!<CR>
 
 " Leader,n - toggle => relative numbers, static numbers, no numbers
 map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
@@ -259,14 +279,10 @@ let g:lens#width_resize_min = 120
 let g:user_emmet_leader_key=','
 
 " ------------ Git (Fugitive) ---------------------
-" git blame - f,b
-map fb :Gblame<CR>
+map <Leader>gb :Gblame<CR>
 " git status - f,s
 "     - open file : enter
 "     - open split : o
 "     - open vsplit : S
-map fs :Gstatus<CR> :resize 10<CR>
-" git diff - f,d
-map fd :Gdiff<CR>
-" git diff --staged - f,f
-map ff :Gdiff HEAD<CR>
+map <Leader>gs :Gstatus<CR> :resize 10<CR>
+map <Leader>gd :Gdiff<CR>
