@@ -18,6 +18,7 @@ alias tl="tmux list-sessions"
 
 # Git
 alias lzg='lazygit'
+alias gfo='git fetch origin'
 alias gb="git branch"
 alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbv="git branch -vv"
@@ -78,7 +79,7 @@ alias dcexec='docker-compose exec'
 alias k='kubectl'
 alias kuc='kubectl config use-context'
 alias kc='kubectl config get-contexts'
-alias kp='kubectl get po | grep'
+alias kp='kubectl get po --all-namespaces | grep'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'

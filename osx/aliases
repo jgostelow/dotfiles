@@ -11,7 +11,20 @@ alias l='ls'
 alias ll='exa -lahF --git'
 alias lll='ll --tree --level=2'
 
-alias f='vim (fzf --preview="bat {} --color=always")'
+# FZF shortcuts
+# files (with preview)
+alias ff='fzf --preview="bat {} --color=always"'
+alias f='vim (ff)'
+# git branches
+alias fb='git branch | fzf | tr -d " "'
+# checkout remote branch
+alias fgcr='git checkout --track (git branch -r | fzf | tr -d " ")'
+# checkout local branch
+alias fgc='git checkout (fb)'
+# delete local branch
+alias fgbd='git branch -d (fb)'
+
+
 alias cat='bat'
 
 alias gcommiters="git shortlog --summary --since='1 month ago' | sort -r"
