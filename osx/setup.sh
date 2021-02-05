@@ -97,7 +97,7 @@ binstall 'fish'
 chsh -s `which fish`
 
 echo "source ~/.aliases" >> ~/.config/fish/config.fish
-echo "source $baserdir/config.fish" >> ~/.config/fish/config.fish
+echo "source $baserdir/fish/config.fish" >> ~/.config/fish/config.fish
 
 ln -sf $basedir/fish/fishfile ~/.config/fish/
 fisher

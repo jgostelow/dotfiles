@@ -1,9 +1,15 @@
-starship init fish | source
+if type -q starship
+  starship init fish | source
+end
 
-eval (hub alias -s)
-alias git=hub
+if type -q hub
+  eval (hub alias -s)
+  alias git=hub
+end
 
-status --is-interactive; and source (rbenv init -|psub)
+if type -q rbenv
+  status --is-interactive; and source (rbenv init -|psub)
+end
 
 # Fisher
 if not functions -q fisher

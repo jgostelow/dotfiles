@@ -40,7 +40,7 @@
 	newNormal = green bold
 	newHighlight = green bold 22
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	# pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = ~/.gitignore_global
 	warnambiguousrefs = false
 	editor = vim

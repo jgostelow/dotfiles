@@ -24,14 +24,21 @@ install 'fish'
 
 ### FISH ###
 echo "Changing to fish"
-chsh -s `which fish`
-# https://github.com/jorgebucaran/fisher
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-
 
 echo "Setting up aliases......"
 echo "source $basedir/base/aliases" > ~/.aliases
 echo "source $basedir/linux/aliases" >> ~/.aliases
+echo "source ~/.aliases" >> ~/.config/fish/config.fish
+echo "source $basedir/fish/config.fish" >> ~/.config/fish/config.fish
+
+# https://github.com/jorgebucaran/fisher
+ln -sf $basedir/fish/fishfile ~/.config/fish/
+fisher
+
+# https://starship.rs/
+curl -fsSL https://starship.rs/install.sh | bash
+
+chsh -s `which fish`
 
 ### GIT ###
 echo "Setting up git config......"
@@ -40,7 +47,6 @@ cat > ~/.gitconfig << EOF
   path = $basedir/base/gitconfig
   path = $basedir/base/gitconfig.personal
 EOF
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 ln -sf $basedir/base/.gitignore_global ~/
 
 ### Install git submodules - typically plugins for vim and tmux
