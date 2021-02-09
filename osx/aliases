@@ -23,7 +23,8 @@ alias fgcr='git checkout --track (git branch -r | fzf | tr -d " ")'
 alias fgc='git checkout (fb)'
 # delete local branch
 alias fgbd='git branch -d (fb)'
-
+# tmux sessions
+alias fta="tmux attach-session -t (tmux list-sessions -F '#{session_name}' | fzf)"
 
 alias cat='bat'
 
