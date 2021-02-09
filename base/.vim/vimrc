@@ -45,6 +45,10 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
+" Open and source vimrc
+map vv :vsp $MYVIMRC<CR>
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echo "Reloaded" $MYVIMRC
+
 " Break some bad habits
 " noremap <Up> <NOP>
 " noremap <Down> <NOP>
@@ -95,7 +99,7 @@ vnoremap P "_dP
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 " read and write from system clipboard
-" set clipboard=unnamed
+set clipboard=unnamed
 
 " key remappings
 let mapleader = "\<Space>"
@@ -107,6 +111,7 @@ nnoremap Y y$
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
+
 " close current window with space-q, and all windows with ctrl-q
 map <Leader>q :q<CR>
 map <C-q> :qa<CR>
@@ -187,8 +192,8 @@ map <Leader>hh :GitGutterLineHighlightsToggle<CR>
 
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
-let NERDTreeMapOpenVSplit = '<Leader>v' " Space,v - open vsplit
-let NERDTreeMapOpenSplit = '<Leader>x' " Space,x - open split
+let NERDTreeMapOpenVSplit = '<Leader>|' " Space,| - open vsplit
+let NERDTreeMapOpenSplit = '<Leader>_' " Space,_ - open split
 " Open NERDTree if no files opened
 " autocmd vimenter * if !argc() | NERDTree | endif
 
