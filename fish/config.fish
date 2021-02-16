@@ -57,7 +57,7 @@ end
 
 # Kubernetes
 function ksh
-  kubectl exec -ti $argv sh
+  kubectl exec -ti $argv -- sh
 end
 
 function nvm

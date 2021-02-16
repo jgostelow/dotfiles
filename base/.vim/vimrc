@@ -34,9 +34,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-surround'
+Plug 'frazrepo/vim-rainbow'
 
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+
+Plug 'hashivim/vim-terraform'
 
 " Themes
 
@@ -106,6 +109,8 @@ let mapleader = "\<Space>"
 nmap ; :
 nnoremap <Leader>p :set invpaste<CR>
 nnoremap Y y$
+
+map gvf :vsplit<CR>gf<CR>
 
 " SPLIT WINDOWS
 set wmh=0         " minimise split windows completely instead of leaving current line
@@ -215,6 +220,9 @@ map <Leader>i :TagbarToggle<CR>
 " r) - surround current word with (word) - no space
 map <Leader>r ysiw
 
+" https://github.com/frazrepo/vim-rainbow#simple-configuration
+let g:rainbow_active = 1
+
 " QFEnter
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>']
@@ -283,6 +291,9 @@ let g:lens#width_resize_min = 120
 " https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
 let g:user_emmet_leader_key=','
 
+" For ruby coc support
+" https://jamesnewton.com/blog/setting-up-coc-nvim-for-ruby-development
+let g:coc_global_extensions = ['coc-solargraph']
 " ------------ Git (Fugitive) ---------------------
 map <Leader>gb :Gblame<CR>
 " git status - f,s

@@ -12,9 +12,10 @@ alias cs='cdls'
 alias dul='du -ah * | sort -r -n | head -10'
 
 # Tmux
-alias tn="tmux new -s"
-alias ta="tmux attach -t"
-alias tl="tmux list-sessions"
+alias t='tmux'
+alias tn='tmux new -s'
+alias ta='tmux attach -t'
+alias tl='tmux list-sessions'
 
 # Git
 alias lzg='lazygit'
@@ -53,6 +54,7 @@ alias gignored='git ls-files --others -i --exclude-standard'
 # unalias gstc
 
 # Docker
+alias d='docker'
 # https://github.com/jesseduffield/lazydocker/blob/master/README.md
 alias lzd='lazydocker'
 alias dgui="echo 'Starting Docker GUI on http://localhost:9000' && docker run -d --name docker_gui -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer"
@@ -83,6 +85,9 @@ alias kp='kubectl get po --all-namespaces | grep'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'
+
+# Terraform
+alias tf='terraform'
 
 # Ruby
 alias be='bundle exec'
