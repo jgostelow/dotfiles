@@ -13,8 +13,9 @@ Plug 'majutsushi/tagbar'
 Plug 'itchyny/lightline.vim'
 
 " Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/limelight.vim'
 
@@ -34,8 +35,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-surround'
-Plug 'frazrepo/vim-rainbow'
-
+Plug 'luochen1990/rainbow'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 
@@ -49,7 +49,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Open and source vimrc
-map vv :vsp $MYVIMRC<CR>
+map vv :e $MYVIMRC<CR>
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echo "Reloaded" $MYVIMRC
 
 " Break some bad habits
@@ -185,7 +185,7 @@ set updatetime=100
 
 " ---- Plugin commands ----
 " splitjoin
-" - gS - con vert single line to multi-line equivalents
+" - gS - convert single line to multi-line equivalents
 " - gJ - convert multi-line into single line equivalents
 "
 " vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
@@ -193,12 +193,12 @@ set updatetime=100
 " You can jump between hunks with [c and ]c.
 " You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
 " Highlight git changes like vimdiff
-map <Leader>hh :GitGutterLineHighlightsToggle<CR>
+map <Leader>gg :GitGutterLineHighlightsToggle<CR>
 
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
-let NERDTreeMapOpenVSplit = '<Leader>|' " Space,| - open vsplit
-let NERDTreeMapOpenSplit = '<Leader>_' " Space,_ - open split
+let NERDTreeMapOpenVSplit = '<Leader>v' " Space,v - open vsplit
+let NERDTreeMapOpenSplit = '<Leader>x' " Space,x - open split
 " Open NERDTree if no files opened
 " autocmd vimenter * if !argc() | NERDTree | endif
 
@@ -208,26 +208,26 @@ let NERDTreeMapOpenSplit = '<Leader>_' " Space,_ - open split
 map - <Leader>c<Space>
 let g:NERDSpaceDelims = 1
 
-" Tagbar - Leader,i - Toggle Tagbar window
+" Tagbar - Leader,t - Toggle Tagbar window
 " jump to tagbar when you open it. Close it when you select something
 " https://github.com/majutsushi/tagbar/blob/master/doc/tagbar.txt#L193
-map <Leader>i :TagbarToggle<CR>
+map <Leader>t :TagbarToggle<CR>
 
 " vim-surround
 " https://github.com/tpope/vim-surround
-" r" - surround current word with "word"
-" r( - surround current word with ( word )
-" r) - surround current word with (word) - no space
-map <Leader>r ysiw
+" s" - surround current word with "word"
+" s( - surround current word with ( word )
+" s) - surround current word with (word) - no space
+map <Leader>s ysiw
 
-" https://github.com/frazrepo/vim-rainbow#simple-configuration
+" https://github.com/luochen1990/rainbow
 let g:rainbow_active = 1
 
 " QFEnter
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>']
 let g:qfenter_keymap.vopen = ['<Leader>v']
-let g:qfenter_keymap.hopen = ['<Leader>h']
+let g:qfenter_keymap.hopen = ['<Leader>x']
 let g:qfenter_keymap.topen = ['<Leader>t']
 
 " fzf
@@ -268,7 +268,8 @@ let g:lightline = {
 
 " BufExplore - navigate buffers
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
-map <Leader>w :ToggleBufExplorer<CR>
+map <Leader>bb :ToggleBufExplorer<CR>
+" <Space>bv - in vert split
 
 " Vim-caser - change casing
 " https://github.com/arthurxavierx/vim-caser
