@@ -85,6 +85,13 @@ alias kp='kubectl get po --all-namespaces | grep'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'
+# describes the entire cluster
+alias kall='kubectl api-resources --verbs=list --namespaced -o name | grep -v events | paste -sd',' - | xargs -n 1 kubectl get --show-kind --ignore-not-found --no-headers --all-namespaces -o yaml'
+
+# Useful commands I am too afraid to create aliases for
+# Deletes all Failed pods (good way to clean up failed cron jobs)
+# kubectl -n general delete pods --field-selector=status.phase=Failed
+
 
 # Terraform
 alias tf='terraform'
