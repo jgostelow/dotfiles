@@ -11,6 +11,7 @@ Plug 'drmingdrmer/vim-toggle-quickfix'
 Plug 'majutsushi/tagbar'
 
 Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 " Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -33,13 +34,14 @@ Plug 'hashivim/vim-terraform', {'for': 'terraform'}
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'vim-syntastic/syntastic' - very slow
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'arthurxavierx/vim-caser'
 
 Plug 'mhinz/vim-startify'
 
 Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
 Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
+" Plug 'camspiers/lens.vim'
 
 
 " Themes
@@ -151,7 +153,6 @@ hi LineNr ctermfg=white
 augroup filetypedetect
 au! BufRead,BufNewFile *.hamlc	setfiletype	haml " hamlc => haml
 augroup END
-
 autocmd filetype crontab setlocal nobackup nowritebackup
 
 " ctags
@@ -168,17 +169,7 @@ set updatetime=100
 " --------------- PLUGINS -------------------------------
 
 " ---- Plugin commands ----
-" splitjoin
-" - gS - convert single line to multi-line equivalents
-" - gJ - convert multi-line into single line equivalents
 "
-" vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
-" :GitGutterToggle - enable/disable
-" You can jump between hunks with [c and ]c.
-" You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
-" Highlight git changes like vimdiff
-map <Leader>gg :GitGutterLineHighlightsToggle<CR>
-
 " NERDTree - leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<Leader>v' " Space,v - open vsplit
@@ -220,11 +211,12 @@ map ff :FZF<CR>
 " Search for text
 map fa :Ag<CR>
 " Search commit history for current file
-map fb :BCommits<CR>
+map fg :BCommits<CR>
 " Search vim commands
 map fc :Commands<CR>
 " Search Command History
 map fh :History:<CR>
+
 " Limelight
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
@@ -238,47 +230,40 @@ set number " display the current line number
 " json pretty - Leader,j
 map <Leader>j :%!jq '.'<CR>
 
-" The Silver Searcher - Ag (fast search)
-set grepprg=ag\ --nogroup\ --nocolor
-" K - search for the word under the cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
 " lightline - https://github.com/itchyny/lightline.vim
 set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 
 " BufExplore - navigate buffers
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
 map <Leader>bb :ToggleBufExplorer<CR>
-" <Space>bv - in vert split
 
 " Vim-caser - change casing
 " https://github.com/arthurxavierx/vim-caser
-" gsm - MixedCase
-" gsp - PascalCase
-" gsc - camelCase
-" gss/gs_ - snake_case
-" gsu/gsU - UPPER_CASE
-" gst - Title Case
-" gs<space> space case
-" gsk - dash-case or kebab-case
-" gs. - dot.case
+let g:caser_prefix = "gc"
+" gcm - MixedCase
+" gcp - PascalCase
+" gcc - camelCase
+" gcs/gc_ - snake_case
+" gcu/gcU - UPPER_CASE
+" gct - Title Case
+" gc<space> space case
+" gck - dash-case or kebab-case
+" gc. - dot.case
 
 " lens.vim
-let g:lens#disabled = 1
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
-let g:lens#width_resize_min = 120
+" let g:lens#disabled = 1
+" let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+" let g:lens#width_resize_min = 120
 
-" emmet - https://www.emmet.io/
-" https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
-let g:user_emmet_leader_key=','
+" vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
+" :GitGutterToggle - enable/disable
+" You can jump between hunks with [c and ]c.
+" You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
+" Highlight git changes like vimdiff
+map <Leader>gg :GitGutterLineHighlightsToggle<CR>
 
-" For ruby coc support
-" https://jamesnewton.com/blog/setting-up-coc-nvim-for-ruby-development
-let g:coc_global_extensions = ['coc-solargraph']
 " ------------ Git (Fugitive) ---------------------
 map <Leader>gb :Gblame<CR>
 " git status - f,s

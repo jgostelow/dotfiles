@@ -13,3 +13,6 @@ augroup END
 
 map gvd :vsplit<CR>gd<CR>
 
+" For ruby coc support
+" https://jamesnewton.com/blog/setting-up-coc-nvim-for-ruby-development
+let g:coc_global_extensions = ['coc-solargraph']
