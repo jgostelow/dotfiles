@@ -27,7 +27,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ggreer/the_silver_searcher'
 
 Plug 'mattn/emmet-vim', {'for': 'html'}
-Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-rails', {'for': 'ruby'}
 Plug 'hashivim/vim-terraform', {'for': 'terraform'}
 
@@ -51,7 +51,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Open and source vimrc
-map vv :e $MYVIMRC<CR>
+map vv :vsp $MYVIMRC<CR>
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echo "Reloaded" $MYVIMRC
 
 " Break some bad habits
@@ -126,7 +126,7 @@ map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
 " Quickfix toggle
-smap <Leader>f <Plug>window:quickfix:loop
+map <Leader>f <Plug>window:quickfix:loop
 
 " COLORS
 set bg=dark
