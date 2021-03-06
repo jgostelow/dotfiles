@@ -25,11 +25,13 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'ggreer/the_silver_searcher'
 
-Plug 'mattn/emmet-vim'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-rails'
+Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'tpope/vim-rails', {'for': 'ruby'}
+Plug 'hashivim/vim-terraform', {'for': 'terraform'}
+
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic' - very slow
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'mhinz/vim-startify'
@@ -39,11 +41,9 @@ Plug 'luochen1990/rainbow'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 
-Plug 'hashivim/vim-terraform'
 
 " Themes
-
-Plug 'wadackel/vim-dogrun'
+" Plug 'wadackel/vim-dogrun'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -70,6 +70,7 @@ set autoindent        " ai:  indent to match previous line
 set formatoptions=crql  " fo:  word wrap, format comments
 set showmatch         " show matches on parens, bracketc, etc.
 set diffopt+=vertical " Show diffs vertically
+
 " Better diffs
 " https://vimways.org/2018/the-power-of-diff/
 " 8.1.360 required
@@ -77,95 +78,78 @@ if v:version >= 801
   set diffopt+=algorithm:patience
   set diffopt+=indent-heuristic
 endif
+
 " set list              " Show whitespace characters
-set esckeys
-
-
-set directory=$HOME/.vim/swapfiles/
+set esckeys " esc immediately. Do not wait for a sequence
+set directory=$HOME/.vim/swapfiles/ " save swap files here
 filetype plugin indent on
-syntax on
-autocmd BufWritePre * %s/\s\+$//e " Remove white space on save
+autocmd BufWritePre * %s/\s\+$//e " Remove trailing white space on save
+
 " Do not freeze on CTRL-S (do not move this comment after the command. It breaks!)
+" To avoid my habit of saving files while idle from locking up my vim
 silent !stty -ixon > /dev/null 2>/dev/null
 
-" use new regex engine for syntax highlighting
-" https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-set re=1
-
-set incsearch     " search as you type
-set hlsearch      " highlight search results
-
-" Do not overwrite buffer when pasting
-vnoremap p "_dp
-vnoremap P "_dP
-" Clipboard
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
 " read and write from system clipboard
 set clipboard=unnamed
-
+" space,y - yank to system clipboard
+map <Leader>y "*y
 " key remappings
 let mapleader = "\<Space>"
 nmap ; :
+" toggle paste mode
 nnoremap <Leader>p :set invpaste<CR>
+" yank to end of line
 nnoremap Y y$
-
-map gvf :vsplit<CR>gf<CR>
 
 " SPLIT WINDOWS
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
+" Open highlighted file in vertical split
+map gvf :vsplit<CR>gf<CR>
 
 " close current window with space-q, and all windows with ctrl-q
 map <Leader>q :q<CR>
 map <C-q> :qa<CR>
-" Move window up,download,left,right - ctrl+w ctrl+[h,j,k,l]
-" map <C-w><C-k> <C-w><S-K>
-" map <C-w><C-j> <C-w><S-J>
-" map <C-w><C-h> <C-w><S-H>
-" map <C-w><C-l> <C-w><S-L>
-" move down a window when in split screen mode
+" move between splits planes and collapse inactive panes
 map <C-j> <C-W>j<C-W>_
-" move up a window when in split screen mode
 map <C-k> <C-W>k<C-W>_
-" move left a window when in vsplit screen mode
-map <C-h> <C-W>h<C-W>|
-" move right a window when in vsplit screen mode
-map <C-l> <C-W>l<C-W>|
+map <C-h> <C-W>h<C-W>\|
+map <C-l> <C-W>l<C-W>\|
 
-" Tabs
+" Tab navigation
 map <C-t><up> :tabr<cr>
 map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
-" space,y - yank to system clipboard
-map <Leader>y "*y
-
 " Quickfix toggle
-nmap <C-s><C-s> <Plug>window:quickfix:loop
+smap <Leader>f <Plug>window:quickfix:loop
 
 " COLORS
 set bg=dark
 colorscheme gruvbox
 " do not make transparent backgrounds opaque by highlighting them
-" hi Normal ctermbg=none
+hi Normal ctermbg=none
 
-" Highlight search results
-hi Search cterm=NONE ctermfg=blue ctermbg=yellow
-hi SpellBad cterm=NONE ctermfg=red ctermbg=blue
+syntax on " syntax highlighting
+" use new regex engine for syntax highlighting
+" https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set re=1
+
+set incsearch     " search as you type
+" set hlsearch      " highlight search results
 
 " make line numbers white
 hi LineNr ctermfg=white
 
 " Highlight the 120 column limit
-highlight ColorColumn ctermbg=cyan
+" highlight ColorColumn ctermbg=cyan
 " set colorcolumn=121
 
 " Filetype mappers
 augroup filetypedetect
-  au! BufRead,BufNewFile *.hamlc	setfiletype	haml " hamlc => haml
+au! BufRead,BufNewFile *.hamlc	setfiletype	haml " hamlc => haml
 augroup END
 
 autocmd filetype crontab setlocal nobackup nowritebackup
