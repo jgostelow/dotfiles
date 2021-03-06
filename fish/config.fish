@@ -71,5 +71,3 @@ end
 function yvm
   source /usr/local/opt/yvm/yvm.fish ';' yvm $argv
 end
-
-theme_gruvbox dark hard
