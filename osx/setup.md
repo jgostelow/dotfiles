@@ -1,5 +1,4 @@
 Keyboard settings
-- map Caps Lock => Escape
 - switch cmd => option
 
 Mission Control Settings
@@ -16,10 +15,8 @@ Manually install
 - Google Backup and Sync (For Home Google Drive)
 - Google Drive File Stream (For Work Google Drive)
 - VSCode
-- SQLProc for MSSQL
--- copy license and connections from old laptop
-- Parallels (https://www.parallels.com/products/desktop/download/)
--- copy VM from old machine
+- Node
+    curl -sL install-node.now.sh/lts | bash
 
 iTerm2 config
 - Text -> Use built-in Powerline glyphs

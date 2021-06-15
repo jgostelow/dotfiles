@@ -13,11 +13,12 @@ function binstall {
 echo "Installing Homebrew and some basic things......"
 [ ! -f "`which brew`" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update > /dev/null
-brew cask install docker
-brew cask install firefox
-brew cask install postman
-brew cask install slack
-brew cask install bettertouchtool
+brew install --cask docker
+brew install --cask firefox
+brew install --cask postman
+brew install --cask slack
+brew install --cask bettertouchtool
+binstall 'vim'
 binstall 'wget'
 binstall 'htop'
 binstall 'glances'
@@ -46,6 +47,9 @@ binstall 'starship'
 
 brew tap jesseduffield/lazydocker
 binstall 'lazydocker'
+
+# Node
+curl -sL install-node.now.sh/lts | bash
 
 echo "source $basedir/base/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases
@@ -102,6 +106,8 @@ echo "source $baserdir/fish/config.fish" >> ~/.config/fish/config.fish
 ln -sf $basedir/fish/fishfile ~/.config/fish/
 fisher
 
+ln -sf $baserdir/base/startship.toml ~/.config/
+
 ### Ruby ###
 binstall 'rbenv'
 binstall 'ruby-build'
@@ -125,8 +131,8 @@ brew services start mysql@5.7
 gem install mysql2
 
 ## Golang ###
-binstall 'gvm'
-gvm install go1.13
-gvm use go1.13 --default
+# binstall 'gvm'
+# gvm install go1.13
+# gvm use go1.13 --default
 
 echo "OSX Setup complete!"
