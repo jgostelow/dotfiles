@@ -11,11 +11,13 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle git
 antigen bundle docker
 antigen bundle docker-compose
+#antigen theme romkatv/powerlevel10k
 antigen apply
 
-ZSH_THEME="jono" # base on amuse, added a horizontal line
+eval "$(starship init zsh)"
 
-ENABLE_CORRECTION="true"
+# ZSH_THEME="jono" # base on amuse, added a horizontal line
+
 COMPLETION_WAITING_DOTS="true"
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
@@ -26,7 +28,10 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Do not autocorrect commands
+#ENABLE_CORRECTION="true"
 unsetopt correct_all
+unsetopt correct
+DISABLE_AUTO_TITLE="true"
 
 # Do not share history across sessions
 unsetopt share_history

@@ -8,14 +8,22 @@ alias vi=vim
 alias v=vim
 alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
 alias cdl='cd (pwd -P)'
+# cd to current git root
+alias cdr='cd $(git rev-parse --show-toplevel)'
 alias cs='cdls'
 alias dul='du -ah * | sort -r -n | head -10'
+
+alias a='source ~/.aliases'
+alias z='source ~/.zshrc'
 
 # Tmux
 alias t='tmux'
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
+alias tx='tmuxinator'
+alias txs='tmuxinator start'
+alias txo='tmuxinator open'
 
 # Git
 alias lzg='lazygit'

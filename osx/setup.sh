@@ -49,7 +49,7 @@ brew tap jesseduffield/lazydocker
 binstall 'lazydocker'
 
 # Node
-curl -sL install-node.now.sh/lts | bash
+# curl -sL install-node.now.sh/lts | bash
 
 echo "source $basedir/base/aliases" > ~/.aliases
 echo "source $basedir/osx/aliases" >> ~/.aliases

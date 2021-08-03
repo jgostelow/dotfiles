@@ -89,7 +89,7 @@ autocmd BufWritePre * %s/\s\+$//e " Remove trailing white space on save
 
 " Do not freeze on CTRL-S (do not move this comment after the command. It breaks!)
 " To avoid my habit of saving files while idle from locking up my vim
-silent !stty -ixon > /dev/null 2>/dev/null
+" silent !stty -ixon > /dev/null 2>/dev/null - disabled because of slow vim startup
 
 " read and write from system clipboard
 set clipboard=unnamed

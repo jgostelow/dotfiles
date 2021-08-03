@@ -7,9 +7,9 @@ if type -q hub
   alias git=hub
 end
 
-if type -q rbenv
-  status --is-interactive; and source (rbenv init -|psub)
-end
+#if type -q rbenv
+#  status --is-interactive; and source (rbenv init -|psub)
+#end
 
 # Fisher
 if not functions -q fisher
@@ -63,6 +63,8 @@ end
 function nvm
 	bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
+set -x NVM_DIR ~/.nvm
+nvm use default --silent
 
 function gvm
   bass source ~/.gvm/scripts/gvm ';' gvm $argv
