@@ -7,9 +7,6 @@
 [submodule ".vim/bundle/tlib_vim"]
 	path = base/.vim/bundle/tlib_vim
 	url = git@github.com:tomtom/tlib_vim.git
-[submodule "base/.tmux/plugins/tpm"]
-	path = base/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule ".vim/bundle/vimshell.vim"]
 	path = base/.vim/bundle/vimshell.vim
 	url = git@github.com:Shougo/vimshell.vim.git
@@ -34,9 +31,3 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = base/.vim/bundle/Vundle.vim
 	url = git@github.com:VundleVim/Vundle.vim.git
-[submodule "base/.tmux/plugins/tmux-continuum"]
-	path = base/.tmux/plugins/tmux-continuum
-	url = git@github.com:tmux-plugins/tmux-continuum.git
-[submodule "base/.tmux/plugins/tmux-resurrect"]
-	path = base/.tmux/plugins/tmux-resurrect
-	url = git@github.com:tmux-plugins/tmux-resurrect.git
