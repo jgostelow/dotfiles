@@ -1,6 +1,8 @@
 alias a='source ~/.aliases'
 alias z='source ~/.zshrc'
 
+################## Basic commands ##################
+
 alias ls='exa'
 alias l='ls'
 alias ll='exa -lahF --git'
@@ -15,39 +17,39 @@ alias c='cat'
 alias vi=vim
 alias v=vim
 alias ts='ts "[%H:%M:%S]"' #http://joeyh.name/code/moreutils/
-alias cdl='cd (pwd -P)'
-# cd to current git root
-alias cdr='cd $(git rev-parse --show-toplevel)'
-alias cs='cdls'
+alias cd='cdls'
+alias cdr='cd $(git rev-parse --show-toplevel)' # cd to current git root
+alias cdl='cd $(pwd -P)' # go to real dir from a current symlink dir
 alias dul='du -ah * | sort -r -n | head -10'
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
-# FZF shortcuts
+################## FZF commands ##################
+
 # files (with preview)
 alias ff='fzf --preview="bat {} --color=always"'
 alias f='vim $(ff)'
 # git branches
-alias fb='git branch | fzf | tr -d " "'
+alias fb='git branch | fzf | tr -d " "' #needed for below aliases
 # checkout remote branch
-alias fgcr='git checkout --track (git branch -r | fzf | tr -d " ")'
+alias fgcr='git checkout --track $(git branch -r | fzf | tr -d " ")'
 # checkout local branch
 alias fgc='git checkout $(fb)'
-# delete local branch
-alias fgbd='git branch -d $(fb)'
 # tmux sessions
-alias fta="tmux attach-session -t (tmux list-sessions -F '#{session_name}' | fzf)"
+alias fta='tmux attach-session -t $(tmux list-sessions -F "#{session_name}" | fzf)'
 
-# Tmux
+################## Tmux commands ##################
+
 alias t='tmux'
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
-alias tx='tmuxinator'
 alias txs='tmuxinator start'
 alias txo='tmuxinator open'
 
+################## Git commands ##################
+
 # Git
-alias lzg='lazygit'
+alias lg='lazygit'
 alias gfo='git fetch origin'
 alias gb="git branch"
 alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - (%(color:green)%(committerdate:relative)%(color:reset))'"
@@ -83,7 +85,8 @@ alias gignored='git ls-files --others -i --exclude-standard'
 # built-in to omzsh - git stash clear
 # unalias gstc
 
-# Docker
+################## Docker commands ##################
+
 alias d='docker'
 # https://github.com/jesseduffield/lazydocker/blob/master/README.md
 alias lzd='lazydocker'
@@ -107,7 +110,8 @@ alias dcdown='docker-compose down -v'
 alias dclogs='docker-compose logs'
 alias dcexec='docker-compose exec'
 
-# Kubernetes
+################## K8s commands ##################
+
 alias k='kubectl'
 alias kuc='kubectl config use-context'
 alias kc='kubectl config get-contexts'
@@ -122,9 +126,10 @@ alias kall='kubectl api-resources --verbs=list --namespaced -o name | grep -v ev
 # Deletes all Failed pods (good way to clean up failed cron jobs)
 # kubectl -n general delete pods --field-selector=status.phase=Failed
 
+################## Terraform commands ##################
 
-# Terraform
 alias tf='terraform'
 
-# Ruby
+################## Ruby commands ##################
+
 alias be='bundle exec'
