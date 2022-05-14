@@ -30,6 +30,8 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-rails', {'for': 'ruby'}
 Plug 'hashivim/vim-terraform', {'for': 'terraform'}
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'vim-syntastic/syntastic' - very slow

@@ -1,8 +1,16 @@
-alias la='ls -la'
+alias a='source ~/.aliases'
+alias z='source ~/.zshrc'
+
+alias ls='exa'
+alias l='ls'
+alias ll='exa -lahF --git'
+alias lll='ll --tree --level=2'
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias find='fd'
 alias less='less -r'
+alias cat='bat'
 alias c='cat'
 alias vi=vim
 alias v=vim
@@ -12,9 +20,22 @@ alias cdl='cd (pwd -P)'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias cs='cdls'
 alias dul='du -ah * | sort -r -n | head -10'
+alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
-alias a='source ~/.aliases'
-alias z='source ~/.zshrc'
+# FZF shortcuts
+# files (with preview)
+alias ff='fzf --preview="bat {} --color=always"'
+alias f='vim $(ff)'
+# git branches
+alias fb='git branch | fzf | tr -d " "'
+# checkout remote branch
+alias fgcr='git checkout --track (git branch -r | fzf | tr -d " ")'
+# checkout local branch
+alias fgc='git checkout $(fb)'
+# delete local branch
+alias fgbd='git branch -d $(fb)'
+# tmux sessions
+alias fta="tmux attach-session -t (tmux list-sessions -F '#{session_name}' | fzf)"
 
 # Tmux
 alias t='tmux'
@@ -55,6 +76,7 @@ alias gsta="git stash save -u"
 alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gsts="git stash show -p"
+alias gcommiters="git shortlog --summary --since='1 month ago' | sort -r"
 # More obscure git commands
 alias gignored='git ls-files --others -i --exclude-standard'
 

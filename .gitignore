@@ -3,3 +3,4 @@ base/.tmux/resurrect/
 base/zshrc.zwc
 bin/cloud_sql_proxy
 base/.vim/plugged/
+zsh/zshrc.zwc

@@ -5,40 +5,38 @@ basedir=$HOME/GIT/dotfiles
 function install {
   if ! command -v $1 > /dev/null; then
     echo "###### Installing $1 ######"
-    sudo apt install -y $1
+    brew install $1
   fi
 }
 
 ### GENERAL ###
-echo "Installing some basic things......"
-echo "Updating apt repositories"
-sudo apt update > /dev/null
+echo "###### Installing homebrew"
+[ ! -f "`which brew`" ] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update > /dev/null
+install 'vim'
 install 'wget'
-install 'silversearcher-ag'
-install 'tmux'
+install 'glances'
 install 'tig'
 install 'jq'
-install 'tldr'
-install 'nodejs' # required by coc.vim
-install 'fish'
+install 'yq'
+install 'tmux'
+install 'ctags'
+install 'vifm'
+install 'ripgrep'
+install 'moreutils' # http://joeyh.name/code/moreutils/
 
-### FISH ###
-echo "Changing to fish"
+# https://www.vimfromscratch.com/articles/awesome-command-line-tools/
+install 'tldr'
+install 'bat'
+install 'exa'
+install 'fd'
+install 'fzf'
+
+install 'starship'
+install 'nodejs' # required by coc.vim
 
 echo "Setting up aliases......"
 echo "source $basedir/base/aliases" > ~/.aliases
-echo "source $basedir/linux/aliases" >> ~/.aliases
-echo "source ~/.aliases" >> ~/.config/fish/config.fish
-echo "source $basedir/fish/config.fish" >> ~/.config/fish/config.fish
-
-# https://github.com/jorgebucaran/fisher
-ln -sf $basedir/fish/fishfile ~/.config/fish/
-fisher
-
-# https://starship.rs/
-curl -fsSL https://starship.rs/install.sh | bash
-
-chsh -s `which fish`
 
 ### GIT ###
 echo "Setting up git config......"
@@ -47,21 +45,45 @@ cat > ~/.gitconfig << EOF
   path = $basedir/base/gitconfig
   path = $basedir/base/gitconfig.personal
 EOF
+install 'diff-so-fancy'
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 ln -sf $basedir/base/.gitignore_global ~/
-
-### Install git submodules - typically plugins for vim and tmux
-git submodule init
-git submodule update
 
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/base/.vim ~/
-vim +'PlugInstall -s --sync' +qa
+vim +'PlugInstall' +qa
 
 ### TMUX ###
 echo "Setting up tmux......"
 ln -sf $basedir/base/.tmux ~/
 ln -sf $basedir/base/.tmux.conf ~/
+echo "source-file ~/.tmux.conf" > ~/.tmate.conf
 tmux source ~/.tmux.conf
 
-echo "Linux Setup complete!"
+### ZSH ###
+echo "Installing to zsh + oh-my-zsh"
+install 'zsh'
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s `which zsh`
+(curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
+echo "source $basedir/zsh/zshrc" > ~/.zshrc
+echo "source $baserdir/zsh/functions.zsh" >> ~/.zshrc
+/bin/zsh -i -c "source ~/antigen.zsh"
+ln -sf $baserdir/base/starship.toml ~/.config/
+
+### Ruby ###
+install 'rbenv'
+install 'ruby-build'
+
+echo "#### Installing Ruby 2.7 ####"
+rbenv install 2.7.4
+rbenv global 2.7.4
+rbenv rehash
+
+ln -sf $basedir/base/.gemrc ~/
+
+echo "#### Installing Rails 5.2 ####"
+gem install rails -v 6.1.6
+
+echo "Windows Setup complete!"
