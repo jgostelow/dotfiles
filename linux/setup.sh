@@ -32,8 +32,14 @@ install 'exa'
 install 'fd'
 install 'fzf'
 
-install 'starship'
+install 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
 install 'nodejs' # required by coc.vim
+
+brew tap jesseduffield/lazydocker
+install 'lazydocker'
+brew tap jesseduffield/lazygit
+install 'lazygit'
+ln -sf $basedir/base/lazygit.config.yml ~/.config/lazygit/config.yml
 
 echo "Setting up aliases......"
 echo "source $basedir/base/aliases" > ~/.aliases
@@ -43,7 +49,6 @@ echo "Setting up git config......"
 cat > ~/.gitconfig << EOF
 [include]
   path = $basedir/base/gitconfig
-  path = $basedir/base/gitconfig.personal
 EOF
 install 'diff-so-fancy'
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
@@ -70,7 +75,6 @@ chsh -s `which zsh`
 echo "source $basedir/zsh/zshrc" > ~/.zshrc
 echo "source $baserdir/zsh/functions.zsh" >> ~/.zshrc
 /bin/zsh -i -c "source ~/antigen.zsh"
-ln -sf $baserdir/base/starship.toml ~/.config/
 
 ### Ruby ###
 install 'rbenv'
