@@ -70,10 +70,9 @@ echo "Installing to zsh + oh-my-zsh"
 install 'zsh'
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s `which zsh`
-(curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
+install antigen
 echo "source $basedir/zsh/zshrc" > ~/.zshrc
 echo "source $baserdir/zsh/functions.zsh" >> ~/.zshrc
-/bin/zsh -i -c "source ~/antigen.zsh"
 
 ### Ruby ###
 install 'rbenv'

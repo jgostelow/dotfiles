@@ -1,29 +1,39 @@
-function reload() {
-  source ~/.zshrc
-}
-
 function cdls() {
   builtin cd $argv;
   ls;
 }
 
-# Recursive search and replace
+###### Git ######
 
-# $1 = file pattern e.g. *.go
-# $2 = old string
-# $3 new string
-# e.g. sandr .go Sirupsen sirupsen
-function sandr() {
-  find . -name $1 -print0 | xargs -0 sed -i "" "s/$2/$3/g"
-}
-
-# Git
 # open the files that were modified in a specified commit
 function gedit() {
   vim -O (git show --pretty=format: --name-only $1 | sed '$!N; s/\n/ /;')
 }
 
-# Docker
+is_in_git_repo() {
+    # git rev-parse HEAD > /dev/null 2>&1
+    git rev-parse HEAD > /dev/null
+}
+
+# https://cocktailmake.github.io/posts/improvement-of-git-commands-with-fzf/
+function fgs() { # fshow - git commit browser
+	is_in_git_repo || return
+
+	_gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+	_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always %'"
+	git log --graph --color=always \
+		--format="%C(auto)%h%d [%an] %s %C(black)%C(bold)%cr" "$@" |
+		fzf --ansi --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+		--preview="$_viewGitLogLine" \
+		--bind "ctrl-m:execute:
+		(grep -o '[a-f0-9]\{7\}' | head -1 |
+			xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+				{}
+				FZF-EOF"
+}
+
+###### Docker ######
+
 # https://github.com/jesseduffield/lazydocker/blob/master/README.md
 function drmii() {
   docker rmi -f (docker images $1 -q | uniq)
@@ -35,7 +45,7 @@ function dcsh() {
     docker-compose exec $1 sh
   }
 
-# Kubernetes
+###### Kubernetes ######
 function ksh() {
   kubectl exec -ti $1 sh
 }
@@ -45,5 +55,5 @@ if which hub > /dev/null; then
   alias git=hub
 fi
 
-# Ruby
+###### Ruby ######
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

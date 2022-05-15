@@ -82,6 +82,9 @@ if v:version >= 801
   set diffopt+=algorithm:patience
   set diffopt+=indent-heuristic
 endif
+if &diff
+  colorscheme apprentice
+endif
 
 " set list              " Show whitespace characters
 set esckeys " esc immediately. Do not wait for a sequence
