@@ -3,7 +3,7 @@ function reload() {
 }
 
 function cdls() {
-  cd $argv;
+  builtin cd $argv;
   ls;
 }
 

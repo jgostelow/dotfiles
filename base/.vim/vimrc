@@ -113,7 +113,7 @@ set splitright
 map gvf :vsplit<CR>gf<CR>
 
 " close current window with space-q, and all windows with ctrl-q
-map <Leader>q :q<CR>
+map <Leader>q :qa<CR>
 map <C-q> :qa<CR>
 " move between splits planes and collapse inactive panes
 map <C-j> <C-W>j<C-W>_

@@ -14,9 +14,8 @@ antigen bundle docker-compose
 #antigen theme romkatv/powerlevel10k
 antigen apply
 
-eval "$(starship init zsh)"
-
-# ZSH_THEME="jono" # base on amuse, added a horizontal line
+# https://ohmyposh.dev/docs/themes
+eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/dracula.omp.json)"
 
 COMPLETION_WAITING_DOTS="true"
 

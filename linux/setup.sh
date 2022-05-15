@@ -56,12 +56,11 @@ ln -sf $basedir/base/.gitignore_global ~/
 
 ### VIM ###
 echo "Setting up vim......"
-ln -sf $basedir/base/.vim ~/
+ln -sf $basedir/base/.vim/* ~/.vim/
 vim +'PlugInstall' +qa
 
 ### TMUX ###
 echo "Setting up tmux......"
-ln -sf $basedir/base/.tmux ~/
 ln -sf $basedir/base/.tmux.conf ~/
 echo "source-file ~/.tmux.conf" > ~/.tmate.conf
 tmux source ~/.tmux.conf
