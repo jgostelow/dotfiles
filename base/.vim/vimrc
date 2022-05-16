@@ -49,6 +49,7 @@ Plug 'camspiers/animate.vim'
 " Themes
 " Plug 'wadackel/vim-dogrun'
 Plug 'morhetz/gruvbox'
+Plug 'romainl/Apprentice'
 
 call plug#end()
 
@@ -270,10 +271,10 @@ let g:caser_prefix = "gc"
 map <Leader>gg :GitGutterLineHighlightsToggle<CR>
 
 " ------------ Git (Fugitive) ---------------------
-map <Leader>gb :Gblame<CR>
+map <Leader>gb :Git blame<CR>
 " git status - f,s
 "     - open file : enter
 "     - open split : o
 "     - open vsplit : S
-map <Leader>gs :Gstatus<CR> :resize 10<CR>
-map <Leader>gd :Gdiff<CR>
+map <Leader>gs :Git status<CR> :resize 10<CR>
+map <Leader>gd :Git diff<CR>

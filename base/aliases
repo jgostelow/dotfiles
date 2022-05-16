@@ -22,9 +22,11 @@ alias cdr='cd $(git rev-parse --show-toplevel)' # cd to current git root
 alias cdl='cd $(pwd -P)' # go to real dir from a current symlink dir
 alias dul='du -ah * | sort -r -n | head -10'
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
+alias chrome="open -a 'Google Chrome'"
 
 ################## Tmux commands ##################
 
+# Tmux
 alias t='tmux'
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
@@ -49,6 +51,7 @@ alias gll='git log --graph --color=always --format="%C(auto)%h%d [%an] %s %C(bla
 alias gs="git status -s"
 alias gd="git diff"
 alias gdn="git diff --name-only"
+alias gdnm="git diff --name-only origin/master"
 alias gdt="git difftool -y"
 alias gdtm="git difftool -y origin/master"
 alias gdtf="git difftool -y --tool=fugitive"
@@ -100,7 +103,7 @@ alias dcexec='docker-compose exec'
 alias k='kubectl'
 alias kuc='kubectl config use-context'
 alias kc='kubectl config get-contexts'
-alias kp='kubectl get po --all-namespaces | grep'
+alias kp='kubectl get po'
 alias kd='kubectl describe pod'
 alias kcp='kubectl cp'
 alias ke='kubectl exec'

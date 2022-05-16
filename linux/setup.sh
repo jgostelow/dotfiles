@@ -57,6 +57,7 @@ ln -sf $basedir/base/.gitignore_global ~/
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/base/.vim/* ~/.vim/
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +'PlugInstall' +qa
 
 ### TMUX ###

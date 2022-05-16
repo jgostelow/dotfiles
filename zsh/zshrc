@@ -6,7 +6,7 @@ COMPLETION_WAITING_DOTS="true"
 
 ## Plugins
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-source /home/linuxbrew/.linuxbrew/share/antigen/antigen.zsh
+source $(brew --prefix)/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -28,6 +28,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Do not share history across sessions
 unsetopt share_history
+setopt no_share_history
 
 PATH=~/bin:$PATH
 export EDITOR='vim'
@@ -39,6 +40,4 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 
 # fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
