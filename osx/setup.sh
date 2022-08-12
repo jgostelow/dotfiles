@@ -37,6 +37,9 @@ install 'bat'
 install 'exa'
 install 'fd'
 install 'fzf'
+install 'dust'
+install 'duf'
+install 'mcfly'
 
 install 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
 install 'nodejs' # required by coc.vim

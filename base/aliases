@@ -1,5 +1,7 @@
 alias a='source ~/.aliases'
+alias aa='vim ~/.aliases'
 alias z='source ~/.zshrc'
+alias zz='vim ~/.zshrc'
 
 ################## Basic commands ##################
 
@@ -7,6 +9,8 @@ alias ls='exa'
 alias l='ls'
 alias ll='exa -lahF --git'
 alias lll='ll --tree --level=2'
+alias du='dust'
+alias df='duf'
 
 alias rm='rm -i'
 alias cp='cp -i'

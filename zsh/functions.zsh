@@ -1,6 +1,5 @@
 function cdls() {
-  builtin cd $argv;
-  ls;
+  builtin cd $argv && ls
 }
 
 ###### Git ######
@@ -31,6 +30,8 @@ function fgs() { # fshow - git commit browser
 				{}
 				FZF-EOF"
 }
+
+eval "$(mcfly init zsh)"
 
 ###### Docker ######
 
