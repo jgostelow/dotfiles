@@ -6,7 +6,7 @@ COMPLETION_WAITING_DOTS="true"
 
 ## Plugins
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-source $(brew --prefix)/share/antigen/antigen.zsh
+source $HOME/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting

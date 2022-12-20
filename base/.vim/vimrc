@@ -79,10 +79,10 @@ set diffopt+=vertical " Show diffs vertically
 " Better diffs
 " https://vimways.org/2018/the-power-of-diff/
 " 8.1.360 required
-if v:version >= 801
-  set diffopt+=algorithm:patience
-  set diffopt+=indent-heuristic
-endif
+" if v:version >= 801
+  " set diffopt+=algorithm:patience
+  " set diffopt+=indent-heuristic
+" endif
 if &diff
   colorscheme apprentice
 endif

@@ -55,7 +55,6 @@ install 'lazygit'
 
 echo "Setting up aliases......"
 echo "source $basedir/base/aliases" > ~/.aliases
-echo "source $basedir/osx/aliases" >> ~/.aliases
 
 ### GIT ###
 echo "Setting up git config......"
@@ -70,6 +69,7 @@ ln -sf $basedir/base/.gitignore_global ~/
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/base/.vim ~/
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +'PlugInstall' +qa
 
 ### TMUX ###
@@ -85,23 +85,22 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 chsh -s `which zsh`
 (curl -L git.io/antigen > ~/antigen.zsh) &> /dev/null
 echo "source $basedir/zsh/zshrc" > ~/.zshrc
-echo "source $baserdir/zsh/functions.zsh" >> ~/.zshrc
+echo "source $basedir/zsh/functions.zsh" >> ~/.zshrc
 /bin/zsh -i -c "source ~/antigen.zsh"
 
 ### Ruby ###
-install 'rbenv'
-install 'ruby-build'
+# install 'rbenv'
+# install 'ruby-build'
 
 echo "#### Installing Ruby 2.5 ####"
-rbenv install 3.1.2
-rbenv global 3.1.2
-rbenv rehash
+# rbenv install 3.1.2
+# rbenv global 3.1.2
+# rbenv rehash
 
-ln -sf $basedir/base/.gemrc ~/
+# ln -sf $basedir/base/.gemrc ~/
 
 ### MISC ###
 echo "Linking bin directory......"
 ln -sf $basedir/bin ~/
-
 
 echo "OSX Setup complete!"
