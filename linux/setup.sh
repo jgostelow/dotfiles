@@ -77,8 +77,9 @@ ln -sf $basedir/base/.gitignore_global ~/
 ### VIM ###
 printf "${CYAN}############################################################## Setting up vim......\n${NC}"
 ln -sf $basedir/base/.vim/* ~/.vim/
+mkdir ~/.vim/swapfiles
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +'PlugInstall' +qa
+vi +'PlugInstall' +qa
 
 ### TMUX ###
 printf "${CYAN}############################################################## Setting up tmux......\n${NC}"

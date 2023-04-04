@@ -41,7 +41,8 @@ install 'dust'
 install 'duf'
 install 'mcfly'
 
-install 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
+# install 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
+oh-my-posh font install
 install 'nodejs' # required by coc.vim
 
 brew tap jesseduffield/lazydocker
@@ -69,12 +70,14 @@ ln -sf $basedir/base/.gitignore_global ~/
 ### VIM ###
 echo "Setting up vim......"
 ln -sf $basedir/base/.vim ~/
+mkdir ~/.vim/swapfiles
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +'PlugInstall' +qa
 
 ### TMUX ###
 echo "Setting up tmux......"
 ln -sf $basedir/base/.tmux.conf ~/
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "source-file ~/.tmux.conf" > ~/.tmate.conf
 tmux source ~/.tmux.conf
 

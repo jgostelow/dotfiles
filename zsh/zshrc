@@ -14,7 +14,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen apply
 
 # https://ohmyposh.dev/docs/themes
-eval "$(oh-my-posh init zsh --config $HOME/GIT/dotfiles/zsh/sonicboom_light.custom.omp.json)"
+ eval "$(oh-my-posh init zsh --config $HOME/GIT/dotfiles/zsh/sonicboom_light.custom.omp.json)"
 # eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/sonicboom_light.omp.json)"
 
 zstyle ':completion:*' accept-exact '*(N)'

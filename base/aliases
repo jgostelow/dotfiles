@@ -1,3 +1,4 @@
+alias vim=nvim
 alias a='source ~/.aliases'
 alias aa='vim ~/.aliases'
 alias z='source ~/.zshrc'
