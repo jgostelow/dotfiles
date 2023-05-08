@@ -1,7 +1,6 @@
 from ubuntu:23.04
 LABEL maintainer="Jonathan Gostelow <jonathan.gostelow@gmail.com>"
 
-ARG basedir=$HOME/dotfiles
 ENV HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # LOCALE/TIMEZONE
@@ -19,42 +18,52 @@ RUN NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.co
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
 # GENERAL
-RUN apt update && apt install -y zsh tmux neovim wget glances exa fd-find watch tig jq exuberant-ctags nodejs
-RUN brew update && brew install -q yq
+RUN apt update && apt install -y zsh tmux neovim zip wget glances exa fd-find watch tig jq exuberant-ctags nodejs
+RUN brew update \
+	&& brew tap cantino/mcfly \
+	&& brew install -q yq mcfly
 
 #brew tap jesseduffield/lazydocker
 #binstall 'lazydocker'
 #brew tap jesseduffield/lazygit
 #binstall 'lazygit'
-#ln -sf $basedir/base/lazygit.config.yml ~/.config/lazygit/config.yml
+#ln -sf ./base/lazygit.config.yml ~/.config/lazygit/config.yml
 #
 
 # GIT
-ADD $basedir/base/gitconfig ~/.gitconfig
-ADD $basedir/base/gitignore_global ~/.gitignore_global
+COPY ./base/gitconfig /root/.gitconfig
+COPY ./base/gitignore_global /root/.gitignore_global
 RUN brew update && brew install diff-so-fancy
 
 # VIM
-#ln -sf $basedir/base/.vim/* ~/.vim/
-#mkdir ~/.vim/swapfiles
-#curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#ln -sf ./base/.vim/* /root/.vim/
+#mkdir /root/.vim/swapfiles
+#curl -fLo /root/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 #vi +'PlugInstall' +qa
 
 # TMUX
-ADD $basedir/base/.tmux.conf ~/
-#echo "source-file ~/.tmux.conf" > ~/.tmate.conf
+COPY ./base/.tmux.conf /root/
+#echo "source-file /root/.tmux.conf" > /root/.tmate.conf
 
 # ZSH
 RUN /bin/bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
 	&& apt update && apt install -y zsh-antigen \
-	&& brew install jandedobbeleer/oh-my-posh/oh-my-posh 
-ADD $basedir/zsh/zshrc > ~/.zshrc
-RUN mkdir ~/.zshfn
-ADD $baserdir/zsh/functions.zsh ~/.zshfn/functions.zsh
-RUN echo "~/.zshfn/functions.zsh" >> ~/.zshrc
+	&& curl -L git.io/antigen > ~/antigen.zsh
+RUN wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh \
+	&& chmod +x /usr/local/bin/oh-my-posh
+RUN mkdir ~/.poshthemes \
+	&& wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip \
+	&& unzip ~/.poshthemes/themes.zip -d ~/.poshthemes \
+	&& chmod u+rw ~/.poshthemes/*.json \
+	&& rm ~/.poshthemes/themes.zip
+COPY ./zsh/zshrc /root/.zshrc
+RUN mkdir /root/.zshfn
+COPY ./zsh/functions.zsh /root/.zshfn/functions.zsh
+RUN echo "source /root/.zshfn/functions.zsh" >> /root/.zshrc \
+	&& chsh -s `which zsh`
 
 # ALIASES
-ADD $basedir/base/aliases ~/.aliases
+COPY ./base/aliases /root/.aliases
 
 #### Ruby ###
 #binstall 'rbenv'
@@ -65,7 +74,7 @@ ADD $basedir/base/aliases ~/.aliases
 #rbenv global 2.7.4
 #rbenv rehash
 #
-#ln -sf $basedir/base/.gemrc ~/
+#ln -sf ./base/.gemrc ~/
 #
 #printf "${CYAN}############################################################## Installing Rails 5.2 \n${NC}"
 #gem install rails -v 6.1.6
