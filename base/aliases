@@ -32,6 +32,7 @@ alias chrome="open -a 'Google Chrome'"
 ################## Tmux commands ##################
 
 # Tmux
+alias tmux='tmux -u' #Use UTF-8 to render nerd fonts
 alias t='tmux'
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
