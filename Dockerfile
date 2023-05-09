@@ -69,13 +69,10 @@ RUN echo "Installing tmux plugins" \
 	&& ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # VIM
+# Source : https://youtu.be/Mtgo-nP_r8Y
 RUN echo "Installing NVChad (NeoVim)" \
 	&& git clone https://github.com/NvChad/NvChad .config/nvim --depth 1
-
-#ln -sf ./base/.vim/* .vim/
-#mkdir .vim/swapfiles
-#curl -fLo .vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#vi +'PlugInstall' +qa
+# TODO - add nvim plugins - e.g. https://github.com/xiyaowong/transparent.nvim
 
 # GIT
 COPY ./base/gitconfig ${HOME}/.gitconfig
