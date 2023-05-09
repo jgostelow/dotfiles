@@ -7,7 +7,7 @@ WORKDIR ${HOME}
 
 # APT packages
 RUN echo "Installing Apt packages" \
-	&& apt update && apt install -yq tzdata curl wget zip git build-essential libz-dev \
+	&& apt update && apt install -yq tzdata curl wget zip fontconfig git build-essential libz-dev \
 	zsh tmux neovim glances exa fd-find watch tig jq
 
 # LOCALE/TIMEZONE
@@ -28,16 +28,14 @@ RUN echo "Installing Homebrew packages" \
 	&& brew update \
 	&& brew tap cantino/mcfly \
 	&& brew tap jesseduffield/lazygit \
-	&& brew install -q yq mcfly lazygit
+	&& brew install -q yq mcfly lazygit diff-so-fancy
 COPY ./base/lazygit.config.yml .config/lazygit/config.yml
 
-#brew tap jesseduffield/lazydocker
-#binstall 'lazydocker'
-
-# GIT
-COPY ./base/gitconfig ${HOME}/.gitconfig
-COPY ./base/gitignore_global .gitignore_global
-RUN brew update && brew install diff-so-fancy
+# FONTS
+RUN echo "Installing Nerd Font" \
+	&& wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/JetBrainsMono.zip \
+	&& unzip JetBrainsMono.zip -d ~/.fonts \
+	&& fc-cache -fv
 
 # ZSH
 RUN echo "Installing oh-my-zsh + antigen" \
@@ -65,9 +63,9 @@ RUN echo "Switching default shell to ZSH" \
 
 # TMUX
 COPY ./base/.tmux.conf ./
-RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
-	#&& echo "source-file .tmux.conf" > .tmate.conf \
-	&& tmux source ~/.tmux.conf
+RUN echo "Installing tmux plugins" \
+	&& git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm \
+	&& ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # VIM
 #ln -sf ./base/.vim/* .vim/
@@ -75,6 +73,9 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
 #curl -fLo .vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 #vi +'PlugInstall' +qa
 
+# GIT
+COPY ./base/gitconfig ${HOME}/.gitconfig
+COPY ./base/gitignore_global .gitignore_global
 
 #### Ruby ###
 #binstall 'rbenv'
