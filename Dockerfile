@@ -8,7 +8,7 @@ WORKDIR ${HOME}
 # APT packages
 RUN echo "Installing Apt packages" \
 	&& apt update && apt install -yq tzdata curl wget zip fontconfig git build-essential libz-dev \
-	zsh tmux neovim glances exa fd-find watch tig jq
+	zsh tmux glances exa fd-find watch tig jq
 
 # LOCALE/TIMEZONE
 # SOURCE : https://dev.to/0xbf/set-timezone-in-your-docker-image-d22
@@ -28,13 +28,14 @@ RUN echo "Installing Homebrew packages" \
 	&& brew update \
 	&& brew tap cantino/mcfly \
 	&& brew tap jesseduffield/lazygit \
-	&& brew install -q yq mcfly lazygit diff-so-fancy
+	&& brew install -q neovim yq mcfly lazygit diff-so-fancy
 COPY ./base/lazygit.config.yml .config/lazygit/config.yml
 
 # FONTS
 RUN echo "Installing Nerd Font" \
 	&& wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/JetBrainsMono.zip \
 	&& unzip JetBrainsMono.zip -d ~/.fonts \
+	&& rm -f JetBrainsMono.zip \
 	&& fc-cache -fv
 
 # ZSH
@@ -68,6 +69,9 @@ RUN echo "Installing tmux plugins" \
 	&& ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # VIM
+RUN echo "Installing NVChad (NeoVim)" \
+	&& git clone https://github.com/NvChad/NvChad .config/nvim --depth 1
+
 #ln -sf ./base/.vim/* .vim/
 #mkdir .vim/swapfiles
 #curl -fLo .vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
