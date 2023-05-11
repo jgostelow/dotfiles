@@ -1,7 +1,14 @@
+NAME ?= dev
+
 build:
-	docker build -t dev-env .
+	docker build -t ${NAME} .
 
 
-start:
-	docker run -ti dev-env
+run:
+	docker run --name ${NAME} -ti ${NAME} -v dotfiles:~/dotfiles
+
+
+clean:
+	docker rm $(docker ps -aq)
+	docker image prune
 
