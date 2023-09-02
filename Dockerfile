@@ -78,6 +78,9 @@ RUN echo "Installing NVChad (NeoVim)" \
 COPY ./base/gitconfig ${HOME}/.gitconfig
 COPY ./base/gitignore_global .gitignore_global
 
+#### Node ###
+RUN brew install node
+
 #### Ruby ###
 #binstall 'rbenv'
 #binstall 'ruby-build'
@@ -94,4 +97,3 @@ COPY ./base/gitignore_global .gitignore_global
 
 # ALIASES
 COPY ./base/aliases .aliases
-CMD zsh

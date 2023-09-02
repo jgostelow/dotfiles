@@ -1,0 +1,7 @@
+services:
+  dev:
+    build: 
+        context: ./dotfiles/
+    volumes:
+      - ./GIT:/root/code
+    entrypoint: tail -f /dev/null
