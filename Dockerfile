@@ -49,7 +49,7 @@ RUN echo "Installing oh-my-posh (ZSH themes)" \
 	&& chmod +x /usr/local/bin/oh-my-posh
 COPY ./zsh/zshrc .zshrc
 COPY ./zsh/functions.zsh .zshfn/functions.zsh
-RUN echo "source .zshfn/functions.zsh" >> .zshrc
+RUN echo "source ~/.zshfn/functions.zsh" >> .zshrc
 RUN echo "Installing oh-my-posh themes" \
 	&& mkdir .poshthemes \
 	&& wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O .poshthemes/themes.zip \
