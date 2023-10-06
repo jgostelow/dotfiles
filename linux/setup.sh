@@ -8,53 +8,53 @@ HOMEBREW_NO_INSTALL_CLEANUP=1
 function binstall {
 	if ! command -v $1 > /dev/null; then
 		printf "${CYAN}############################################################## BREW: Installing $1${NC}\n"
-		NONINTERACTIVE=1 brew install $1
+		NONINTERACTIVE=1 brew install --quiet $1
 	fi
 }
 
 function install {
 	if ! command -v $1 > /dev/null; then
 		printf "${CYAN}##############################################################  APT : Installing $1${NC}\n"
-		sudo apt install $1 -y
+		sudo apt -qq install $1 -y
 	fi
 }
 
 ### GENERAL ###
-sudo add-apt-repository ppa:jonathonf/vim # Vim 9
+sudo add-apt-repository ppa:jonathonf/vim -y > /dev/null # Vim 9
 
 printf "${CYAN}############################################################## Installing Homebrew packages${NC}\n"
 sudo apt update -y &> /dev/null
 if [ ! -f "`which brew`" ]; then
 	printf "${CYAN}############################################################## Installing homebrew${NC}\n"
-	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	sudo apt-get install build-essential
+	install build-essential
 fi
 brew update > /dev/null
 
-binstall 'vim'
-binstall 'wget'
-binstall 'glances'
-binstall 'watch'
-binstall 'tig'
-binstall 'jq'
+install 'vim'
+install 'wget'
+install 'glances'
+install 'watch'
+install 'tig'
+install 'jq'
 binstall 'yq'
-binstall 'tmux'
-binstall 'ctags'
-binstall 'vifm'
-binstall 'ripgrep'
-binstall 'moreutils' # http://joeyh.name/code/moreutils/
-binstall 'openssl'
-binstall 'libz-dev'
+install 'tmux'
+install 'ctags'
+install 'vifm'
+install 'ripgrep'
+install 'moreutils' # http://joeyh.name/code/moreutils/
+install 'openssl'
+install 'libz-dev'
 
 # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
-binstall 'tldr'
-binstall 'bat'
+install 'tldr'
+install 'bat'
 binstall 'exa'
 binstall 'fd'
-binstall 'fzf'
+install 'fzf'
 
-binstall 'nodejs' # required by coc.vim
+install 'nodejs' # required by coc.vim
 
 brew tap cantino/mcfly
 binstall 'cantino/mcfly/mcfly'
@@ -81,7 +81,6 @@ ln -sf $basedir/base/.gitignore_global ~/
 ### VIM ###
 printf "${CYAN}############################################################## Setting up vim......\n${NC}"
 ln -sf $basedir/base/.vim/* ~/.vim/
-mkdir -p ~/.vim/swapfiles
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vi +'PlugInstall' +qa
 
@@ -90,19 +89,20 @@ printf "${CYAN}############################################################## Se
 ln -sf $basedir/base/.tmux.conf ~/
 echo "source-file ~/.tmux.conf" > ~/.tmate.conf
 tmux source ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ### ZSH ###
 printf "${CYAN}############################################################## Installing zsh + oh-my-zsh \n${NC}"
-binstall 'zsh'
-#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+install 'zsh'
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 curl -L git.io/antigen > $HOME/antigen.zsh
-#echo "source $basedir/zsh/zshrc" >> ~/.zshrc
+echo "source $basedir/zsh/zshrc" >> ~/.zshrc
 echo "source $basedir/zsh/functions.zsh" >> ~/.zshrc
 binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
 
 ### Ruby ###
-binstall 'rbenv'
-binstall 'ruby-build'
+install 'rbenv'
+install 'ruby-build'
 
 printf "${CYAN}############################################################## Installing Ruby 2.7 \n${NC}"
 rbenv install 3.2.2

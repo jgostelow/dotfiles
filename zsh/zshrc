@@ -35,12 +35,16 @@ export EDITOR='vim'
 bindkey -v
 
 source $ZSH/oh-my-zsh.sh
-#source ~/.aliases
+source ~/.aliases
 
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # https://ohmyposh.dev/docs/themes
-# eval "$(oh-my-posh init zsh --config $HOME/GIT/dotfiles/zsh/sonicboom_light.custom.omp.json)"
-# eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/sonicboom_light.omp.json)"
+eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/easy-term.omp.json)"
+#eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/craver.omp.json)"
+#eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/dracula.omp.json)"
+#eval "$(oh-my-posh init zsh --config $HOME/GIT/dotfiles/zsh/sonicboom_light.custom.omp.json)"
+#eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/1_shell.omp.json)"
+#eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/atomic.omp.json)"
 
