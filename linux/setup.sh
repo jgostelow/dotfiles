@@ -21,10 +21,10 @@ function install {
 
 ### GENERAL ###
 printf "${CYAN}############################################################## Installing Homebrew packages${NC}\n"
-sudo apt update &> /dev/null
+sudo apt update -y &> /dev/null
 if [ ! -f "`which brew`" ]; then
 	printf "${CYAN}############################################################## Installing homebrew${NC}\n"
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
 	echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /home/raziel/.profile
 	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/raziel/.profile
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
