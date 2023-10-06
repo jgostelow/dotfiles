@@ -20,13 +20,13 @@ function install {
 }
 
 ### GENERAL ###
+sudo add-apt-repository ppa:jonathonf/vim # Vim 9
+
 printf "${CYAN}############################################################## Installing Homebrew packages${NC}\n"
 sudo apt update -y &> /dev/null
 if [ ! -f "`which brew`" ]; then
 	printf "${CYAN}############################################################## Installing homebrew${NC}\n"
 	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
-	echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /home/raziel/.profile
-	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/raziel/.profile
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	sudo apt-get install build-essential
 fi
@@ -44,8 +44,8 @@ binstall 'ctags'
 binstall 'vifm'
 binstall 'ripgrep'
 binstall 'moreutils' # http://joeyh.name/code/moreutils/
-install 'openssl'
-install 'libz-dev'
+binstall 'openssl'
+binstall 'libz-dev'
 
 # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
 binstall 'tldr'
@@ -93,10 +93,10 @@ tmux source ~/.tmux.conf
 
 ### ZSH ###
 printf "${CYAN}############################################################## Installing zsh + oh-my-zsh \n${NC}"
-install 'zsh'
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+binstall 'zsh'
+#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 curl -L git.io/antigen > $HOME/antigen.zsh
-echo "source $basedir/zsh/zshrc" > ~/.zshrc
+#echo "source $basedir/zsh/zshrc" >> ~/.zshrc
 echo "source $basedir/zsh/functions.zsh" >> ~/.zshrc
 binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
 
