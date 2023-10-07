@@ -160,6 +160,10 @@ au! BufRead,BufNewFile *.hamlc	setfiletype	haml " hamlc => haml
 augroup END
 autocmd filetype crontab setlocal nobackup nowritebackup
 
+" toggle transparent background
+hi Normal guibg=NONE ctermbg=NONE
+let t:is_transparent = 1
+
 " ctags
 set tags=./tags;
 
@@ -238,7 +242,8 @@ map <Leader>j :%!jq '.'<CR>
 " lightline - https://github.com/itchyny/lightline.vim
 set laststatus=2
 let g:lightline = {}
-let g:lightline.colorscheme = 'darcula'
+let g:lightline.colorscheme = 'one'
+" let g:lightline.colorscheme = 'darcula'
 
 " BufExplore - navigate buffers
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
