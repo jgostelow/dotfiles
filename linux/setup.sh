@@ -67,7 +67,9 @@ function setup_aliases() {
 
 function setup_git() {
   printf "${CYAN}############################################################## Setting up git config......\n${NC}"
-  git config --replace-all include.path $basedir/base/gitconfig
+  git config --global user.email "jonathan.gostelow@gmail.com"
+  git config --global user.name "Jonathan Gostelow"
+  git config --global --replace-all include.path $basedir/base/gitconfig
   binstall 'diff-so-fancy'
   install 'tig'
   binstall 'lazygit'
