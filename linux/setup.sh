@@ -1,119 +1,145 @@
 #!/bin/bash
+set -e # exit on any error
 
 basedir=$HOME/dotfiles
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
-HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 function binstall {
-	if ! command -v $1 > /dev/null; then
-		printf "${CYAN}############################################################## BREW: Installing $1${NC}\n"
-		NONINTERACTIVE=1 brew install --quiet $1
-	fi
+  printf "${CYAN}############################################################## BREW: Installing $1${NC}\n"
+  NONINTERACTIVE=1 brew install --quiet $1
 }
 
 function install {
-	if ! command -v $1 > /dev/null; then
-		printf "${CYAN}##############################################################  APT : Installing $1${NC}\n"
-		sudo apt -qq install $1 -y
-	fi
+  printf "${CYAN}############################################################## APT : Installing $1${NC}\n"
+  sudo apt-get -qq install $1 -y > /dev/null
 }
 
-### GENERAL ###
-sudo add-apt-repository ppa:jonathonf/vim -y > /dev/null # Vim 9
+function update_apt {
+  sudo add-apt-repository ppa:jonathonf/vim -y > /dev/null # Vim 9
+  sudo apt update -y &> /dev/null
 
-printf "${CYAN}############################################################## Installing Homebrew packages${NC}\n"
-sudo apt update -y &> /dev/null
-if [ ! -f "`which brew`" ]; then
-	printf "${CYAN}############################################################## Installing homebrew${NC}\n"
-	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	install build-essential
-fi
-brew update > /dev/null
+}
+function install_homebrew() {
+  if [ ! -f "`which brew`" ]; then
+    printf "${CYAN}############################################################## Installing homebrew${NC}\n"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    install build-essential
+  fi
+  brew update > /dev/null
+}
 
-install 'vim'
-install 'wget'
-install 'glances'
-install 'watch'
-install 'tig'
-install 'jq'
-binstall 'yq'
-install 'tmux'
-install 'ctags'
-install 'vifm'
-install 'ripgrep'
-install 'moreutils' # http://joeyh.name/code/moreutils/
-install 'openssl'
-install 'libz-dev'
+function install_packages() {
+  install 'wget'
+  install 'glances'
+  install 'watch'
+  install 'jq'
+  binstall 'yq'
+  install 'ctags'
+  install 'vifm'
+  install 'ripgrep'
+  install 'moreutils' # http://joeyh.name/code/moreutils/
+  install 'openssl'
+  install 'libz-dev'
 
-# https://www.vimfromscratch.com/articles/awesome-command-line-tools/
-install 'tldr'
-install 'bat'
-binstall 'exa'
-binstall 'fd'
-install 'fzf'
+  # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
+  install 'tldr'
+  install 'bat'
+  binstall 'exa'
+  binstall 'fd'
+  install 'fzf'
 
-install 'nodejs' # required by coc.vim
+  install 'nodejs' # required by coc.vim
 
-brew tap cantino/mcfly
-binstall 'cantino/mcfly/mcfly'
-brew tap jesseduffield/lazydocker
-binstall 'lazydocker'
-brew tap jesseduffield/lazygit
-binstall 'lazygit'
-mkdir -p ~/.config/lazygit
-ln -sf $basedir/base/lazygit.config.yml ~/.config/lazygit/config.yml
+  brew tap cantino/mcfly
+  binstall 'cantino/mcfly/mcfly'
+  brew tap jesseduffield/lazydocker
+  binstall 'lazydocker'
+  brew tap jesseduffield/lazygit
+}
 
-printf "${CYAN}############################################################## Setting up aliases......\n${NC}"
-echo "source $basedir/base/aliases" > ~/.aliases
+function setup_aliases() {
+  printf "${CYAN}############################################################## Setting up aliases......\n${NC}"
+  echo "source $basedir/base/aliases" > ~/.aliases
+}
 
-### GIT ###
-printf "${CYAN}############################################################## Setting up git config......\n${NC}"
-cat > ~/.gitconfig << EOF
-[include]
-  path = $basedir/base/gitconfig
-EOF
-binstall 'diff-so-fancy'
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-ln -sf $basedir/base/.gitignore_global ~/
+function setup_git() {
+  printf "${CYAN}############################################################## Setting up git config......\n${NC}"
+  git config --replace-all include.path $basedir/base/gitconfig
+  binstall 'diff-so-fancy'
+  install 'tig'
+  binstall 'lazygit'
+  mkdir -p ~/.config/lazygit
+  ln -sf $basedir/base/lazygit.config.yml ~/.config/lazygit/config.yml
+  ln -sf $basedir/base/.gitignore_global ~/
+}
 
-### VIM ###
-printf "${CYAN}############################################################## Setting up vim......\n${NC}"
-ln -sf $basedir/base/.vim/* ~/.vim/
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vi +'PlugInstall' +qa
+function setup_vim() {
+  printf "${CYAN}############################################################## Setting up vim......\n${NC}"
+  install 'vim'
+  ln -sf $basedir/base/.vim/* ~/.vim/
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  vi +'PlugInstall' +qa
+}
 
-### TMUX ###
-printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
-ln -sf $basedir/base/.tmux.conf ~/
-echo "source-file ~/.tmux.conf" > ~/.tmate.conf
-tmux source ~/.tmux.conf
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+function setup_tmux() {
+  printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
+  install 'tmux'
+  ln -sf $basedir/base/.tmux.conf ~/
+  echo "source-file ~/.tmux.conf" > ~/.tmate.conf
+  tmux source ~/.tmux.conf
+  if [ ! -d ~/.tmux/plugins/tpm ] ; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+}
 
-### ZSH ###
-printf "${CYAN}############################################################## Installing zsh + oh-my-zsh \n${NC}"
-install 'zsh'
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
-curl -L git.io/antigen > $HOME/antigen.zsh
-echo "source $basedir/zsh/zshrc" >> ~/.zshrc
-echo "source $basedir/zsh/functions.zsh" >> ~/.zshrc
-binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
+function setup_zsh() {
+  printf "${CYAN}############################################################## Installing zsh + oh-my-zsh \n${NC}"
+  install 'zsh'
+  if [ ! -d $ZSH ] ; then
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+  fi
+  if [ ! -f $HOME/antigen.zsh ] ; then
+    curl -L git.io/antigen > $HOME/antigen.zsh
+  fi
+  echo "source $basedir/zsh/zshrc" > ~/.zshrc
+  binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
+}
 
-### Ruby ###
-install 'rbenv'
-install 'ruby-build'
+function setup_ruby() {
+  install 'rbenv'
+  install 'ruby-build'
 
-printf "${CYAN}############################################################## Installing Ruby 2.7 \n${NC}"
-rbenv install 3.2.2
-rbenv global 3.2.2
-rbenv rehash
+  printf "${CYAN}############################################################## Installing Ruby\n${NC}"
+  rbenv install 3.2.2
+  rbenv rehash
+  rbenv global 3.2.2
 
-ln -sf $basedir/base/.gemrc ~/
+  ln -sf $basedir/base/.gemrc ~/
 
-printf "${CYAN}############################################################## Installing Rails 5.2 \n${NC}"
-gem install rails -v 7.1.0
+  printf "${CYAN}############################################################## Installing Rails\n${NC}"
+  gem install rails -v 7.1.0
+}
 
+function cleanup() {
+  sudo apt-get autoremove -y
+}
+
+# -------------------------------------------------------------------------------------------------------------
+
+printf "${CYAN}############################################################## Installing Homebrew/Apt packages${NC}\n"
+update_apt
+install_homebrew
+install_packages
+setup_aliases
+setup_git
+setup_vim
+setup_tmux
+setup_zsh
+setup_ruby
+cleanup
 printf "${CYAN}############################################################## Linux Setup complete! \n${NC}"
 printf "${CYAN}############################################################## Switching to ZSH \n${NC}"
 chsh -s `which zsh`

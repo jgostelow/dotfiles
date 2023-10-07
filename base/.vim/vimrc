@@ -244,6 +244,18 @@ let g:lightline.colorscheme = 'darcula'
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
 map <Leader>bb :ToggleBufExplorer<CR>
 
+" Coc
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
 " Vim-caser - change casing
 " https://github.com/arthurxavierx/vim-caser
 let g:caser_prefix = "gc"
