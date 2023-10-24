@@ -58,6 +58,7 @@ Plug 'romainl/Apprentice'
 call plug#end()
 
 " ######################## TOP LEVEL CONFIG
+set nocompatible                    " use vim instead of vi settings
 let mapleader = "\<Space>"
 
 " Open and source vimrc
@@ -79,11 +80,15 @@ nnoremap Y y$
 nnoremap <Leader>p :set invpaste<CR>
 
 set incsearch                       " search as you type
+set ignorecase                      " ignore case when searching
+set smartcase                       " ... unless you type a capital
 
 
-" plugins update the buffer quicker (default is 4000)
-set updatetime=100
-
+set updatetime=100                  " plugins update the buffer quicker (default is 4000)
+set history=1000
+set wildmenu                        " command tab completion as menu
+set backspace=2                     " enable backspace to work as expected
+set confirm                         " confirm close unsaved file
 
 " ######################## MAPPINGS
 " close current window with space-q, and all windows with ctrl-q
@@ -103,19 +108,20 @@ map <Leader>j :%!jq '.'<CR>
 " noremap <Right> <NOP>
 
 " ######################## FORMATTING
-set nocompatible
-set backspace=2           " enable backspace to work as expected
 set tabstop=2             " a tab is 2 spaces
-set smartindent           " nosi:  Smart indent useless when C-indent is on
+set shiftwidth=2          " move 2 spaces with >
 set expandtab             " use spaces instead of tabs
-set shiftwidth=2          " sw:  a healthy tab stop
+set smartindent           " nosi:  Smart indent useless when C-indent is on
 set textwidth=110         " tw:  wrap at 110 characters
 set autoindent            " ai:  indent to match previous line
 set formatoptions=crql    " fo:  word wrap, format comments
 set showmatch             " show matches on parens, bracketc, etc.
 set diffopt+=vertical     " Show diffs vertically
+set nowrap                " Don't wrap lines
 
 " ######################## APPEARANCE
+
+set encoding=utf-8
 
 if &diff
   colorscheme apprentice
@@ -146,6 +152,8 @@ hi Normal guibg=NONE ctermbg=NONE
 let t:is_transparent = 1
 " do not make transparent backgrounds opaque by highlighting them
 hi Normal ctermbg=none
+
+set scrolloff=3   " number of lines to keep above/below cursor
 
 " ######################## SPLITS/TABS
 set wmh=0         " minimise split windows completely instead of leaving current line
