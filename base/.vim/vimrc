@@ -1,4 +1,11 @@
-" execute pathogen#infect()
+" ######################## CHEATSHEET
+" Cheatsheet
+" :r !command #results of command appended to buffer
+" insert mode -> ctrl-o #returns to normal mode for one command, then back to insert
+" 50% #go to line at 50% of the file
+" / ctrl-r ctrl-o # add current word to search
+
+" ######################## PLUGINS
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -42,8 +49,6 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
 Plug 'camspiers/animate.vim'
-" Plug 'camspiers/lens.vim'
-
 
 " Themes
 " Plug 'wadackel/vim-dogrun'
@@ -52,9 +57,44 @@ Plug 'romainl/Apprentice'
 
 call plug#end()
 
+" ######################## TOP LEVEL CONFIG
+let mapleader = "\<Space>"
+
 " Open and source vimrc
 map vv :vsp $MYVIMRC<CR>
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echo "Reloaded" $MYVIMRC
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+
+set esckeys                         " esc immediately. Do not wait for a sequence
+autocmd BufWritePre * %s/\s\+$//e   " Remove trailing white space on save
+filetype plugin indent on           " detect filetype and load ftplugin for it
+
+set directory=$HOME/.vim/swapfiles/ " save swap files here
+set tags=./tags;                    " ctags
+
+" space,y - yank to system clipboard
+map <Leader>y "*y
+" yank to end of line
+nnoremap Y y$
+" toggle paste mode
+nnoremap <Leader>p :set invpaste<CR>
+
+set incsearch                       " search as you type
+
+
+" plugins update the buffer quicker (default is 4000)
+set updatetime=100
+
+
+" ######################## MAPPINGS
+" close current window with space-q, and all windows with ctrl-q
+map <Leader>q :qa<CR>
+map <C-q> :qa<CR>
+
+" Quickfix toggle
+map <Leader>f <Plug>window:quickfix:loop
+
+" json pretty - Leader,j
+map <Leader>j :%!jq '.'<CR>
 
 " Break some bad habits
 " noremap <Up> <NOP>
@@ -62,62 +102,58 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echo "Reloaded" $MYVIMRC
 " noremap <Left> <NOP>
 " noremap <Right> <NOP>
 
-" standard stuff
+" ######################## FORMATTING
 set nocompatible
-set backspace=2       " enable backspace to work as expected
-set tabstop=2         " a tab is 2 spaces
-set smartindent       " nosi:  Smart indent useless when C-indent is on
-set expandtab         " use spaces instead of tabs
-set shiftwidth=2      " sw:  a healthy tab stop
-set textwidth=110     " tw:  wrap at 110 characters
-set autoindent        " ai:  indent to match previous line
-set formatoptions=crql  " fo:  word wrap, format comments
-set showmatch         " show matches on parens, bracketc, etc.
-set diffopt+=vertical " Show diffs vertically
+set backspace=2           " enable backspace to work as expected
+set tabstop=2             " a tab is 2 spaces
+set smartindent           " nosi:  Smart indent useless when C-indent is on
+set expandtab             " use spaces instead of tabs
+set shiftwidth=2          " sw:  a healthy tab stop
+set textwidth=110         " tw:  wrap at 110 characters
+set autoindent            " ai:  indent to match previous line
+set formatoptions=crql    " fo:  word wrap, format comments
+set showmatch             " show matches on parens, bracketc, etc.
+set diffopt+=vertical     " Show diffs vertically
 
-" Better diffs
-" https://vimways.org/2018/the-power-of-diff/
-" 8.1.360 required
-" if v:version >= 801
-  " set diffopt+=algorithm:patience
-  " set diffopt+=indent-heuristic
-" endif
+" ######################## APPEARANCE
+
 if &diff
   colorscheme apprentice
+else
+  colorscheme dracula
 endif
+set bg=dark
+set cursorline
 
-" set list              " Show whitespace characters
-set esckeys " esc immediately. Do not wait for a sequence
-set directory=$HOME/.vim/swapfiles/ " save swap files here
-filetype plugin indent on
-autocmd BufWritePre * %s/\s\+$//e " Remove trailing white space on save
+syntax on " syntax highlighting
+" use new regex engine for syntax highlighting
+" https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set re=1
 
-" Do not freeze on CTRL-S (do not move this comment after the command. It breaks!)
-" To avoid my habit of saving files while idle from locking up my vim
-" silent !stty -ixon > /dev/null 2>/dev/null - disabled because of slow vim startup
+" make line numbers white
+hi LineNr ctermfg=white
+" Leader,n - toggle => relative numbers, static numbers, no numbers
+map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
+set relativenumber    " display relative line numbers
+set number " display the current line number
 
-" read and write from system clipboard
-set clipboard=unnamed
-" space,y - yank to system clipboard
-map <Leader>y "*y
-" key remappings
-let mapleader = "\<Space>"
-nmap ; :
-" toggle paste mode
-nnoremap <Leader>p :set invpaste<CR>
-" yank to end of line
-nnoremap Y y$
+" Highlight the 120 column limit
+" highlight ColorColumn ctermbg=cyan
+" set colorcolumn=121
 
-" SPLIT WINDOWS
+" toggle transparent background
+hi Normal guibg=NONE ctermbg=NONE
+let t:is_transparent = 1
+" do not make transparent backgrounds opaque by highlighting them
+hi Normal ctermbg=none
+
+" ######################## SPLITS/TABS
 set wmh=0         " minimise split windows completely instead of leaving current line
 set splitbelow
 set splitright
 " Open highlighted file in vertical split
 map gvf :vsplit<CR>gf<CR>
 
-" close current window with space-q, and all windows with ctrl-q
-map <Leader>q :qa<CR>
-map <C-q> :qa<CR>
 " move between splits planes and collapse inactive panes
 map <C-j> <C-W>j<C-W>_
 map <C-k> <C-W>k<C-W>_
@@ -130,126 +166,76 @@ map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
-" Quickfix toggle
-map <Leader>f <Plug>window:quickfix:loop
-
-" COLORS
-set bg=dark
-colorscheme dracula
-" do not make transparent backgrounds opaque by highlighting them
-hi Normal ctermbg=none
-
-syntax on " syntax highlighting
-" use new regex engine for syntax highlighting
-" https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-set re=1
-
-set incsearch     " search as you type
-" set hlsearch      " highlight search results
-
-" make line numbers white
-hi LineNr ctermfg=white
-
-" Highlight the 120 column limit
-" highlight ColorColumn ctermbg=cyan
-" set colorcolumn=121
-
-" Filetype mappers
-augroup filetypedetect
-au! BufRead,BufNewFile *.hamlc	setfiletype	haml " hamlc => haml
-augroup END
+" ######################## FILETYPE HANDLERS
+" ignore crontab tempfile warning
 autocmd filetype crontab setlocal nobackup nowritebackup
 
-" toggle transparent background
-hi Normal guibg=NONE ctermbg=NONE
-let t:is_transparent = 1
+" ######################## PLUGIN CONFIG
 
-" ctags
-set tags=./tags;
-
-" plugins update the buffer quicker (default is 4000)
-set updatetime=100
-
-" setlocal foldmethod=indent
-" zM - close all folds
-" zo - open fold
-" zO open all nested folds
-"
-" --------------- PLUGINS -------------------------------
-
-" ---- Plugin commands ----
-"
-" NERDTree - leader,e - Toggle NERDTree window
+" ------------------------ NERDTree
+" leader,e - Toggle NERDTree window
 map <Leader>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit = '<Leader>v' " Space,v - open vsplit
 let NERDTreeMapOpenSplit = '<Leader>x' " Space,x - open split
 " Open NERDTree if no files opened
 " autocmd vimenter * if !argc() | NERDTree | endif
 
-" NERDComment
+" ------------------------ NERDComment
 " https://github.com/scrooloose/nerdcommenter#default-mappings
-" '-' - toggle comments
-map - <Leader>c<Space>
+" - : toggle comments
 let g:NERDSpaceDelims = 1
 
-" Tagbar - Leader,t - Toggle Tagbar window
+" ------------------------ Tagbar
 " jump to tagbar when you open it. Close it when you select something
-" https://github.com/majutsushi/tagbar/blob/master/doc/tagbar.txt#L193
-map <Leader>t :TagbarToggle<CR>
+map <Leader>t :TagbarToggle fc<CR>
 
-" vim-surround
-" https://github.com/tpope/vim-surround
+" ------------------------ vim-surround
 " s" - surround current word with "word"
 " s( - surround current word with ( word )
 " s) - surround current word with (word) - no space
 map <Leader>s ysiw
 
-" https://github.com/luochen1990/rainbow
+" ------------------------ Rainbow
+" Matching colour parentheses
 let g:rainbow_active = 1
 
-" QFEnter
+" ------------------------ QFEnter
+" Open files from quick fix window in panes/tabs
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>']
 let g:qfenter_keymap.vopen = ['<Leader>v']
 let g:qfenter_keymap.hopen = ['<Leader>x']
 let g:qfenter_keymap.topen = ['<Leader>t']
 
-" fzf
-" Search filenames
+" ------------------------ fzf
+" filenames
 map ff :FZF<CR>
-" Search for text
-map fa :Ag<CR>
-" Search commit history for current file
+" text
+map fa :Rg<CR>
+" commit history for current file
 map fg :BCommits<CR>
-" Search vim commands
+" vim commands
 map fc :Commands<CR>
-" Search Command History
+" Command History
 map fh :History:<CR>
 
-" Limelight
+" ------------------------ Limelight
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 map <Leader>l :Limelight!!<CR>
 
-" Leader,n - toggle => relative numbers, static numbers, no numbers
-map <Leader>n :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
-set relativenumber    " display relative line numbers
-set number " display the current line number
-
-" json pretty - Leader,j
-map <Leader>j :%!jq '.'<CR>
-
-" lightline - https://github.com/itchyny/lightline.vim
+" ------------------------ lightline
+" https://github.com/itchyny/lightline.vim
 set laststatus=2
 let g:lightline = {}
 let g:lightline.colorscheme = 'one'
 " let g:lightline.colorscheme = 'darcula'
 
-" BufExplore - navigate buffers
+" ------------------------ BufExplore - navigate buffers
 " https://github.com/jlanzarotta/bufexplorer/blob/master/doc/bufexplorer.txt
 map <Leader>bb :ToggleBufExplorer<CR>
 
-" Coc
+" ------------------------ Coc
 " use <tab> to trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -261,7 +247,7 @@ inoremap <silent><expr> <Tab>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 
-" Vim-caser - change casing
+" ------------------------ Vim-caser - change casing
 " https://github.com/arthurxavierx/vim-caser
 let g:caser_prefix = "gc"
 " gcm - MixedCase
@@ -274,23 +260,31 @@ let g:caser_prefix = "gc"
 " gck - dash-case or kebab-case
 " gc. - dot.case
 
-" lens.vim
-" let g:lens#disabled = 1
-" let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
-" let g:lens#width_resize_min = 120
-
-" vim-gutter- https://vimawesome.com/plugin/vim-gitgutter
-" :GitGutterToggle - enable/disable
-" You can jump between hunks with [c and ]c.
-" You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
+" ------------------------ vim-gutter
+" https://vimawesome.com/plugin/vim-gitgutter
 " Highlight git changes like vimdiff
+" Jump between hunks with [c and ]c.
+" preview - <leader>hp
+" stage - <leader>hs
+" undo  - <leader>hu
 map <Leader>gg :GitGutterLineHighlightsToggle<CR>
 
-" ------------ Git (Fugitive) ---------------------
+" ------------------------ Easy Motion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" ------------------------ Git (Fugitive)
 map <Leader>gb :Git blame<CR>
 " git status - f,s
 "     - open file : enter
 "     - open split : o
 "     - open vsplit : S
-map <Leader>gs :Git status<CR> :resize 10<CR>
+map <Leader>gs :Git status<CR>
 map <Leader>gd :Git diff<CR>
