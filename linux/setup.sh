@@ -107,6 +107,7 @@ function setup_zsh() {
     curl -L git.io/antigen > $HOME/antigen.zsh
   fi
   echo "source $basedir/zsh/zshrc" > ~/.zshrc
+  echo "alias clip=clip.exe" >> ~/.zshrc " like pbcopy on windows
   binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
 }
 
@@ -120,6 +121,9 @@ function setup_ruby() {
   rbenv global 3.2.2
 
   ln -sf $basedir/base/.gemrc ~/
+
+  # Some packages that seem to be needed for rails functionality
+  install 'libvips42' # ruby-vips - https://github.com/libvips/ruby-vips
 
   printf "${CYAN}############################################################## Installing Rails\n${NC}"
   gem install rails -v 7.1.0
