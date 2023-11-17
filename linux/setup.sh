@@ -7,12 +7,12 @@ NC='\033[0m' # No Color
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 function binstall {
-  printf "${CYAN}############################################################## BREW: Installing $1${NC}\n"
+  printf "${CYAN}-------------------------------------------------------------- BREW: Installing $1${NC}\n"
   NONINTERACTIVE=1 brew install --quiet $1
 }
 
 function install {
-  printf "${CYAN}############################################################## APT : Installing $1${NC}\n"
+  printf "${CYAN}-------------------------------------------------------------- APT : Installing $1${NC}\n"
   sudo apt-get -qq install $1 -y > /dev/null
 }
 
@@ -37,7 +37,7 @@ function install_packages() {
   install 'watch'
   install 'jq'
   binstall 'yq'
-  install 'ctags'
+  install 'universal-ctags'
   install 'vifm'
   install 'ripgrep'
   install 'moreutils' # http://joeyh.name/code/moreutils/
