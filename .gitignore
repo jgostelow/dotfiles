@@ -1,4 +1,5 @@
 base/.vim/swapfiles/
+base/.vim/autoload/
 base/.tmux/resurrect/
 base/zshrc.zwc
 bin/cloud_sql_proxy
