@@ -98,17 +98,6 @@ function setup_vim() {
   vi +'PlugInstall' +qa
 }
 
-function setup_tmux() {
-  printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
-  install 'tmux'
-  ln -sf $basedir/base/.tmux.conf ~/
-  echo "source-file ~/.tmux.conf" > ~/.tmate.conf
-  tmux source ~/.tmux.conf
-  if [ ! -d ~/.tmux/plugins/tpm ] ; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  fi
-}
-
 function setup_zsh() {
   printf "${CYAN}############################################################## Installing zsh + oh-my-zsh \n${NC}"
   install 'zsh'
@@ -119,13 +108,25 @@ function setup_zsh() {
     curl -L git.io/antigen > $HOME/antigen.zsh
   fi
   echo "source $basedir/zsh/zshrc" > ~/.zshrc
-  echo "alias clip=clip.exe" >> ~/.zshrc " like pbcopy on windows
+  echo "alias clip=clip.exe" >> ~/.zshrc # like pbcopy on windows
   binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
+}
+
+function setup_tmux() {
+  printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
+  install 'tmux'
+  ln -sf $basedir/base/.tmux.conf ~/
+  echo "source-file ~/.tmux.conf" > ~/.tmate.conf
+  if [ ! -d ~/.tmux/plugins/tpm ] ; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    ~/.tmux/plugins/tpm/bin/install_plugins
+  fi
 }
 
 function setup_ruby() {
   install 'rbenv'
-  install 'ruby-build'
+  binstall 'ruby-build'
+  eval "$(rbenv init -)"
 
   printf "${CYAN}############################################################## Installing Ruby\n${NC}"
   rbenv install 3.2.2
