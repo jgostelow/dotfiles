@@ -6,9 +6,9 @@ alias zz='vim ~/.zshrc'
 
 ################## Basic commands ##################
 
-alias ls='exa'
+alias ls='eza'
 alias l='ls'
-alias ll='exa -lahF --git'
+alias ll='eza -lahF --git'
 alias lll='ll --tree --level=2'
 alias du='dust'
 alias df='duf'

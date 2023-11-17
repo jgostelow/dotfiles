@@ -47,11 +47,9 @@ function install_packages() {
   # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
   install 'tldr'
   install 'bat'
-  binstall 'exa'
+  binstall 'eza'
   binstall 'fd'
   install 'fzf'
-
-  install 'nodejs' # required by coc.vim
 
   brew tap cantino/mcfly
   binstall 'cantino/mcfly/mcfly'
