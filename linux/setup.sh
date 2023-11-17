@@ -95,6 +95,7 @@ function setup_vim() {
   install 'vim'
   ln -sf $basedir/base/.vim ~/
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  echo "Ignore the error saying ' Cannot find color scheme'. Just hit Enter"
   vi +'PlugInstall' +qa
 }
 
@@ -109,6 +110,7 @@ function setup_zsh() {
   fi
   echo "source $basedir/zsh/zshrc" > ~/.zshrc
   echo "alias clip=clip.exe" >> ~/.zshrc # like pbcopy on windows
+  touch ~/.zsh_history # for mcfly
   binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
 }
 
