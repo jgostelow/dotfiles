@@ -111,7 +111,10 @@ function setup_zsh() {
   echo "source $basedir/zsh/zshrc" > ~/.zshrc
   echo "alias clip=clip.exe" >> ~/.zshrc # like pbcopy on windows
   touch ~/.zsh_history # for mcfly
+  echo "source /home/raziel/dotfiles/zsh/functions.zsh" >> ~/.zshrc
+  echo "eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >> ~/.zshrc
   binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
+  /bin/zsh -i -c "source ~/antigen.zsh"
 }
 
 function setup_tmux() {
@@ -131,9 +134,10 @@ function setup_ruby() {
   eval "$(rbenv init -)"
 
   printf "${CYAN}############################################################## Installing Ruby\n${NC}"
-  rbenv install 3.2.2
-  rbenv rehash
+  rbenv install 3.2.2 --skip-existing
   rbenv global 3.2.2
+  rbenv rehash
+  echo "eval \"$(rbenv init - zsh)\"" >> ~/.zshrc
 
   ln -sf $basedir/base/.gemrc ~/
 
