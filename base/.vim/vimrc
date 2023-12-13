@@ -50,6 +50,8 @@ Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
 Plug 'camspiers/animate.vim'
 
+Plug 'madox2/vim-ai'
+
 " Themes
 " Plug 'wadackel/vim-dogrun'
 Plug 'dracula/vim'
