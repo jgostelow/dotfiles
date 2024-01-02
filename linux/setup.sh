@@ -2,19 +2,7 @@
 set -e # exit on any error
 
 basedir=$HOME/dotfiles
-CYAN='\033[0;36m'
-NC='\033[0m' # No Color
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-function binstall {
-  printf "${CYAN}-------------------------------------------------------------- BREW: Installing $1${NC}\n"
-  NONINTERACTIVE=1 brew install --quiet $1
-}
-
-function install {
-  printf "${CYAN}-------------------------------------------------------------- APT : Installing $1${NC}\n"
-  sudo apt-get -qq install $1 -y > /dev/null
-}
+source $basedir/linux/functions.sh
 
 function update_apt {
   sudo add-apt-repository ppa:jonathonf/vim -y > /dev/null # Vim 9
@@ -73,7 +61,7 @@ function setup_git() {
   binstall 'lazygit'
   mkdir -p ~/.config/lazygit
   ln -sf $basedir/base/lazygit.config.yml ~/.config/lazygit/config.yml
-  ln -sf $basedir/base/.gitignore_global ~/
+  ln -sf $basedir/base/gitignore_global ~/.gitignore_global
 }
 
 function install_node() {
@@ -111,8 +99,8 @@ function setup_zsh() {
   echo "source $basedir/zsh/zshrc" > ~/.zshrc
   echo "alias clip=clip.exe" >> ~/.zshrc # like pbcopy on windows
   touch ~/.zsh_history # for mcfly
-  echo "source /home/raziel/dotfiles/zsh/functions.zsh" >> ~/.zshrc
-  echo "eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >> ~/.zshrc
+  echo "source /home/raziel/dotfiles/zsh/functions.zsh" >> ~/.zshrc # replace with `realpath functions.zsh`
+  echo "eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >> ~/.zshrc # replace hardcoded path
   binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
   /bin/zsh -i -c "source ~/antigen.zsh"
 }
@@ -120,6 +108,7 @@ function setup_zsh() {
 function setup_tmux() {
   printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
   install 'tmux'
+  install 'xdg-utils' # needed by tmux-open
   ln -sf $basedir/base/.tmux.conf ~/
   echo "source-file ~/.tmux.conf" > ~/.tmate.conf
   if [ ! -d ~/.tmux/plugins/tpm ] ; then
@@ -127,34 +116,8 @@ function setup_tmux() {
     ~/.tmux/plugins/tpm/bin/install_plugins
   fi
 }
-
-function setup_ruby() {
-  install 'rbenv'
-  binstall 'ruby-build'
-  eval "$(rbenv init -)"
-
-  printf "${CYAN}############################################################## Installing Ruby\n${NC}"
-  rbenv install 3.2.2 --skip-existing
-  rbenv global 3.2.2
-  rbenv rehash
-  echo "eval \"$(rbenv init - zsh)\"" >> ~/.zshrc
-
-  ln -sf $basedir/base/.gemrc ~/
-
-  # Some packages that seem to be needed for rails functionality
-  install 'libvips42' # ruby-vips - https://github.com/libvips/ruby-vips
-
-  printf "${CYAN}############################################################## Installing Rails\n${NC}"
-  gem install rails -v 7.1.0
-}
-
-function cleanup() {
-  sudo apt-get autoremove -y
-}
-
-# -------------------------------------------------------------------------------------------------------------
-
 printf "${CYAN}############################################################## Installing Homebrew/Apt packages${NC}\n"
+
 update_apt
 install_homebrew
 install_packages
@@ -164,8 +127,9 @@ install_node
 setup_vim
 setup_zsh
 setup_tmux
-setup_ruby
 cleanup
+
 printf "${CYAN}############################################################## Linux Setup complete! \n${NC}"
 printf "${CYAN}############################################################## Switching to ZSH \n${NC}"
+
 chsh -s `which zsh`
