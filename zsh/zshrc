@@ -35,11 +35,10 @@ export EDITOR='vim'
 # VIM mode
 bindkey -v
 
-source ~/.aliases
-
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # https://ohmyposh.dev/docs/themes
 eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/easy-term.omp.json)"
 #eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/craver.omp.json)"
@@ -48,3 +47,4 @@ eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobb
 #eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/1_shell.omp.json)"
 #eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/atomic.omp.json)"
 
+source ~/.aliases
