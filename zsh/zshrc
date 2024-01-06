@@ -41,7 +41,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # https://ohmyposh.dev/docs/themes
 #eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/easy-term.omp.json)"
-eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/easy-term.omp.json)"
+#eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/easy-term.omp.json)"
+eval "$(oh-my-posh init zsh --config /home/raziel/dotfiles/zsh/themes/easy-term-custom.omp.json)"
 #eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/craver.omp.json)"
 #eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/dracula.omp.json)"
 #eval "$(oh-my-posh init zsh --config $HOME/GIT/dotfiles/zsh/sonicboom_light.custom.omp.json)"
