@@ -2,54 +2,40 @@
 set -e # exit on any error
 
 basedir=$HOME/dotfiles
-CYAN='\033[0;36m'
-NC='\033[0m' # No Color
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-function install {
-  printf "${CYAN}############################################################## BREW: Installing $1${NC}\n"
-  NONINTERACTIVE=1 brew install --quiet $1
-}
-
-function install_homebrew() {
-	printf "${CYAN}############################################################## Installing+Updating homebrew${NC}\n"
-	[ ! -f "`which brew`" ] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew update > /dev/null
-}
-
+source $basedir/osx/functions.sh
 
 function install_packages() {
-		install 'wget'
-		install 'glances'
-		install 'watch'
-		install 'jq' # https://stedolan.github.io/jq/
-		install 'yq' # https://github.com/mikefarah/yq
-		install 'stern'
-		install 'ctags'
-		install 'vifm'
-		install 'ripgrep'
-		install 'moreutils' # http://joeyh.name/code/moreutils/
+  install 'wget'
+  install 'glances'
+  install 'watch'
+  install 'jq' # https://stedolan.github.io/jq/
+  install 'yq' # https://github.com/mikefarah/yq
+  install 'stern'
+  install 'ctags'
+  install 'vifm'
+  install 'ripgrep'
+  install 'moreutils' # http://joeyh.name/code/moreutils/
 
   brew tap homebrew/cask-fonts
   install 'font-cascadia-code'
 
-# https://www.vimfromscratch.com/articles/awesome-command-line-tools/
-		install 'tldr'
-		install 'bat'
-		install 'exa'
-		install 'fd'
-		install 'fzf'
-		install 'dust'
-		install 'duf'
-		install 'mcfly'
-		install 'doitlive' # https://doitlive.readthedocs.io/en/stable/
+  # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
+  install 'tldr'
+  install 'bat'
+  install 'exa'
+  install 'fd'
+  install 'fzf'
+  install 'dust'
+  install 'duf'
+  install 'mcfly'
+  install 'doitlive' # https://doitlive.readthedocs.io/en/stable/
 
-		install 'nodejs' # required by coc.vim
+  install 'nodejs' # required by coc.vim
 
-		brew tap jesseduffield/lazydocker
-		install 'lazydocker'
-		brew tap jesseduffield/lazygit
-		install 'lazygit'
+  brew tap jesseduffield/lazydocker
+  install 'lazydocker'
+  brew tap jesseduffield/lazygit
+  install 'lazygit'
 }
 
 function setup_aliases() {
@@ -104,28 +90,10 @@ function setup_zsh() {
   /bin/zsh -i -c "source ~/antigen.zsh"
 }
 
-function setup_ruby() {
-  install 'rbenv'
-  install 'ruby-build'
-
-  printf "${CYAN}############################################################## Installing Ruby\n${NC}"
-  rbenv install 3.2.2 --skip-existing
-  rbenv global 3.2.2
-  rbenv rehash
-
-  ln -sf $basedir/base/.gemrc ~/
-
-  printf "${CYAN}############################################################## Installing Rails\n${NC}"
-  gem install rails -v 7.1.0
-}
-
 function misc() {
 
   printf "${CYAN}############################################################## Linking ~/bin\n${NC}"
   ln -sf $basedir/bin ~/
-}
-
-function cleanup() {
 }
 
 # -------------------------------------------------------------------------------------------------------------
@@ -137,7 +105,6 @@ setup_git
 setup_vim
 setup_tmux
 setup_zsh
-setup_ruby
 misc
 cleanup
 printf "${CYAN}############################################################## Linux Setup complete! \n${NC}"
