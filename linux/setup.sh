@@ -115,6 +115,7 @@ function setup_tmux() {
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     ~/.tmux/plugins/tpm/bin/install_plugins
   fi
+  tmux source ~/.tmux.conf
 }
 printf "${CYAN}############################################################## Installing Homebrew/Apt packages${NC}\n"
 
