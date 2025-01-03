@@ -34,6 +34,7 @@ Plug 'ggreer/the_silver_searcher'
 
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'tpope/vim-rails', {'for': 'ruby'}
 Plug 'hashivim/vim-terraform', {'for': 'terraform'}
 Plug 'pangloss/vim-javascript'
@@ -218,16 +219,31 @@ let g:qfenter_keymap.hopen = ['<Leader>x']
 let g:qfenter_keymap.topen = ['<Leader>t']
 
 " ------------------------ fzf
+command! -bang -nargs=* RgExact
+  \ call fzf#vim#grep(
+  \   'rg -F --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+
+" Search from root of git repo
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+  endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+command! ProjectRg execute 'RgExact' s:find_git_root()
+
 " filenames
-map ff :FZF<CR>
+map ff :ProjectFiles<CR>
 " text
-map fa :Rg<CR>
+map f/ :Rg<CR>
 " commit history for current file
 map fg :BCommits<CR>
 " vim commands
 map fc :Commands<CR>
 " Command History
-map fh :History:<CR>
+map fh :History<CR>
+" Other commands - https://github.com/junegunn/fzf.vim?tab=readme-ov-file#commands
 
 " ------------------------ Limelight
 let g:limelight_conceal_ctermfg = 'gray'

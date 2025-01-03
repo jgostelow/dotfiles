@@ -44,6 +44,7 @@ alias txo='tmuxinator open'
 
 # Git
 alias lg='lazygit'
+alias gm='git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'' # get main branch name
 alias gfo='git fetch origin'
 alias gb="git branch"
 alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - (%(color:green)%(committerdate:relative)%(color:reset))'"
@@ -57,15 +58,15 @@ alias gll='git log --graph --color=always --format="%C(auto)%h%d [%an] %s %C(bla
 alias gs="git status -s"
 alias gd="git diff"
 alias gdn="git diff --name-only"
-alias gdnm="git diff --name-only origin/master"
+alias gdnm="git diff --name-only origin/$(gm)"
 alias gdt="git difftool -y"
-alias gdtm="git difftool -y origin/master"
+alias gdtm="git difftool -y origin/$(gm)"
 alias gdtf="git difftool -y --tool=fugitive"
 alias gdtc="git difftool -y --cached"
 alias gdtcf="git difftool -y --cached --tool=fugitive"
 alias gclean="git remote prune origin;git gc"
 alias gu="git up"
-alias gpm="git pull origin master"
+alias gpm="git pull origin $(gm)"
 alias gpush="git push"
 alias grh="git reset HEAD"
 alias gsta="git stash save -u"
@@ -75,6 +76,7 @@ alias gsts="git stash show -p"
 alias gcommiters="git shortlog --summary --since='1 month ago' | sort -r"
 # More obscure git commands
 alias gignored='git ls-files --others -i --exclude-standard'
+alias gld='git log --graph --left-right --cherry-pick --oneline'
 
 # built-in to omzsh - git stash clear
 # unalias gstc
@@ -90,19 +92,20 @@ alias ddf='docker system df'
 alias di='docker images'
 alias dh='docker history --no-trunc'
 alias drmi='docker rmi -f'
-alias drmid='docker rmi (docker images -f "dangling=true" -q)'
+alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias dps='docker ps -a'
 alias dstopa='docker stop (docker ps -aq)'
 alias dr='docker run'
-alias drma='docker rm (docker ps -aq -f status=exited -f status=created)'
+alias drma='docker rm $(docker ps -aq -f status=exited -f status=created)'
 alias drm='docker rm'
 alias dvls='docker volume ls'
 alias dvrma='docker volume rm (docker volume ls -q)'
-alias dc='docker-compose'
-alias dcup='docker-compose up'
-alias dcdown='docker-compose down -v'
-alias dclogs='docker-compose logs'
-alias dcexec='docker-compose exec'
+alias dc='docker compose'
+alias dcup='dc up'
+alias dcdown='dc down -v'
+alias dclogs='dc logs'
+alias dcexec='dc exec'
+alias docker-compose='dc'
 
 ################## K8s commands ##################
 
@@ -130,6 +133,8 @@ alias be='bundle exec'
 
 ################## FZF commands ##################
 
+# recent directories
+alias fcd='cd $(dirs -l -p | fzf)'
 # files (with preview)
 alias ff='fzf --preview="bat {} --color=always"'
 alias f='vim $(ff)'

@@ -16,13 +16,10 @@ function install_packages() {
   install 'ripgrep'
   install 'moreutils' # http://joeyh.name/code/moreutils/
 
-  brew tap homebrew/cask-fonts
-  install 'font-cascadia-code'
-
   # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
   install 'tldr'
   install 'bat'
-  install 'exa'
+  install 'eza'
   install 'fd'
   install 'fzf'
   install 'dust'
@@ -64,6 +61,12 @@ function setup_vim() {
   vi +'PlugInstall' +qa
 }
 
+function setup_nvim() {
+  printf "${CYAN}############################################################## Setting up neo-vim......\n${NC}"
+  install 'neovim'
+
+}
+
 function setup_tmux() {
   printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
   install 'tmux'
@@ -72,7 +75,7 @@ function setup_tmux() {
   if [ ! -d ~/.tmux/plugins/tpm ] ; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
-  tmux source ~/.tmux.conf
+  # tmux source ~/.tmux.conf
 }
 
 function setup_zsh() {
@@ -104,6 +107,7 @@ install_packages
 setup_aliases
 setup_git
 setup_vim
+#setup_nvim
 setup_tmux
 setup_zsh
 misc

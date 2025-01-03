@@ -31,6 +31,30 @@ function fgs() { # fshow - git commit browser
 				FZF-EOF"
 }
 
+function safe_delete_branch() {
+  local branch_name=$1
+  local main_branch=${2:-origin/main}
+
+  # Check if branch exists
+  if ! git rev-parse --verify "$branch_name" >/dev/null 2>&1; then
+    echo "Branch '$branch_name' does not exist."
+    return 1
+  fi
+
+  # Check for diffs between the branch and the main branch
+  if [[ -n $(git diff "$main_branch"..."$branch_name") ]]; then
+    echo "Error: Differences detected between '$branch_name' and '$main_branch'."
+    return 1
+  fi
+
+  # Delete the branch
+  git branch -D "$branch_name" && echo "Branch '$branch_name' deleted successfully."
+}
+
+function fgbd() {
+  safe_delete_branch $(fb) "origin/$(gm)"
+}
+
 eval "$(mcfly init zsh)"
 
 ###### Docker ######
