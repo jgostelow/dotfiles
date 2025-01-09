@@ -51,6 +51,20 @@ function safe_delete_branch() {
   git branch -D "$branch_name" && echo "Branch '$branch_name' deleted successfully."
 }
 
+# Switches from a feature branch back to the main branch and deletes the feature branch
+function git_delete_current_branch() {
+  local current_branch=$(git rev-parse --abbrev-ref HEAD)
+  if [[ $current_branch == $(gm) ]]; then #Do not attempt on the main branch
+    echo "Currently on main branch. Skipping"
+    return 1
+  fi
+  gpm       # merge latest main into the feature branch
+  gc $(gm)  # checkout the main branch
+  gu        # pull latest main branch
+  echo "Deleting $current_branch"
+  safe_delete_branch $current_branch "origin/$(gm)"
+}
+
 function fgbd() {
   safe_delete_branch $(fb) "origin/$(gm)"
 }
