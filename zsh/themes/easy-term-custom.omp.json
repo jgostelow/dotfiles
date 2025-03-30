@@ -27,19 +27,9 @@
             "windows": "\ue70f"
           },
           "style": "diamond",
-          "template": " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }}  ",
+          "template": " {{ .Icon }}  ",
           "type": "os"
         },
-				{
-					"background": "#eed5db",
-					"foreground": "#bb576f",
-					"powerline_symbol": "\ue0b0",
-					"properties": {
-					},
-					"style": "powerline",
-					"template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
-					"type": "python"
-				},
         {
           "background": "#8a62da",
           "foreground": "#ffffff",
@@ -63,7 +53,7 @@
             "{{ if gt .Behind 0 }}#B388FF{{ end }}"
           ],
           "properties": {
-            "branch_max_length": 25,
+            "branch_template": "{{ trunc 25 .Branch }}",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true
@@ -81,7 +71,7 @@
         {
           "foreground": "#81ff91",
           "style": "diamond",
-          "template": "<#cc7eda> \u007C </><#7eb8da>RAM:</> {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB",
+          "template": "<#cc7eda> \u007C </><#7eb8da>RAM:</> {{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB",
           "type": "sysinfo"
         },
         {
@@ -154,5 +144,5 @@
     }
   ],
   "final_space": true,
-  "version": 2
+  "version": 3
 }

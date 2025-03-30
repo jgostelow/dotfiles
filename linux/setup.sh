@@ -5,7 +5,6 @@ basedir=$HOME/dotfiles
 source $basedir/linux/functions.sh
 
 function update_apt {
-  sudo add-apt-repository ppa:jonathonf/vim -y > /dev/null # Vim 9
   sudo apt update -y &> /dev/null
 
 }
@@ -13,6 +12,7 @@ function install_homebrew() {
   if [ ! -f "`which brew`" ]; then
     printf "${CYAN}############################################################## Installing homebrew${NC}\n"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     install build-essential
   fi
@@ -39,8 +39,7 @@ function install_packages() {
   binstall 'fd'
   install 'fzf'
 
-  brew tap cantino/mcfly
-  binstall 'cantino/mcfly/mcfly'
+  binstall 'mcfly'
   brew tap jesseduffield/lazydocker
   binstall 'lazydocker'
   brew tap jesseduffield/lazygit
@@ -83,7 +82,7 @@ function setup_vim() {
   install 'vim'
   ln -sf $basedir/base/.vim ~/
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  echo "Ignore the error saying ' Cannot find color scheme'. Just hit Enter"
+  echo "${CYAN}Ignore the error saying ' Cannot find color scheme'. Just hit Enter${NC}"
   vi +'PlugInstall' +qa
 }
 
@@ -96,7 +95,7 @@ function setup_zsh() {
   if [ ! -f $HOME/antigen.zsh ] ; then
     curl -L git.io/antigen > $HOME/antigen.zsh
   fi
-  echo "source $basedir/zsh/zshrc" > ~/.zshrc
+  echo "source $basedir/zsh/zshrc" >> ~/.zshrc
   echo "alias clip=clip.exe" >> ~/.zshrc # like pbcopy on windows
   touch ~/.zsh_history # for mcfly
   echo "source /home/raziel/dotfiles/zsh/functions.zsh" >> ~/.zshrc # replace with `realpath functions.zsh`
