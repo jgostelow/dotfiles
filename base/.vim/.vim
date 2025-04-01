@@ -1,1 +1,0 @@
-/Users/raziel/dotfiles/base/.vim
