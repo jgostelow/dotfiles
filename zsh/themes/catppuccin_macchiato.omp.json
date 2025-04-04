@@ -51,6 +51,11 @@
           "type": "git"
         },
 				{
+					"type": "python",
+					"style": "plain",
+					"foreground": "p:pink"
+				},
+				{
 					"type": "executiontime",
 					"style": "plain",
 					"foreground": "p:blue",
@@ -70,6 +75,20 @@
 					"template": " error:{{ .Code }} ",
 					"properties": {
 						"always_enabled": false
+					}
+				}
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+					"type": "time",
+					"style": "plain",
+					"foreground": "#007ACC",
+					"properties": {
+						"time_format": "2006-01-02T15:04:05"
 					}
 				}
       ],
