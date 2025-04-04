@@ -70,7 +70,10 @@ function setup_nvim() {
 function setup_tmux() {
   printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
   install 'tmux'
-  ln -sf $basedir/base/.tmux.conf ~/
+  git clone --single-branch https://github.com/gpakosz/.tmux.git ~/
+  ln -s -f .tmux/.tmux.conf ~/
+  cp .tmux/.tmux.conf.local ~/ # TODO - replace with my own
+  #ln -sf $basedir/base/.tmux.conf ~/
   echo "source-file ~/.tmux.conf" > ~/.tmate.conf
   if [ ! -d ~/.tmux/plugins/tpm ] ; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
