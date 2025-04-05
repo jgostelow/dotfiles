@@ -1,4 +1,5 @@
 CYAN='\033[0;36m'
+ORANGE='\033[38;5;214m'
 NC='\033[0m' # No Color
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
@@ -28,7 +29,8 @@ function checkout_or_update_git_repo {
 function add_to_file_unique {
   line=$1
   file=$2
-  grep -q $line $file || echo $line >> $file
+  touch $file
+  grep -qF "$line" $file || echo "$line" >> $file
 }
 
 function cleanup() {

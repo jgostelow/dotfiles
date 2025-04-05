@@ -6,13 +6,14 @@ source $basedir/linux/functions.sh
 
 function update_apt {
   sudo apt update -y &> /dev/null
-
 }
+
 function install_homebrew() {
   if [ ! -f "`which brew`" ]; then
     printf "${CYAN}############################################################## Installing homebrew${NC}\n"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
     install build-essential
   fi
   brew update > /dev/null
@@ -78,14 +79,13 @@ function install_node() {
   echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
   sudo apt-get update
   install 'nodejs' # required by coc.vim
-
 }
 
 function setup_vim() {
   printf "${CYAN}############################################################## Setting up vim......\n${NC}"
   install 'vim'
   ln -sf $basedir/base/.vim ~/
-  printf "${CYAN}Ignore the error saying ' Cannot find color scheme'. Just hit Enter\n${NC}"
+  printf "${ORANGE}Ignore the error saying ' Cannot find color scheme'. Just hit Enter\n${NC}"
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   vi +'PlugInstall' +qa
 }
@@ -100,8 +100,8 @@ function setup_zsh() {
     curl -L git.io/antigen > $HOME/antigen.zsh
   fi
   add_to_file_unique "source $basedir/zsh/zshrc" ~/.zshrc
+  add_to_file_unique "source $basedir/linux/zshrc" ~/.zshrc
   touch ~/.zsh_history # for mcfly
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   binstall 'jandedobbeleer/oh-my-posh/oh-my-posh' # https://ohmyposh.dev/
   /bin/zsh -i -c "source ~/antigen.zsh"
 }
