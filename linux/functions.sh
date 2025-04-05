@@ -12,6 +12,24 @@ function install {
   sudo apt-get -qq install $1 -y > /dev/null
 }
 
+function checkout_or_update_git_repo {
+  repo=$1
+  dir=$2
+  main_branch=$3
+  if [ ! -d $dir ] ; then
+    printf "${CYAN}-------------------------------------------------------------- Git : Cloning $repo into $dir ${NC}\n"
+    git clone --single-branch $repo $dir
+  else
+    printf "${CYAN}-------------------------------------------------------------- Git : Updating $repo into $dir ${NC}\n"
+    git -C $dir pull origin $main_branch
+  fi
+}
+
+function add_to_file_unique {
+  line=$1
+  file=$2
+  grep -q $line $file || echo $line >> $file
+}
 
 function cleanup() {
   sudo apt-get autoremove -y

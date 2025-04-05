@@ -1,5 +1,6 @@
 # source $ZSH/oh-my-zsh.sh
 
+source ~/dotfiles/zsh/functions.zsh
 export EDITOR="vim"
 
 # to profile zsh speed
