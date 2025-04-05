@@ -38,6 +38,7 @@ function install_packages() {
   binstall 'eza'
   binstall 'fd'
   install 'fzf'
+  binstall 'dust'
 
   binstall 'mcfly'
   brew tap jesseduffield/lazydocker
