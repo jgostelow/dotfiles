@@ -5,7 +5,7 @@ basedir=$HOME/dotfiles
 source $basedir/linux/functions.sh
 
 function update_apt {
-  sudo apt update -y &> /dev/null
+  sudo apt-get update -y &> /dev/null
 }
 
 function install_homebrew() {
@@ -14,6 +14,7 @@ function install_homebrew() {
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
+    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
     install build-essential
   fi
   brew update > /dev/null
@@ -116,6 +117,13 @@ function setup_tmux() {
   ln -sf $basedir/base/.tmux.conf.local ~/
   add_to_file_unique "source-file ~/.tmux.conf" ~/.tmate.conf
 }
+
+echo "---------------------------------------"
+echo "To avoid repeated sudo password prompt"
+echo "> sudo sudoers"
+echo "Add the following line temporarily"
+echo "$USER ALL=(ALL) NOPASSWD: ALL"
+echo "---------------------------------------"
 
 update_apt
 install_homebrew
