@@ -10,7 +10,7 @@ function update_apt {
 
 function install_homebrew() {
   if [ ! -f "`which brew`" ]; then
-    printf "${CYAN}############################################################## Installing homebrew${NC}\n"
+    h2 "Installing homebrew"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
@@ -21,7 +21,7 @@ function install_homebrew() {
 }
 
 function install_packages() {
-  printf "${CYAN}############################################################## Installing Homebrew/Apt packages${NC}\n"
+  h2 "Installing Homebrew/Apt packages"
   install 'wget'
   install 'glances'
   install 'watch'
@@ -49,13 +49,13 @@ function install_packages() {
 }
 
 function setup_aliases() {
-  printf "${CYAN}############################################################## Setting up aliases......\n${NC}"
+  h2 "Setting up aliases......"
   add_to_file_unique "source $basedir/base/aliases" ~/.aliases
   add_to_file_unique "source $basedir/linux/aliases" ~/.aliases
 }
 
 function setup_git() {
-  printf "${CYAN}############################################################## Setting up git config......\n${NC}"
+  h2 "Setting up git config......"
   git config --global user.email "jonathan.gostelow@gmail.com"
   git config --global user.name "Jonathan Gostelow"
   git config --global --replace-all include.path $basedir/base/gitconfig
@@ -68,7 +68,7 @@ function setup_git() {
 }
 
 function install_node() {
-  printf "${CYAN}############################################################## Installing v21.x Nodejs......\n${NC}"
+  h2 "Installing v21.x Nodejs......"
   install 'ca-certificates'
   install 'curl'
   install 'gnupg'
@@ -83,7 +83,7 @@ function install_node() {
 }
 
 function setup_vim() {
-  printf "${CYAN}############################################################## Setting up vim......\n${NC}"
+  h2 "Setting up vim......"
   install 'vim'
   ln -sf $basedir/base/.vim ~/
   printf "${ORANGE}Ignore the error saying ' Cannot find color scheme'. Just hit Enter\n${NC}"
@@ -92,7 +92,7 @@ function setup_vim() {
 }
 
 function setup_zsh() {
-  printf "${CYAN}############################################################## Installing zsh + oh-my-zsh \n${NC}"
+  h2 "Installing zsh + oh-my-zsh "
   install 'zsh'
   if [ ! -d $ZSH ] ; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
@@ -108,7 +108,7 @@ function setup_zsh() {
 }
 
 function setup_tmux() {
-  printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
+  h2 "Setting up tmux......"
   install 'tmux'
   install 'xdg-utils' # needed by tmux-open
 
@@ -137,7 +137,7 @@ function setup_docker() {
 
 echo "---------------------------------------"
 echo "To avoid repeated sudo password prompt"
-echo "> sudo sudoers"
+echo "> sudo visudo"
 echo "Add the following line temporarily"
 echo "$USER ALL=(ALL) NOPASSWD: ALL"
 echo "---------------------------------------"
@@ -154,7 +154,7 @@ setup_tmux
 setup_docker
 cleanup
 
-printf "${CYAN}############################################################## Switching to ZSH \n${NC}"
+h2 "Switching to ZSH "
 
 chsh -s `which zsh`
-printf "${CYAN}############################################################## Linux Setup complete! \n${NC}"
+h2 "Linux Setup complete! "
