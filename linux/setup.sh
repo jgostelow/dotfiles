@@ -37,6 +37,7 @@ function install_packages() {
   # https://www.vimfromscratch.com/articles/awesome-command-line-tools/
   install 'tldr'
   install 'bat'
+  install 'duf'
   binstall 'eza'
   binstall 'fd'
   install 'fzf'
