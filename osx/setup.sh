@@ -70,14 +70,9 @@ function setup_nvim() {
 function setup_tmux() {
   printf "${CYAN}############################################################## Setting up tmux......\n${NC}"
   install 'tmux'
-  git clone --single-branch https://github.com/gpakosz/.tmux.git ~/
-  ln -s -f .tmux/.tmux.conf ~/
+  curl -fsSL "https://github.com/gpakosz/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | bash
   ln -sf $basedir/base/.tmux.conf.local ~/
   echo "source-file ~/.tmux.conf" > ~/.tmate.conf
-  if [ ! -d ~/.tmux/plugins/tpm ] ; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  fi
-  # tmux source ~/.tmux.conf
 }
 
 function setup_zsh() {
@@ -111,9 +106,9 @@ setup_git
 setup_vim
 #setup_nvim
 setup_tmux
-setup_zsh
-misc
+ setup_zsh
+ misc
 cleanup
-printf "${CYAN}############################################################## Linux Setup complete! \n${NC}"
+printf "${CYAN}############################################################## MacOS Setup complete! \n${NC}"
 printf "${CYAN}############################################################## Switching to ZSH \n${NC}"
 chsh -s `which zsh`
