@@ -78,11 +78,11 @@ function drmii() {
   docker rmi -f (docker images $1 -q | uniq)
 }
 function dsh() { # run a shell from an image
-    docker run -ti --entrypoint="" $1 sh
-  }
+  docker run -ti --entrypoint="" $1 sh
+}
 function dcsh() {
-    docker-compose exec $1 sh
-  }
+  docker-compose exec $1 sh
+}
 
 ###### Kubernetes ######
 function ksh() {
@@ -96,3 +96,16 @@ fi
 
 ###### Ruby ######
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+
+##### Video #####
+function reencode_video() {
+  ffmpeg -i $1 \
+  -map 0:v:0 -map 0:a:0 \
+  -vf "zscale=transfer=bt709:primaries=bt709:matrix=bt709,scale=1920:1080" \
+  -c:v libx264 -preset slow -crf 18 \
+  -profile:v high -level 4.1 \
+  -pix_fmt yuv420p \
+  -c:a copy \
+  $2
+}
