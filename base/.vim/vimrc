@@ -52,6 +52,7 @@ Plug 'luochen1990/rainbow'
 Plug 'camspiers/animate.vim'
 
 Plug 'madox2/vim-ai'
+Plug 'rishi-opensource/vim-claude-code'
 
 " Themes
 " Plug 'wadackel/vim-dogrun'
