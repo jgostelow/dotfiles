@@ -38,6 +38,8 @@ function install_packages() {
   install 'tldr'
   install 'bat'
   install 'duf'
+  install '7zip'
+  install '7zip-rar'
   binstall 'eza'
   binstall 'fd'
   install 'fzf'

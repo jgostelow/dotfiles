@@ -25,6 +25,8 @@ function install_packages() {
   install 'dust'
   install 'duf'
   install 'mcfly'
+  install '7zip'
+  install '7zipi-rar'
   install 'doitlive' # https://doitlive.readthedocs.io/en/stable/
 
   install 'nodejs' # required by coc.vim
