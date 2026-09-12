@@ -1,8 +1,8 @@
 #alias vim=nvim
-alias a='source ~/.aliases'
-alias aa='vim ~/.aliases'
-alias z='source ~/.zshrc'
-alias zz='vim ~/.zshrc'
+alias aa='source ~/.aliases'
+alias va='vim ~/.aliases'
+alias zz='source ~/.zshrc'
+alias vz='vim ~/.zshrc'
 
 ################## Basic commands ##################
 
