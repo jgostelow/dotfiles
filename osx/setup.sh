@@ -20,6 +20,7 @@ function install_packages() {
   install 'tldr'
   install 'bat'
   install 'eza'
+  install 'zoxide'
   install 'fd'
   install 'fzf'
   install 'dust'

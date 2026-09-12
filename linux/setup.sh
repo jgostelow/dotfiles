@@ -41,6 +41,7 @@ function install_packages() {
   install '7zip'
   install '7zip-rar'
   binstall 'eza'
+  binstall 'zoxide'
   binstall 'fd'
   install 'fzf'
   binstall 'dust'
